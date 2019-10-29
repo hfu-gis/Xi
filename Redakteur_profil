@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+
+        <header>
+            <button onclick="abbruch()">Cancel </button>
+
+            <script>
+                function abbruch() {
+                    window.history.back();
+                }
+            </script>
+
+            <h1>Redakteur Profil erstellen</h1></header>
+        <br><br>
+        <main> <form action="/action_page.php">
+
+            First name  &nbsp;<input type="text" name="FirstName" value="Max"><br>
+            <br>
+            Last name  &nbsp;<input type="text" name="LastName" value="Mustermann"><br>
+            <br>
+            E-Mail &nbsp;&nbsp;&nbsp; <input type="text" name="E-Mail" value="max.mustermann@gmail.de"><br>
+            <br>
+            City  &nbsp;<input type="text" name="Ort" value="Lüneburg"><br>
+            <br>
+            Country  &nbsp;<input type="text" name="Land" value="Deutschland"><br>
+           <br>
+            Job  &nbsp;<input type="text" name="Beruf" value="Journalist"><br>
+            <br>
+            <form action="/action_pge.php">
+                <input type="file" name="Picture" accept="image/.jpg, .png," >
+                <input type="submit" value="Upload">
+        </form>
+
+
+            <br><br><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+
+        </main>
+
+</body>
