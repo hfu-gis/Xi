@@ -5,21 +5,57 @@
     <title>REGISTRIEREN</title>
 
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content=" initial-scale=1.0, user-scalable=yes">
+
 </head>
-<body>
+<body id="login">
 
-<section id="register">
-    <h1>Registrieren</h1>
 
-    <p>Melde dich an</p>
+<section >
 
-    <input type="email" value="eMail"/>
-    <br><input type="text" value="Bernd"/>
-    <br> <input type="password" value="xxx"/>
-    <br><input type="password" value="xxx"/>
-    <br><input type="submit" value="REGISTRIEREN"/>
+    <article class="login-box">
+        <header class="login-box-header">
+            <a href="index.php"><h1>DIE NachrichtenApp 9000</h1></a>
+        </header>
+
+        <section id="login-log-area">
+
+        <h1>Anmelden</h1>
+
+            <section class="login-error">
+                <h3>ALLLAAARRRRRMMMM!!!!</h3>
+                <p>
+                    Du hast keine Daten eingegeben, du Nudel.
+                    <br>Versuchs gerne nochmals.
+                </p>
+            </section>
+
+        <input type="text" placeholder="Vorname"/>
+        <input type="text" placeholder="Nachname"/>
+
+        <div class="login-trenn-strich">
+
+        </div>
+
+            <input type="email" placeholder="eMail"/>
+
+            <div class="login-trenn-strich"></div>
+
+        <input type="password" placeholder="Passwort"/>
+        <input type="password" placeholder="Passwort wiederholen"/>
+
+            <div class="login-trenn-strich"></div>
+
+            <input type="checkbox"> Ich habe die Datenschutzerklärung gelesen!
+
+           <br> <input type="checkbox"> Ich möchte Nachrichten über neue Artikel bekommen
+
+            <input type="submit" value="Konto anlegen"/>
+    </section>
+    </article>
 
 </section>
+
 
 </body>
 </html>

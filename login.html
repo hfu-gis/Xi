@@ -5,17 +5,41 @@
     <title>LOGIN</title>
 
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content=" initial-scale=1.0, user-scalable=yes">
+
 </head>
-<body>
+<body id="login">
 
-<section id="login">
-    <h1>LOGIN</h1>
+    <article class="login-box">
+        <header class="login-box-header">
+            <a href="index.php"><h1>DIE NachrichtenApp 9000</h1></a>
+        </header>
 
-    <p>Hier kannst du dich einloggen</p>
+        <section id="login-log-area">
+            <h1>Login</h1>
+            <section class="login-error">
+                <h3>ALLLAAARRRRRMMMM!!!!</h3>
+                <p>
+                    Du hast falsche Daten eingegeben, du Nudel.
+                    <br>Versuchs gerne nochmals.
+                </p>
+            </section>
+            <input type="text" placeholder="eMail"/>
+            <input type="password" placeholder="Passwort"/>
 
-    <input type="text" value="Bernd"/>
-    <input type="password" value="xxx"/>
-    <input type="submit" value="EINLOGGEN"/>
+            <a href="pw-vergessen.html" id="forget-pw">Passwort vergessen?</a>
+
+            <input type="submit" value="Login"/>
+
+        </section>
+
+        <section id="login-new-acc-area">
+
+            <button onclick="window.location.href='register.html'" style="background: #666"> Neues Konto anlegen</button>
+
+        </section>
+
+    </article>
 
 </section>
 
