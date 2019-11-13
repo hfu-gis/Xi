@@ -5,7 +5,6 @@ import HelloWorld from "../components/HelloWorld"
 import '../assets/css/app.css'
 import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"
-import BeiträgeAnzeigen from "../views/BeiträgeAnzeigen";
 
 
 Vue.use(VueRouter);
@@ -28,10 +27,7 @@ export default new VueRouter({
             path: '/Suchfunktion',
             component: Suchfunktion
         },
-        {
-            path: '/BeiträgeAnzeigen',
-            component: BeiträgeAnzeigen
-        },
+
 
     ]
 })
