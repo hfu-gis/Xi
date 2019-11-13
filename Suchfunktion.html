@@ -1,44 +1,58 @@
-<style>
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333333;
-    }
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: dodgerblue;
+        }
 
-    li {
-        float: left;
-    }
+        li {
+            float: left;
+            border-right:1px solid #bbb;
+        }
 
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 16px;
-        text-decoration: none;
-    }
+        li:last-child {
+            border-right: none;
+        }
 
-    li a:hover {
-        background-color: #111111;
-    }
-</style>
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: darkred;
+        }
+
+        .active {
+            background-color: darkred;
+        }
+    </style>
 </head>
 <body>
 
-
-
-
 <ul>
+    <li><a class="active" href="#home">Home</a></li>
     <li><a href="#Continent">Continent</a></li>
     <li><a href="#Topic">Topic</a></li>
     <li><a href="#Hashtags">Hashtags</a></li>
     <li><a href="#Subscriptions">Subscriptions</a></li>
 
-    <li><a <br> <h2>Search</h2><input type="text" name="fname"><br></p></li>
-    <li><a <br> <br> <p> <input type="submit" value="Submit"></div></p> <div</li>
+    <li style="float:right"><a href="#Search">Search</a><input type="text" name="fname"><input type="submit" value="Submit"></div></p></a></li>
 
 </ul>
 
 </body>
 </html>
+
+
+
+
+
