@@ -18,7 +18,7 @@
             <input type="text" placeholder="eMail"/>
             <input type="password" placeholder="Passwort"/>
 
-            <a href="../../pw-vergessen.html" id="forget-pw">Passwort vergessen?</a>
+            <a to="/login" id="forget-pw">Passwort vergessen?</a>
 
             <input type="submit" value="Login"/>
 
