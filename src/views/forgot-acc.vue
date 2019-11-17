@@ -1,37 +1,55 @@
 <template>
-    <div class="body-1">
-        <section>
+    <v-app id="login">
+        <v-container
+                class="fill-height"
+                fluid>
+            <v-row
+                    align="center"
+                    justify="center"
+            >
+                <v-col
+                        cols="12"
+                        sm="8"
+                        md="4"
+                >
+            <v-layout row wrap>
+                <v-card class="card-log"
+                        outlined
+                >
 
-            <article class="login-box">
+                   <v-toolbar color="info"
+                              dark
+                              flat>
+                       <v-toolbar-title>Forgot account?</v-toolbar-title>
+                   </v-toolbar>
 
-                <section id="login-log-area">
-                    <h1>Forgot account?</h1>
-
-                    <!--
-                    <section class="login-error" style="background: limegreen;">
-                        <h3>Vielen Dank!</h3>
-                        <p>
-                            Du erhälst in kürze eine eMail mit einem neuen Passwort.
-                            <br><a href="login.php">Zurück zum Login!</a>
-                        </p>
-                    </section>
-                    -->
-
-                    <p>
+                    <v-card-text>
                         <b>Forgot your account?</b>
                         <br>Please enter your email to search for your account.
-                    </p>
-                    <br>
-                    <input type="text" placeholder="eMail"/>
+                        <v-form>
+                            <br>
+                            <v-text-field
+                                    name="name"
+                                    :rules="[rules.required]"
+                                    label="eMail"
+                                    value=""
+                                    class="input-group--focused"
+                                    prepend-inner-icon="mdi-account"
+                                    outlined
+                            ></v-text-field>
 
-                    <input type="submit" value="Let's get your account back!"/>
 
-                </section>
+                            <v-btn color="primary" dark large>Get your account back<v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                        </v-form>
+                    </v-card-text>
 
-            </article>
+                </v-card>
+            </v-layout>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-app>
 
-        </section>
-    </div>
 </template>
 
 <script>
@@ -46,8 +64,14 @@
         props: {},
 
         // Variablen-Speicher
-        data() {
-            return {}
+        data () {
+            return {
+                show: false,
+                password: 'Password',
+                rules: {
+                    required: value => !!value || 'Required.',
+                },
+            }
         },
 
         // reagieren auf prop-Veränderung

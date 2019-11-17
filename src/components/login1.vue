@@ -1,7 +1,18 @@
 <template>
-    <div id="login">
-        <v-container sm-12>
-            <v-layout wrap>
+    <v-app id="login">
+        <v-container
+                class="fill-height"
+                fluid>
+                <v-row
+                        align="center"
+                        justify="center"
+                >
+                    <v-col
+                            cols="12"
+                            sm="8"
+                            md="4"
+                    >
+
         <v-card class="card-log"
                 outlined
         >
@@ -11,40 +22,39 @@
                  <v-toolbar-title>Login</v-toolbar-title>
             </v-toolbar>
 
-            <v-card-text ma="4">
+            <v-card-text ma="4" class="py-8">
             <v-form>
                     <v-text-field
                         name="name"
                         :rules="[rules.required]"
                         label="eMail"
                         value="info@mail.com"
-                        class="input-group--focused"
+                        class="input-group--focused px-5"
                         prepend-inner-icon="mdi-account"
                         outlined
                     ></v-text-field>
 
                     <v-text-field
                             :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                            :rules="[rules.required, rules.min]"
+                            :rules="[rules.required]"
                             :type="show ? 'text' : 'password'"
                             name="passowrd"
                             label="Password"
-                            hint="make it strong!"
                             value="xxx"
-                            class="input-group--focused"
+                            class="input-group--focused px-5"
                             prepend-inner-icon="mdi-lock"
                             outlined
                             @click:append="show = !show"
                     ></v-text-field>
 
-                    <v-btn color="primary" dark large>Login <v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                    <v-btn color="primary" dark large class="ml-5">Login <v-icon right>mdi-arrow-right</v-icon> </v-btn>
 
             </v-form>
             </v-card-text>
         </v-card>
-            </v-layout>
+                    </v-col></v-row>
         </v-container>
-    </div>
+    </v-app>
 </template>
 
 <script>
@@ -65,7 +75,6 @@
                 password: 'Password',
                 rules: {
                     required: value => !!value || 'Required.',
-                    min: v => v.length >= 8 || 'Min. 8 characters',
                 },
             }
         },
