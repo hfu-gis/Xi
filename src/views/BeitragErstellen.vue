@@ -1,4 +1,4 @@
-<BeitragErstellen>
+<template>
     <div class="BeitragErstellen">
 
 
@@ -24,7 +24,7 @@
 
         </form>
     </div>
-</BeitragErstellen>
+</template>
 
 <script>
     export default {

@@ -1,17 +1,20 @@
 <template>
   <v-app>
-    <v-toolbar short>
-      <v-toolbar-title>
+    <v-toolbar app
+               color="primary"
+               dark
+                height="50">
+      <v-toolbar-title left>
         NEWS OF THE WORLD
       </v-toolbar-title>
-
-      <v-spacer></v-spacer>
+      <v-spacer/>
 
       <v-toolbar-items>
-        <v-btn text to="/login">  <v-icon left>mdi-export-variant</v-icon>Login</v-btn>
-        <v-btn text>Link 2</v-btn>
+        <v-btn text to="/login">Login</v-btn>
+        <v-btn text to="/register">Register</v-btn>
         <v-btn text>Link 3</v-btn>
         <v-btn text>Link 4</v-btn>
+
       </v-toolbar-items>
 
     </v-toolbar>
@@ -23,14 +26,14 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Home from './components/Home';
 
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Home,
   },
 
   data: () => ({
