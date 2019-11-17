@@ -37,7 +37,7 @@
 <script>
     export default {
         // gebt jeder Page einen eigenen Namen
-        name: 'forgot-acc',
+        name: 'forgotacc',
 
         // benötigte Komponenten
         components: {},
