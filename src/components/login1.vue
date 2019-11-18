@@ -49,6 +49,9 @@
 
                     <v-btn color="primary" dark large class="ml-5">Login <v-icon right>mdi-arrow-right</v-icon> </v-btn>
 
+                <v-row>
+                     <v-btn large color="warning" dark class="mx-5">Create new Acc!<v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                </v-row>
             </v-form>
             </v-card-text>
         </v-card>

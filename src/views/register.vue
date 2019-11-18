@@ -83,8 +83,24 @@
                                     outlined
                             ></v-text-field>
 
+                            <v-row>
+                                <v-checkbox
+                                        v-model="checkbox"
+                                        :rules="[v => !!v || 'You must agree to continue!']"
+                                        label="Agree to our Privacy policy!"
+                                        class="mx-8"
+                                        required
+                                ></v-checkbox>
 
+                                <v-checkbox
+                                        v-model="checkbox"
+                                        label="Get mails!"
+                                        class="mr-5"
+                                        required
+                                ></v-checkbox>
+                            </v-row>
 
+                            <v-btn color="primary" dark large class="ml-5 ">Register<v-icon right>mdi-arrow-right</v-icon> </v-btn>
                             <v-btn color="primary" dark large class="ml-5 ">Register<v-icon right>mdi-arrow-right</v-icon> </v-btn>
 
                         </v-form>

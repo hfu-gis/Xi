@@ -1,8 +1,6 @@
 <template>
     <v-app id="login">
-    <v-container
-            class="fill-height"
-            >
+    <v-container class="fill-height">
         <v-row
         >
             <v-col
