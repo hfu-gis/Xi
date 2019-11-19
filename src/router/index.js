@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/login1'
+import Login from '../views/login1'
 import register from '../views/register'
 import forgotacc from '../views/forgot-acc'
 import Home from "../components/Home"

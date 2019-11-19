@@ -13,7 +13,7 @@ export default new Vuetify({
         secondary: colors.amber,
         accent: '#82B1FF',
         error: '#FF5252',
-        info: '#2196F3',
+        info: '#0D47A1',
         success: '#4CAF50',
         warning: '#FFC107'
       },

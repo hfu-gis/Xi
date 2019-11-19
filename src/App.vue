@@ -1,9 +1,10 @@
 <template>
   <v-app>
     <v-navigation-drawer
-            src=""
+            src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
             v-model="drawer"
             app
+            dark
     >
       <v-list dense>
         <v-list-item link>
@@ -33,23 +34,25 @@
                color="primary"
                dark
                 height="50">
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title left>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-        NEWS OF THE WORLD
+        <router-link to="/" tag="span" style="cursor: pointer">NEWS OF THE WORLD</router-link>
       </v-toolbar-title>
       <v-spacer/>
 
-      <v-toolbar-items>
-        <v-btn text to="/login">  <v-icon left>mdi-export-variant</v-icon>Login</v-btn>
-        <v-btn text to="/register">Register</v-btn>
-        <v-btn text to="/forgot-acc">Link 3</v-btn>
-        <v-btn text to="/BeiträgeAnzeigen">Link 4</v-btn>
+      <v-toolbar-items >
+        <v-btn  v-for="item in menuItems" :key="item.title" text router :to="item.link">
+          <v-icon left>{{item.icon}}</v-icon>
+          {{item.title}}
+        </v-btn>
       </v-toolbar-items>
 
     </v-app-bar>
 
     <v-main>
-      <router-view />
+      <v-app>
+        <router-view />
+      </v-app>
     </v-main>
 
     <v-footer
@@ -63,18 +66,22 @@
 </template>
 
 <script>
-import Home from './components/Home';
+  import Home from './components/Home';
 
+  export default {
+    name: 'App',
 
-export default {
-  name: 'App',
-
-  components: {
-    Home,
-  },
+    components: {
+      Home,
+    },
 
   data: () => ({
-    drawer: null,
+    drawer: false,
+    menuItems: [
+      { icon: 'mdi-lock', title: 'Login', link: '/login'},
+      { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
+      { icon: '', title: 'Show Articles', link: '/BeiträgeAnzeigen' },
+    ]
     //
   }),
   created() {

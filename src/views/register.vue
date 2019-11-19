@@ -25,7 +25,7 @@
                     </v-toolbar>
 
                     <v-card-text>
-                        <v-form>
+                        <v-form @submit.prevent="onSignup">
                             <v-row class="px-3">
                             <v-text-field
                                     name="firstname"
@@ -71,7 +71,7 @@
 
                             <v-text-field
                                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                                    :rules="[rules.required, rules.min, rules.confirmation,]"
+                                    :rules="[comparePasswords]"
                                     :type="show ? 'text' : 'password'"
                                     name="password1"
                                     label="Repeat password"
@@ -83,25 +83,17 @@
                                     outlined
                             ></v-text-field>
 
-                            <v-row>
                                 <v-checkbox
-                                        v-model="checkbox"
                                         :rules="[v => !!v || 'You must agree to continue!']"
                                         label="Agree to our Privacy policy!"
-                                        class="mx-8"
+                                        name="policy"
+                                        class="mx-5"
                                         required
                                 ></v-checkbox>
 
-                                <v-checkbox
-                                        v-model="checkbox"
-                                        label="Get mails!"
-                                        class="mr-5"
-                                        required
-                                ></v-checkbox>
+                            <v-row class="justify-end mx-5" >
+                                <v-btn type="submit" color="primary" dark large class="ml-5 mb-5">Register<v-icon right>mdi-arrow-right</v-icon> </v-btn>
                             </v-row>
-
-                            <v-btn color="primary" dark large class="ml-5 ">Register<v-icon right>mdi-arrow-right</v-icon> </v-btn>
-                            <v-btn color="primary" dark large class="ml-5 ">Register<v-icon right>mdi-arrow-right</v-icon> </v-btn>
 
                         </v-form>
                     </v-card-text>
@@ -127,12 +119,22 @@
         data () {
             return {
                 show: false,
-                password: 'Password',
+                policy: '',
+                firstname: '',
+                lastname: '',
+                email: '',
+                password: '',
+                password1: '',
                 rules: {
                     required: value => !!value || 'Required.',
                     min: v => v.length >= 8 || 'Min. 8 characters',
-                    confirmation: password1 => password1.value == password.value || 'It must be the same!',
                 },
+            }
+        },
+
+        computed: {
+            comparePasswords () {
+                return this.password !== this.password1 ? 'Passwords do not match!' : true
             }
         },
 
@@ -140,7 +142,11 @@
         watch: {},
 
         // interne Methoden
-        methods: [],
+        methods: {
+            onSignup () {
+                console.log({firstname: this.firstname, lastname: this.lastname, email: this.email, password: this.password, password1: this.password1, policy: this.policy})
+            }
+        },
 
         // Initialisierung
         created() {}

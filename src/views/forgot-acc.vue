@@ -24,8 +24,10 @@
                    </v-toolbar>
 
                     <v-card-text>
-                        <b>Forgot your account?</b>
-                        <br>Please enter your email to search for your account.
+                        <p class="mx-5 mb-0">
+                            <b>Forgot your account?</b>
+                            <br>Please enter your email to search for your account!
+                        </p>
                         <v-form>
                             <br>
                             <v-text-field
@@ -33,13 +35,14 @@
                                     :rules="[rules.required]"
                                     label="eMail"
                                     value=""
-                                    class="input-group--focused"
+                                    class="input-group--focused mx-5"
                                     prepend-inner-icon="mdi-account"
                                     outlined
                             ></v-text-field>
 
-
-                            <v-btn color="primary" dark large>Get your account back<v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                            <v-row class="justify-end mx-5 mb-5" >
+                                <v-btn color="primary" dark large>Get your account back<v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                            </v-row>
                         </v-form>
                     </v-card-text>
 

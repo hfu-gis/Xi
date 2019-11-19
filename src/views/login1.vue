@@ -47,10 +47,13 @@
                             @click:append="show = !show"
                     ></v-text-field>
 
-                    <v-btn color="primary" dark large class="ml-5">Login <v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                <v-row class="justify-end ma-5 mt-0" >
+                    <v-btn to="/forgot-acc" text >Forgot account?</v-btn>
+                </v-row>
 
-                <v-row>
-                     <v-btn large color="warning" dark class="mx-5">Create new Acc!<v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                <v-row class="justify-end mx-5" >
+                     <v-btn to="/register" large color="warning" dark class="mx-5">Create new Acc!<v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                     <v-btn type="submit" color="primary" dark large class="ml-5">Login <v-icon right>mdi-arrow-right</v-icon> </v-btn>
                 </v-row>
             </v-form>
             </v-card-text>
