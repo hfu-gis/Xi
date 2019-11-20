@@ -1,9 +1,5 @@
-<Suchfunktion>
+<template>
     <div class="Suchfunktion">
-
-        <head>
-
-        </head>
 
         <ul>
             <li><a class="active" href="#home">Home</a></li>
@@ -14,7 +10,8 @@
 
             <li style="float:right"><a href="#Search">Search</a><input type="text" name="fname"><input type="submit" value="Submit"></li>
          </ul>
-
+    </div>
+</template>
 
 <script>
     export default {
