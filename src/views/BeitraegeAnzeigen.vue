@@ -1,5 +1,5 @@
-<BeiträgeAnzeigen>
-    <div class="BeiträgeAnzeigen">
+<BeitraegeAnzeigen>
+    <div class="BeitraegeAnzeigen">
 
         <title></title>
         <meta charset="UTF-8">
@@ -136,12 +136,12 @@
                 </footer>
 
     </div>
-</BeiträgeAnzeigen>
+</BeitraegeAnzeigen>
 
 <script>
     export default {
         // gebt jeder Page einen eigenen Namen
-        name: 'BeiträgeAnzeigen',
+        name: 'BeitraegeAnzeigen',
 
         // benötigte Komponenten
         components: {},
