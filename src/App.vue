@@ -15,20 +15,18 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+
+        <v-list-item class="hidden-md-and-up" link v-for="item in menuItems" :key="item.title" text router :to="item.link">
           <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
+            <v-icon>{{item.icon}}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>{{item.title}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
       </v-list>
     </v-navigation-drawer>
-
-
-
-
 
     <v-app-bar app
                color="primary"
@@ -40,8 +38,8 @@
       </v-toolbar-title>
       <v-spacer/>
 
-      <v-toolbar-items >
-        <v-btn  v-for="item in menuItems" :key="item.title" text router :to="item.link">
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn class="px-6" v-for="item in menuItems" :key="item.title" text router :to="item.link">
           <v-icon left>{{item.icon}}</v-icon>
           {{item.title}}
         </v-btn>
@@ -49,17 +47,28 @@
 
     </v-app-bar>
 
-    <v-main>
       <v-app>
+
         <router-view />
+
       </v-app>
-    </v-main>
 
     <v-footer
-            color="primary"
-            app
+            dark
+            padless
     >
-      <span class="white--text">&copy; 2019 - Nachrichten APP</span>
+      <v-card
+              class="flex"
+      >
+        <v-card-title class="primary">
+          &copy; {{ new Date().getFullYear() }} — Vuetify
+
+          <v-spacer></v-spacer>
+          <v-btn text link to="/imprint"><v-icon size="24px"></v-icon> Imprint </v-btn>
+          <v-btn text link to="/policy"><v-icon size="24px"></v-icon> Privacy policy </v-btn>
+        </v-card-title>
+
+      </v-card>
     </v-footer>
 
   </v-app>
@@ -71,19 +80,33 @@
   export default {
     name: 'App',
 
+    data: () => ({
+      drawer: false,
+      //
+    }),
     components: {
       Home,
     },
+    computed: {
+      menuItems() {
+        let menuItems = [
+          { icon: 'mdi-lock', title: 'Login', link: '/login'},
+          { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
+        ]
+        if (this.userIsAuthenticated) {
+          menuItems = [
+            { icon: 'mdi-tooltip-outline', title: 'Show Articles', link: '/BeiträgeAnzeigen' },
+            { icon: 'mdi-pencil', title: 'New Article', link: '/BeitragErstellen' },
+          ]
+        }
+        return menuItems
+      },
 
-  data: () => ({
-    drawer: false,
-    menuItems: [
-      { icon: 'mdi-lock', title: 'Login', link: '/login'},
-      { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
-      { icon: '', title: 'Show Articles', link: '/BeiträgeAnzeigen' },
-    ]
-    //
-  }),
+      userIsAuthenticated () {
+       return !!this.$store.getters.user;
+      }
+
+    },
   created() {
     this.$router.push({path: '/home'})
   }

@@ -25,13 +25,14 @@
                     </v-toolbar>
 
                     <v-card-text>
-                        <v-form @submit.prevent="onSignup">
+                        <form @submit.prevent="onSignup">
                             <v-row class="px-3">
                             <v-text-field
                                     name="firstname"
                                     :rules="[rules.required]"
                                     label="First name"
                                     class="input-group--focused px-5"
+                                    v-model="firstname"
                                     prepend-inner-icon="mdi-account"
                                     outlined
                             ></v-text-field>
@@ -40,6 +41,7 @@
                                     name="lastname"
                                     :rules="[rules.required]"
                                     label="Last name"
+                                    v-model="lastname"
                                     class="input-group--focused px-5"
                                     prepend-inner-icon="mdi-account"
                                     outlined
@@ -50,6 +52,7 @@
                                     name="email"
                                     :rules="[rules.required]"
                                     label="eMail"
+                                    v-model="email"
                                     class="input-group--focused px-5"
                                     prepend-inner-icon="mdi-mail"
                                     outlined
@@ -61,6 +64,7 @@
                                     :type="show ? 'text' : 'password'"
                                     name="password"
                                     label="Password"
+                                    v-model="password"
                                     hint="make it strong!"
                                     value="xxx"
                                     class="input-group--focused px-5"
@@ -71,11 +75,12 @@
 
                             <v-text-field
                                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                                    :rules="[comparePasswords]"
+                                    :rules="[]"
                                     :type="show ? 'text' : 'password'"
                                     name="password1"
                                     label="Repeat password"
                                     hint="make it strong!"
+                                    v-model="password1"
                                     value="xxx"
                                     class="input-group--focused px-5"
                                     prepend-inner-icon="mdi-lock"
@@ -84,7 +89,6 @@
                             ></v-text-field>
 
                                 <v-checkbox
-                                        :rules="[v => !!v || 'You must agree to continue!']"
                                         label="Agree to our Privacy policy!"
                                         name="policy"
                                         class="mx-5"
@@ -95,7 +99,7 @@
                                 <v-btn type="submit" color="primary" dark large class="ml-5 mb-5">Register<v-icon right>mdi-arrow-right</v-icon> </v-btn>
                             </v-row>
 
-                        </v-form>
+                        </form>
                     </v-card-text>
                 </v-card>
                     </v-col>
@@ -134,17 +138,21 @@
 
         computed: {
             comparePasswords () {
-                return this.password !== this.password1 ? 'Passwords do not match!' : true
+                return this.password !== this.password1 ? 'Passwords do not match!' : null
+            },
+            user() {
+                return this.$store.getters.user
             }
         },
-
         // reagieren auf prop-Veränderung
-        watch: {},
+        watch: {
+
+        },
 
         // interne Methoden
         methods: {
             onSignup () {
-                console.log({firstname: this.firstname, lastname: this.lastname, email: this.email, password: this.password, password1: this.password1, policy: this.policy})
+                this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
             }
         },
 
