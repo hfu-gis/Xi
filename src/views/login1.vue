@@ -22,6 +22,12 @@
                  <v-toolbar-title>Login</v-toolbar-title>
             </v-toolbar>
 
+            <v-layout class="mx-9 mt-5" v-if="error">
+                <v-flex>
+                    <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
+                </v-flex>
+            </v-layout>
+
             <v-card-text ma="4" class="py-8">
             <v-form @submit.prevent="onSignin">
                     <v-text-field
@@ -54,9 +60,15 @@
                 </v-row>
 
                 <v-row class="justify-end mx-5" >
-                     <v-btn to="/register" large color="warning" dark class="mx-5">Create new Acc!<v-icon right>mdi-arrow-right</v-icon> </v-btn>
-                     <v-btn type="submit" color="primary" dark large class="ml-5">Login <v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                     <v-btn to="/register" large color="warning" class="mx-5">Create new Acc!<v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                     <v-btn type="submit" :disabled="loading" :loading="loading" color="primary"  large class="ml-5">
+                        Login <v-icon right>mdi-arrow-right</v-icon>
+                             <span slot="loader" class="custom-loader">
+                                 <v-icon>mdi-cached</v-icon>
+                             </span>
+                     </v-btn>
                 </v-row>
+
             </v-form>
             </v-card-text>
         </v-card>
@@ -92,6 +104,15 @@
         computed: {
             user() {
                 return this.$store.getters.user
+            },
+            user() {
+                return this.$store.getters.user
+            },
+            error () {
+                return this.$store.getters.error
+            },
+            loading () {
+                return this.$store.getters.loading
             }
         },
         // reagieren auf prop-Veränderung
@@ -107,6 +128,9 @@
         methods: {
             onSignin () {
                 this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
+            },
+            onDismissed () {
+                this.$store.dispatch('clearError')
             }
         },
 

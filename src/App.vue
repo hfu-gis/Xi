@@ -48,9 +48,7 @@
     </v-app-bar>
 
       <v-app>
-
         <router-view />
-
       </v-app>
 
     <v-footer
