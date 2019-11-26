@@ -23,9 +23,10 @@
             </v-toolbar>
 
             <v-card-text ma="4" class="py-8">
-            <v-form>
+            <v-form @submit.prevent="onSignin">
                     <v-text-field
-                        name="name"
+                        name="email"
+                        v-model="email"
                         :rules="[rules.required]"
                         label="eMail"
                         value="info@mail.com"
@@ -40,6 +41,7 @@
                             :type="show ? 'text' : 'password'"
                             name="passowrd"
                             label="Password"
+                            v-model="password"
                             value="xxx"
                             class="input-group--focused px-5"
                             prepend-inner-icon="mdi-lock"
@@ -78,18 +80,35 @@
         data () {
             return {
                 show: false,
-                password: 'Password',
+                policy: '',
+                email: '',
+                password: '',
                 rules: {
                     required: value => !!value || 'Required.',
                 },
             }
         },
 
+        computed: {
+            user() {
+                return this.$store.getters.user
+            }
+        },
         // reagieren auf prop-Veränderung
-        watch: {},
+        watch: {
+            user(value) {
+                if (value !== null && value !== undefined) {
+                    this.$router.push('/')
+                }
+            }
+        },
 
         // interne Methoden
-        methods: [],
+        methods: {
+            onSignin () {
+                this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
+            }
+        },
 
         // Initialisierung
         created() {}

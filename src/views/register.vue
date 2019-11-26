@@ -75,7 +75,7 @@
 
                             <v-text-field
                                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                                    :rules="[]"
+                                    :rules="[comparePasswords]"
                                     :type="show ? 'text' : 'password'"
                                     name="password1"
                                     label="Repeat password"
@@ -146,7 +146,11 @@
         },
         // reagieren auf prop-Veränderung
         watch: {
-
+            user(value) {
+                if (value !== null && value !== undefined) {
+                    this.$router.push('/')
+                }
+            }
         },
 
         // interne Methoden
