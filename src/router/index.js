@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Login from '../views/login1'
 import register from '../views/register'
 import forgotacc from '../views/forgot-acc'
+import legalnotice from '../views/legal-notice'
+import privacypolicy from '../views/privacypolicy'
 import Home from "../components/Home"
 import '../assets/css/app.css'
 import BeitragErstellen from '../views/BeitragErstellen'
@@ -26,6 +28,14 @@ export default new VueRouter({
         {
             path: '/register',
             component: register
+        },
+        {
+            path: '/legal-notice',
+            component: legalnotice
+        },
+        {
+            path: '/privacy-policy',
+            component: privacypolicy
         },
         {
             path: '/forgot-acc',

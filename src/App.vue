@@ -34,7 +34,7 @@
                 height="50">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title left>
-        <router-link to="/" tag="span" style="cursor: pointer">NEWS OF THE WORLD</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">PERKS</router-link>
       </v-toolbar-title>
       <v-spacer/>
 
@@ -48,9 +48,7 @@
     </v-app-bar>
 
       <v-app>
-
         <router-view />
-
       </v-app>
 
     <v-footer
@@ -61,11 +59,11 @@
               class="flex"
       >
         <v-card-title class="primary">
-          &copy; {{ new Date().getFullYear() }} — Vuetify
+          &copy; {{ new Date().getFullYear() }} — Perks
 
           <v-spacer></v-spacer>
-          <v-btn text link to="/imprint"><v-icon size="24px"></v-icon> Imprint </v-btn>
-          <v-btn text link to="/policy"><v-icon size="24px"></v-icon> Privacy policy </v-btn>
+          <v-btn text link to="/legal-notice"><v-icon size="24px"></v-icon> Legal Notice </v-btn>
+          <v-btn text link to="/privacy-policy"><v-icon size="24px"></v-icon> Privacy policy </v-btn>
         </v-card-title>
 
       </v-card>
