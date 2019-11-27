@@ -19,6 +19,7 @@ export default new VueRouter({
             component: Home
         },
         {
+            name: Login,
             path: '/login',
             component: Login
         },

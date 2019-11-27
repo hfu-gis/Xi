@@ -66,7 +66,7 @@
 <script>
     export default {
         // gebt jeder Page einen eigenen Namen
-        name: 'login',
+        name: 'Login',
 
         // benötigte Komponenten
         components: {},
