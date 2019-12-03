@@ -1,28 +1,98 @@
 <template>
     <div class="BeitragErstellen">
+        <h1>"Create an article"</h1>
+        <div id="app">
+
+            <v-app id="inspire">
+                    <v-card>
+                        <v-toolbar
+                                flat
+                                color="blue-grey"
+                                dark
+                        >
+                            <v-toolbar-title>Create an article</v-toolbar-title>
+                        </v-toolbar>
+
+                        <v-card-text>
+                            <v-text-field
+                                    filled
+                                    label="Title"
+                                    value="">
+                            </v-text-field>
+
+                            <v-textarea
+                                    filled
+                                    label="Create an Article"
+                                    value=""
+                            ></v-textarea>
+
+                            <v-divider class="my-2"></v-divider>
+
+                            <v-file-input
+                                    v-model="files"
+                                    color="deep-purple accent-4"
+                                    counter
+                                    label="File input"
+                                    multiple
+                                    placeholder="Select your files"
+                                    prepend-icon="mdi-paperclip"
+                                    outlined
+                                    :show-size="1000"
+                            >
+                                <template v-slot:selection="{ index, text }">
+                                    <v-chip
+                                            v-if="index < 2"
+                                            color="deep-purple accent-4"
+                                            dark
+                                            label
+                                            small
+                                    >
+                                        {{ text }}
+                                    </v-chip>
+
+                                    <span
+                                            v-else-if="index === 2"
+                                            class="overline grey--text text--darken-3 mx-2"
+                                    >
+                                        +{{ files.length - 2 }} File(s)
+                                 </span>
+                                </template>
+                            </v-file-input>
+
+                            <v-item-group multiple>
+                                <v-subheader>Hashtags</v-subheader>
+                                <v-item
+                                        v-for="n in 8"
+                                        :key="n"
+                                        v-slot:default="{ active, toggle }"
+                                >
+                                    <v-chip
+                                            active-class="purple--text"
+                                            :input-value="active"
+                                            @click="toggle"
+                                    >
+                                            Tag {{ n }}
+                                    </v-chip>
+                                </v-item>
+                            </v-item-group>
+                        </v-card-text>
+
+                        <v-divider></v-divider>
+
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn
+                                    color="blue"
+                                    depressed
+                            >Post
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
 
 
-        <strong><h2>Create an article</h2></strong>
-        <form>
+            </v-app>
 
-            <label for="title" >Title:
-                <input id="title" name="title">
-            </label>
-            <br><br>
-
-            <label for="description" >Description:
-                <input id="description" name="description">
-            </label>
-
-            <br><br>
-            Write article:
-            <br>
-            <textarea name="message" rows="20" cols="100">
-    </textarea>
-            <br>
-            <input type="submit" value="Submit">
-
-        </form>
+        </div>
     </div>
 </template>
 
@@ -62,7 +132,6 @@
         text-align: center;
         padding: 16px;
         margin: 0;
-        padding: 0;
         overflow: hidden;
         background-color: dodgerblue;
     }
