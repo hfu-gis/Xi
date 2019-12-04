@@ -28,6 +28,10 @@
       </v-list>
     </v-navigation-drawer>
 
+
+
+
+
     <v-app-bar app
                color="primary"
                dark
@@ -93,7 +97,7 @@
         ]
         if (this.userIsAuthenticated) {
           menuItems = [
-            { icon: 'mdi-tooltip-outline', title: 'Show Articles', link: '/BeiträgeAnzeigen' },
+            { icon: 'mdi-tooltip-outline', title: 'Show Articles', link: '/BeitraegeAnzeigen' },
             { icon: 'mdi-pencil', title: 'New Article', link: '/BeitragErstellen' },
           ]
         }
