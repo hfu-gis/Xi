@@ -1,12 +1,11 @@
-<BeitraegeAnzeigen>
+<template>
+    <v-app>
     <div class="BeitraegeAnzeigen">
 
-        <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-        <body class="w3-light-grey">
 
         <!-- w3-content defines a container for fixed size centered content,
         and is wrapped around the whole page content, except for the footer in this example -->
@@ -135,13 +134,14 @@
                     <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button>
                 </footer>
 
-    </div>
-</BeitraegeAnzeigen>
+            </div></div></div>
+    </v-app>
+</template>
 
 <script>
     export default {
         // gebt jeder Page einen eigenen Namen
-        name: 'BeiträgeAnzeigen',
+        name: 'BeitraegeAnzeigen',
 
         // benötigte Komponenten
         components: {},
