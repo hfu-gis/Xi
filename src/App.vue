@@ -93,7 +93,7 @@
         ]
         if (this.userIsAuthenticated) {
           menuItems = [
-            { icon: 'mdi-tooltip-outline', title: 'Show Articles', link: '/BeiträgeAnzeigen' },
+            { icon: 'mdi-tooltip-outline', title: 'Show Articles', link: '/BeitraegeAnzeigen' },
             { icon: 'mdi-pencil', title: 'New Article', link: '/BeitragErstellen' },
           ]
         }
