@@ -1,31 +1,19 @@
-<BeitraegeAnzeigen>
-    <div class="BeitraegeAnzeigen">
-
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<template>
+<v-app>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-        <body class="w3-light-grey">
-
-        <!-- w3-content defines a container for fixed size centered content,
-        and is wrapped around the whole page content, except for the footer in this example -->
-        <div class="w3-content" style="max-width:1400px">
+        <div class="w3-light-grey">
 
             <!-- Header -->
             <header class="w3-container w3-center w3-padding-32">
+                <img src="../assets/images/Profilbild1.jpg" style="opacity: 0.8;"; width="100%" alt>
                 <h1><b>MY BLOG</b></h1>
                 <p>Welcome to the blog of <span class="w3-tag">NAME</span></p>
             </header>
-
-            <!-- Grid -->
-            <div class="w3-row">
 
                 <!-- Blog entries -->
                 <div class="w3-col l8 s12">
                     <!-- Blog entry -->
                     <div class="w3-card-4 w3-margin w3-white">
-                        <img src="/w3images/woods.jpg"  style="width:100%">
                         <div class="w3-container">
                             <h3><b>TITLE HEADING</b></h3>
                             <h5>Title description, <span class="w3-opacity">Date</span></h5>
@@ -35,21 +23,19 @@
                             <p>TEXT</p>
                             <div class="w3-row">
                                 <div class="w3-col m8 s12">
-                                    <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+                                    <p><button class="w3-button w3-padding-large w3-blue w3-border"><b>READ MORE »</b></button></p>
                                 </div>
                                 <div class="w3-col m4 w3-hide-small">
-                                    <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+                                    <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <hr>
 
                     <!-- Blog entry -->
                     <div class="w3-card-4 w3-margin w3-white">
-                        <img src="/w3images/bridge.jpg"  style="width:100%">
                         <div class="w3-container">
-                            <h3><b>BLOG ENTRY</b></h3>
+                            <h3><b>TITLE HEADING</b></h3>
                             <h5>Title description, <span class="w3-opacity">Date</span></h5>
                         </div>
 
@@ -57,7 +43,26 @@
                             <p>TEXT</p>
                             <div class="w3-row">
                                 <div class="w3-col m8 s12">
-                                    <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+                                    <p><button class="w3-button w3-padding-large w3-blue w3-border"><b>READ MORE »</b></button></p>
+                                </div>
+                                <div class="w3-col m4 w3-hide-small">
+                                    <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w3-card-4 w3-margin w3-white">
+                        <div class="w3-container">
+                            <h3><b>TITLE HEADING</b></h3>
+                            <h5>Title description, <span class="w3-opacity">Date</span></h5>
+                        </div>
+
+                        <div class="w3-container">
+                            <p>TEXT</p>
+                            <div class="w3-row">
+                                <div class="w3-col m8 s12">
+                                    <p><button class="w3-button w3-padding-large w3-blue w3-border"><b>READ MORE »</b></button></p>
                                 </div>
                                 <div class="w3-col m4 w3-hide-small">
                                     <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
@@ -80,7 +85,7 @@
 
                             <!-- Posts -->
                             <div class="w3-card w3-margin">
-                                <div class="w3-container w3-padding">
+                                <div class="w3-container w3-blue w3-padding">
                                     <h4>Popular Posts</h4>
                                 </div>
                                 <ul class="w3-ul w3-hoverable w3-white">
@@ -114,7 +119,7 @@
                                     <h4>Tags</h4>
                                 </div>
                                 <div class="w3-container w3-white">
-                                    <p><span class="w3-tag w3-black w3-margin-bottom">Economics</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Politics</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">History</span>
+                                    <p><span class="w3-tag w3-black w3-small w3-margin-bottom">Economics</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Politics</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">History</span>
                                         <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Country</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom"></span>
                                     </p>
                                 </div>
@@ -135,15 +140,13 @@
                     <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button>
                 </footer>
             </div>
-        </div>
-        </body>
-    </div>
-</BeitraegeAnzeigen>
+   </v-app></template>
+
 
 <script>
     export default {
         // gebt jeder Page einen eigenen Namen
-        name: 'BeitraegeAnzeigen',
+        name: 'ProfilAnzeigen',
 
         // benötigte Komponenten
         components: {},
