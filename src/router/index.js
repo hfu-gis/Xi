@@ -8,6 +8,7 @@ import '../assets/css/app.css'
 import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"
 import ProfilAnzeigen from "../views/ProfilAnzeigen";
+import Newsfeed from "../views/Newsfeed";
 
 
 Vue.use(VueRouter);
@@ -41,6 +42,10 @@ export default new VueRouter({
         {
             path: '/ProfilAnzeigen',
             component: ProfilAnzeigen
+        },
+        {
+            path: '/Newsfeed',
+            component: Newsfeed
         },
 
     ]
