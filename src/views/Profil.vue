@@ -68,6 +68,40 @@
                          <v-spacer></v-spacer>
                      </v-col>
 
+                     <v-spacer></v-spacer>
+
+                     <v-spacer></v-spacer>                  <!--bild hochladen-->
+
+                     <v-file-input
+                             v-model="files"
+                             color="deep-purple accent-4"
+                             counter
+                             label="File input"
+                             multiple
+                             placeholder="Select your files"
+                             prepend-icon="mdi-paperclip"
+                             outlined
+                             :show-size="1000"
+                     >
+                         <template v-slot:selection="{ index, text }">
+                             <v-chip
+                                     v-if="index < 2"
+                                     color="deep-purple accent-4"
+                                     dark
+                                     label
+                                     small
+                             >
+                                 {{ text }}
+                             </v-chip>
+
+                             <span
+                                     v-else-if="index === 2"
+                                     class="overline grey--text text--darken-3 mx-2"
+                             >
+                                        +{{ files.length - 2 }} File(s)
+                                 </span>
+                         </template>
+                     </v-file-input>
 
 
 <v-spacer></v-spacer>
@@ -96,10 +130,7 @@
              ></v-textarea>
          </v-col>
 
-                <v-col cols="12" md="4">
-             <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>
-            <input type="file" style="display:none" ref="fileInput" accept="image/png" @change="onFilePicked" >
-                </v-col>
+
 
                      <v-col align-self="125" cols="10">
          <v-btn class="ma-2" tile outlined color="success">
@@ -140,21 +171,7 @@
 
         // interne Methoden
         methods: {
-            onPickFile() {
-                this.$refs.fileInput.click()
-            },
-            onFilePicked(event){
-                const files = event.target.files
-                let filename = files[0].filename;
-                if (filename.lastIndexOf ('.')<= [0]) {
-                    return alert ('Please add a valid file!')
-                }
-                const fileReader = new fileReader()
-                fileReader.addEventListener('load', () => {
-                    this.imageURL = fileReader.result
-                })
-                fileReader.readAsDataURL(file[0]);
-            },
+
 
         },
 
