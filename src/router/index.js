@@ -40,7 +40,7 @@ export default new VueRouter({
         },
         {
             path: '/BeitraegeAnzeigen',
-            component: BeitraegeAnzeigen
+            component:BeitraegeAnzeigen
         },
 
     ]
