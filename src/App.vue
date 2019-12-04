@@ -33,7 +33,7 @@
     <v-app-bar app
                color="primary"
                dark
-                height="50">
+               height="50">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title left>
         <router-link to="/" tag="span" style="cursor: pointer">NEWS OF THE WORLD</router-link>
@@ -81,6 +81,7 @@
       { icon: 'mdi-lock', title: 'Login', link: '/login'},
       { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
       { icon: '', title: 'Show Articles', link: '/BeiträgeAnzeigen' },
+      { icon: 'mdi-account', title: 'Account', link: '/Profil/' },
     ]
     //
   }),
