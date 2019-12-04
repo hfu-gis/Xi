@@ -7,7 +7,7 @@ import Home from "../components/Home"
 import '../assets/css/app.css'
 import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"
-import BeiträgeAnzeigen from "../views/BeiträgeAnzeigen";
+import BeitraegeAnzeigen from "../views/BeitraegeAnzeigen";
 import Profil from "../views/Profil";
 import ProfilAnzeige from "../views/ProfilAnzeige";
 
@@ -42,8 +42,8 @@ export default new VueRouter({
             component: Suchfunktion
         },
         {
-            path: '/BeiträgeAnzeigen',
-            component: BeiträgeAnzeigen
+            path: '/BeitraegeAnzeigen',
+            component: BeitraegeAnzeigen
         },
         {
             path: '/Profil',

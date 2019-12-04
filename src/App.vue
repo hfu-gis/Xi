@@ -80,8 +80,8 @@
     menuItems: [
       { icon: 'mdi-lock', title: 'Login', link: '/login'},
       { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
-      { icon: '', title: 'Show Articles', link: '/BeiträgeAnzeigen' },
       { icon: 'mdi-account', title: 'Account', link: '/Profil/' },
+      { icon: '', title: 'Show Articles', link: '/BeitraegeAnzeigen' },
     ]
     //
   }),
