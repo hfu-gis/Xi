@@ -25,5 +25,6 @@ new Vue({
       projectId: 'nachrichten-app',
       storageBucket: ''
     })
-  }
+  },
+
 }).$mount('#app')

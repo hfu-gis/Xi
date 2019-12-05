@@ -99,6 +99,7 @@
           menuItems = [
             { icon: 'mdi-tooltip-outline', title: 'Show Articles', link: '/BeitraegeAnzeigen' },
             { icon: 'mdi-pencil', title: 'New Article', link: '/BeitragErstellen' },
+            { icon:'mdi-account', link:'/Profil'}
           ]
         }
         return menuItems

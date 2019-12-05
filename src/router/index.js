@@ -11,6 +11,7 @@ import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"
 import ProfilAnzeigen from "../views/ProfilAnzeigen";
 import Newsfeed from "../views/Newsfeed";
+import Profil from "../views/Profil";
 
 
 Vue.use(VueRouter);
@@ -57,6 +58,9 @@ export default new VueRouter({
             path: '/Newsfeed',
             component: Newsfeed
         },
-
+        {
+            path: '/Profil',
+            component: Profil
+        },
     ]
 })

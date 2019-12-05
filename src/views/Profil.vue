@@ -1,7 +1,6 @@
 
 <template>
  <v-app id="inspire">
-    <header>
         <v-spacer></v-spacer>
         Profil
      <main>
@@ -118,6 +117,32 @@
                              ></v-date-picker>
 
 
+                     <v-menu
+                             ref="menu"
+                             v-model="menu"
+                             :close-on-content-click="false"
+                             transition="scale-transition"
+                             offset-y
+                             full-width
+                             min-width="290px"
+                     >
+                         <template v-slot:activator="{ on }">
+                             <v-text-field
+                                     v-model="date"
+                                     label="Birthday date"
+                                     prepend-icon="mdi-calendar"
+                                     readonly
+                                     v-on="on"
+                             ></v-text-field>
+                         </template>
+                         <v-date-picker
+                                 ref="picker"
+                                 v-model="date"
+                                 :max="new Date().toISOString().substr(0, 10)"
+                                 min="1950-01-01"
+                                 @change="save"
+                         ></v-date-picker>
+                     </v-menu>
 
 
 
@@ -141,8 +166,12 @@
                  </v-row>
              </v-container>
          </v-form>
+
+
+
+
+
      </main>
-    </header>
  </v-app>
 </template>
 
@@ -155,29 +184,29 @@
         // gebt jeder Page einen eigenen Namen
         name: 'Profil',
 
+        data: () => ({
+            date: null,
+            menu: false,
+        }),
+        watch: {
+            menu (val) {
+                val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
+            },
+        },
+        methods: {
+            save (date) {
+                this.$refs.menu.save(date)
+            },
+        },
+
         // benötigte Komponenten
         components: {},
 
         // entspricht den HTML-Attributen
         props: {},
 
-        // Variablen-Speicher
-        data() {
-            return {}
-        },
-
-        // reagieren auf prop-Veränderung
-        watch: {},
-
-        // interne Methoden
-        methods: {
-
-
-        },
-
         // Initialisierung
         created() {}
-
     }
 </script>
 

@@ -13,7 +13,8 @@
 
 <p>hallo</p>
 
-            </v-col></v-row>
+            </v-col>
+        </v-row>
     </v-container>
     </v-app>
 </template>
@@ -21,9 +22,6 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data: () => ({
-  }),
-
-};
+  name: 'Home'
+}
 </script>
