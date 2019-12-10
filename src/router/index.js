@@ -12,8 +12,6 @@ import Profil from "../views/Profil";
 
 
 
-import ProfilAnzeigen from "../views/ProfilAnzeigen";
-import Newsfeed from "../views/Newsfeed";
 
 
 Vue.use(VueRouter);
@@ -51,10 +49,6 @@ export default new VueRouter({
         {
             path: '/Profil',
             component: Profil
-        },
-        {
-            path: '/Newsfeed',
-            component: Newsfeed
         },
 
     ]
