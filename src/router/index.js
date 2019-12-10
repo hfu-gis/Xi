@@ -9,7 +9,8 @@ import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"
 import BeitraegeAnzeigen from "../views/BeitraegeAnzeigen";
 import Profil from "../views/Profil";
-import ProfilAnzeige from "../views/ProfilAnzeige";
+
+
 
 
 
@@ -49,9 +50,6 @@ export default new VueRouter({
             path: '/Profil',
             component: Profil
         },
-        {
-            path: '/ProfilAnzeige',
-            component: ProfilAnzeige
-        },
+       
     ]
 })

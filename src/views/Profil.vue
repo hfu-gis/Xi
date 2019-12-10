@@ -4,6 +4,11 @@
     <header>
         <v-spacer></v-spacer>
         Profil
+
+
+        <v-spacer></v-spacer>
+
+        Profil erstellen
      <main>
 
          <v-form v-model="valid">
@@ -78,7 +83,7 @@
                              counter
                              label="File input"
                              multiple
-                             placeholder="Select your files"
+                             placeholder="Upload Image"
                              prepend-icon="mdi-paperclip"
                              outlined
                              :show-size="1000"
@@ -104,18 +109,32 @@
                      </v-file-input>
 
 
+
+
+
+                   <div>
+                       <v-date-picker>
+                     <md-datepicker v-model="selectedDate":md-open-on-focus="false" />
+
+                           <template scope="{ save, cancel }">
+                               <v-card-actions>
+                                   <v-spacer></v-spacer>
+                                   <v-btn flat color="primary" @click="cancel">Cancel</v-btn>
+                                   <v-btn flat color="primary" @click="save">OK</v-btn>
+                               </v-card-actions>
+                           </template>
+                           <v-btn flat color="primary" @click="cancel">Cancel</v-btn>
+                           <v-btn flat color="primary" @click="save">OK</v-btn>
+
+
+                       </v-date-picker>
+                 </div>
+
+
 <v-spacer></v-spacer>
 
 
-                                                                    <!--datepicker-->
-                             <v-date-picker
 
-                                     v-model="picker"
-                                     type="month"
-                                     year-icon="mdi-calendar-blank"
-                                     prev-icon="mdi-skip-previous"
-                                     next-icon="mdi-skip-next"
-                             ></v-date-picker>
 
 
 
@@ -132,7 +151,7 @@
 
 
 
-                     <v-col align-self="125" cols="10">
+                     <v-col align-self="125" cols="10">     <!-- Edit-Button-->
          <v-btn class="ma-2" tile outlined color="success">
 
              <v-icon>Edit</v-icon>
@@ -156,7 +175,7 @@
         name: 'Profil',
 
         // benötigte Komponenten
-        components: {},
+        components: { },
 
         // entspricht den HTML-Attributen
         props: {},
@@ -172,11 +191,7 @@
         // interne Methoden
         methods: {
 
-
         },
-
-        // Initialisierung
-        created() {}
 
     }
 </script>
@@ -184,3 +199,19 @@
 <style scoped>
     /* CSS für diese Seite hier einfügen */
 </style>
+
+<!--
+<v-date-picker
+
+        v-model="picker"
+        type="month"
+        year-icon="mdi-calendar-blank"
+        prev-icon="mdi-skip-previous"
+        next-icon="mdi-skip-next"
+
+
+        data: () => ({
+    date: null,
+    menu: false,
+    modal: false
+></v-date-picker>-->
