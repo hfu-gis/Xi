@@ -80,7 +80,7 @@
 <script>
     export default {
         // gebt jeder Page einen eigenen Namen
-        name: 'login',
+        name: 'Login',
 
         // benötigte Komponenten
         components: {},
@@ -102,9 +102,6 @@
         },
 
         computed: {
-            user() {
-                return this.$store.getters.user
-            },
             user() {
                 return this.$store.getters.user
             },
