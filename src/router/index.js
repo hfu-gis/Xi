@@ -24,10 +24,12 @@ export default new VueRouter({
         },
         {
             path: '/login',
+            name: 'Login',
             component: Login
         },
         {
             path: '/register',
+            name: 'Register',
             component: register
         },
         {
@@ -44,6 +46,7 @@ export default new VueRouter({
         },
         {
             path: '/BeitragErstellen',
+            name: 'BeitragErstellen',
             component: BeitragErstellen
         },
         {
@@ -52,6 +55,7 @@ export default new VueRouter({
         },
         {
             path: '/ProfilAnzeigen',
+            name: 'ProfilAnzeigen',
             component: ProfilAnzeigen
         },
         {

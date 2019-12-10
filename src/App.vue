@@ -7,21 +7,12 @@
             dark
     >
       <v-list dense>
-        <v-list-item link>
+        <v-list-item link v-if="this.userIsAuthenticated">
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item class="hidden-md-and-up" link v-for="item in menuItems" :key="item.title" text router :to="item.link">
-          <v-list-item-action>
-            <v-icon>{{item.icon}}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{item.title}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -42,12 +33,38 @@
       </v-toolbar-title>
       <v-spacer/>
 
+   <!--
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn class="px-6" v-for="item in menuItems" :key="item.title" text router :to="item.link">
           <v-icon left>{{item.icon}}</v-icon>
           {{item.title}}
         </v-btn>
       </v-toolbar-items>
+    -->
+
+      <!-- If user not auth -->
+      <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
+        <v-btn text :to="{name:'Login'}">
+          <v-icon left>mdi-lock</v-icon> Login
+        </v-btn>
+
+        <v-btn text :to="{name:'Register'}">
+          <v-icon left>mdi-export-variant</v-icon> Register
+        </v-btn>
+      </v-toolbar-items>
+
+      <!-- If user auth-->
+      <v-toolbar-items class="hidden-sm-and-down" v-if="this.userIsAuthenticated">
+        <v-btn text :to="{name:'BeitraegeAnzeigen'}">
+          <v-icon left>mdi-tooltip-outline</v-icon>Show Article
+        </v-btn>
+
+        <v-btn text :to="{name:'BeitragErstellen'}">
+          <v-icon left>mdi-pencil</v-icon> <span class="hidden-md-and-down">New Article</span>
+        </v-btn>
+      </v-toolbar-items>
+
+
 
     </v-app-bar>
 
@@ -90,7 +107,7 @@
       Home,
     },
     computed: {
-      menuItems() {
+      /*menuItems() {
         let menuItems = [
           { icon: 'mdi-lock', title: 'Login', link: '/login'},
           { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
@@ -103,7 +120,7 @@
           ]
         }
         return menuItems
-      },
+      },*/
 
       userIsAuthenticated () {
        return !!this.$store.getters.user;
