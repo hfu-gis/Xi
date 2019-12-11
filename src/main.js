@@ -3,6 +3,7 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router'
 
+
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 
@@ -14,5 +15,9 @@ new Vue({
   render: h => h(App),
   created () {
 
-  }
+  },
+  name: 'CancelOpenDatepicker',
+  data: () => ({
+    selectedDate: new Date('2018/03/26')
+  })
 }).$mount('#app')
