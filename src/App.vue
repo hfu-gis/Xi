@@ -75,17 +75,17 @@
       Home,
     },
 
-  data: () => ({
-    drawer: false,
-    menuItems: [
-      { icon: 'mdi-lock', title: 'Login', link: '/login'},
-      { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
-      { icon: '', title: 'Show Articles', link: '/ProfilAnzeigen' },
-    ]
-    //
-  }),
-  created() {
-    this.$router.push({path: '/home'})
-  }
-};
+    data: () => ({
+      drawer: false,
+      menuItems: [
+        {icon: 'mdi-lock', title: 'Login', link: '/login'},
+        {icon: 'mdi-export-variant', title: 'Register', link: '/register'},
+        {icon: '', title: 'Show Articles', link: '/ProfilAnzeigen'},
+      ]
+      //
+    }),
+    created() {
+      this.$router.push({path: '/home'})
+    }
+  };
 </script>
