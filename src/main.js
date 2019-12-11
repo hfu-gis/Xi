@@ -26,5 +26,9 @@ new Vue({
       projectId: 'nachrichten-app',
       storageBucket: ''
     })
-  }
+  },
+    name: 'CancelOpenDatepicker',
+    data: () => ({
+        selectedDate: new Date('2018/03/26')
+    })
 }).$mount('#app')
