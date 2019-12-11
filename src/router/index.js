@@ -8,7 +8,8 @@ import '../assets/css/app.css'
 import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"
 import ProfilAnzeigen from "../views/ProfilAnzeigen"
-import Profil from "../views/Profil";
+import Profil from "../views/Profil"
+import Newsfeed from "../views/Newsfeed";
 
 
 
@@ -50,6 +51,10 @@ export default new VueRouter({
             path: '/Profil',
             component: Profil
         },
+        {
+            path: '/Newsfeed',
+            component: Newsfeed
+        }
 
     ]
 })
