@@ -1,5 +1,6 @@
 <template>
 
+    <div id="app">
         <v-app id="inspire">
             <v-card
                     max-width="344"
@@ -45,7 +46,7 @@
                 </v-card-actions>
             </v-card>
         </v-app>
-
+    </div>
 
 </template>
 
