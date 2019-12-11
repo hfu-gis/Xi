@@ -81,6 +81,7 @@
       { icon: 'mdi-lock', title: 'Login', link: '/login'},
       { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
       { icon: '', title: 'Show Articles', link: '/ProfilAnzeigen' },
+      { icon: 'mdi-account', title: 'Account', link: '/Profil' },
     ]
     //
   }),
