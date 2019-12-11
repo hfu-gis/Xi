@@ -17,7 +17,6 @@
 
 <script>
     //import { SvgMap } from "vue-svg-map";
-    //import Taiwan from "../assets/world.svg";
     //import Taiwan from "@svg-maps/germany"
     export default {
   name: 'HelloWorld',
