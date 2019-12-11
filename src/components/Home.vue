@@ -1,6 +1,5 @@
 <template>
     <v-app id="login">
-
     <v-container class="fill-height">
         <v-row
         >
@@ -9,19 +8,33 @@
                     sm="8"
                     md="4"
             >
-
-
-<p>hallo</p>
-
-            </v-col>
-        </v-row>
+                Test
+                <svg-map :map="Taiwan" />
+            </v-col></v-row>
     </v-container>
     </v-app>
 </template>
 
-
 <script>
-export default {
-  name: 'Home'
-}
+    //import { SvgMap } from "vue-svg-map";
+    //import Taiwan from "../assets/world.svg";
+    //import Taiwan from "@svg-maps/germany"
+    export default {
+  name: 'HelloWorld',
+
+        components: {
+      //      SvgMap
+        },
+        data() {
+            return {
+        //        Taiwan
+            };
+        }
+    };
+
 </script>
+
+<!--
+<style src="vue-svg-map/dist/index.css"></style>
+-->
+
