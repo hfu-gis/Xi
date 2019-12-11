@@ -7,7 +7,7 @@ import Home from "../components/Home"
 import '../assets/css/app.css'
 import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"
-import ProfilAnzeigen from "../views/ProfilAnzeigen"
+import profilanzeigen from "../views/ProfilAnzeigen"
 import Profil from "../views/Profil"
 import Newsfeed from "../views/Newsfeed";
 
@@ -36,16 +36,16 @@ export default new VueRouter({
             component: forgotacc
         },
         {
+            path: '/profilanzeigen',
+            component: profilanzeigen
+        },
+        {
             path: '/BeitragErstellen',
             component: BeitragErstellen
         },
         {
             path: '/Suchfunktion',
             component: Suchfunktion
-        },
-        {
-            path: '/ProfilAnzeigen',
-            component: ProfilAnzeigen
         },
         {
             path: '/Profil',
