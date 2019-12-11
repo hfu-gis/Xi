@@ -80,13 +80,14 @@
     menuItems: [
       { icon: 'mdi-lock', title: 'Login', link: '/login'},
       { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
-      { icon: '', title: 'Show Articles', link: '/ProfilAnzeigen' },
-      { icon: 'mdi-account', title: 'Account', link: '/Profil' },
+      { icon: 'mdi-lock', title: 'Show Articles', link: '/BeitragErstellen' },
+      { icon: 'mdi-lock', title: 'Show Articles', link: '/profilanzeigen' },
+
     ]
     //
   }),
   created() {
     this.$router.push({path: '/home'})
   }
-};
+}
 </script>

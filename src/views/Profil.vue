@@ -1,7 +1,7 @@
 
 <template>
  <v-app id="inspire">
-     <v-icon>{{ icons.mdiAccount }}</v-icon>
+     <v-icon>mdi-Account></v-icon>
      <div class="mx-2"></div>
     <header>
         <v-spacer></v-spacer>
