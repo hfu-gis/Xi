@@ -236,5 +236,5 @@
   created() {
     this.$router.push({path: '/home'})
   }
-};
+}
 </script>

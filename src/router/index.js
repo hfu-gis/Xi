@@ -67,5 +67,6 @@ export default new VueRouter({
             name: 'Profil',
             component: Profil
         },
+
     ]
 })
