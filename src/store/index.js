@@ -67,6 +67,22 @@ export default new Vuex.Store({
                     }
                 )
         },
+        resetUser ( {commit}, payload) {
+            commit('setLoading', true)
+            commit('clearError')
+
+            firebase.auth().sendPasswordResetEmail(payload.email)
+                .then(
+                    commit('setLoading', false)
+            )
+                .catch(
+                    error => {
+                        commit('setLoading', false)
+                        commit('setError', error)
+                        console.log(error);
+                    }
+                )
+        },
         clearError ({commit}) {
             commit('clearError')
         }

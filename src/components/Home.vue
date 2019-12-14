@@ -8,18 +8,32 @@
                     sm="8"
                     md="4"
             >
-<p>hallo</p>
+                Test
+                <svg-map :map="Taiwan" />
             </v-col></v-row>
     </v-container>
     </v-app>
 </template>
 
 <script>
-export default {
+    //import { SvgMap } from "vue-svg-map";
+    //import Taiwan from "@svg-maps/germany"
+    export default {
   name: 'HelloWorld',
 
-  data: () => ({
+        components: {
+      //      SvgMap
+        },
+        data() {
+            return {
+        //        Taiwan
+            };
+        }
+    };
 
-  }),
-};
 </script>
+
+<!--
+<style src="vue-svg-map/dist/index.css"></style>
+-->
+

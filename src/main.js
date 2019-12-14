@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import * as firebase from 'firebase'
-import vuetify from './plugins/vuetify'
+import vuetify from './assets/plugins/vuetify'
 import router from './router'
 import store from  './store'
 import AlertCmp from './views/Alert'
@@ -25,5 +25,9 @@ new Vue({
       projectId: 'nachrichten-app',
       storageBucket: ''
     })
-  }
+  },
+    name: 'CancelOpenDatepicker',
+    data: () => ({
+        selectedDate: new Date('2018/03/26')
+    })
 }).$mount('#app')

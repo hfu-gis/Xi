@@ -105,9 +105,6 @@
             user() {
                 return this.$store.getters.user
             },
-            user() {
-                return this.$store.getters.user
-            },
             error () {
                 return this.$store.getters.error
             },
