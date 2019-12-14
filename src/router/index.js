@@ -9,7 +9,7 @@ import Home from "../components/Home"
 import '../assets/css/app.css'
 import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"
-import ProfilAnzeigen from "../views/ProfilAnzeigen";
+import profilanzeigen from "../views/ProfilAnzeigen";
 import Newsfeed from "../views/Newsfeed";
 import Profil from "../views/Profil";
 
@@ -23,9 +23,8 @@ export default new VueRouter({
             component: Home
         },
         {
-            name: Login,
-            path: '/login',
             name: 'Login',
+            path: '/login',
             component: Login
         },
         {
@@ -55,9 +54,9 @@ export default new VueRouter({
             component: Suchfunktion
         },
         {
-            path: '/ProfilAnzeigen',
-            name: 'ProfilAnzeigen',
-            component: ProfilAnzeigen
+            path: '/profilanzeigen',
+            name: 'profilanzeigen',
+            component: profilanzeigen
         },
         {
             path: '/Newsfeed',
@@ -65,6 +64,7 @@ export default new VueRouter({
         },
         {
             path: '/Profil',
+            name: 'Profil',
             component: Profil
         },
     ]
