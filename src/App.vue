@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer
-            src="https://images.pexels.com/photos/1227515/pexels-photo-1227515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
             v-model="drawer"
             app
             dark>
@@ -18,12 +18,41 @@
 
         <v-divider></v-divider>
 
+        <v-list-group
+                prepend-icon="mdi-account"
+                value="false"
+        >
+          <template v-slot:activator>
+            <v-list-item-title>Countries</v-list-item-title>
+          </template>
+
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Germany</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item link >
+            <v-list-item-action>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Italy</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+        </v-list-group>
+
+
         <v-list-item link >
           <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
+            <v-icon>mdi-pencil</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>Create new Article</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -55,6 +84,13 @@
         </v-list-item>
 
       </v-list>
+
+      <template v-slot:append>
+
+        <div class="pa-2">
+          <v-btn block>Help</v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
 
 
@@ -98,17 +134,8 @@
 
       <!-- If user auth-->
       <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
-        <v-btn text :to="{name:'BeitragErstellen'}">
-          <v-icon left>mdi-pencil</v-icon> <span class="hidden-md-and-down">Create Article</span>
-        </v-btn>
-
-        <v-btn text  :to="{name:'Profil'}">
-          <v-icon>mdi-tooltip-outline</v-icon>
-        </v-btn>
-
         <!--<v-text-field  class="ml-2" v-model="search" :v-if="openSearch" label="Search..." hide-details dark></v-text-field>
         -->
-
         <v-btn icon @click.stop="openSearch = !openSearch" >
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
@@ -139,26 +166,40 @@
                   <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
                 </v-list-item-avatar>
 
-                <v-list-item-content>
+                <v-list-item-content link>
                   <v-list-item-title>Marc Eberhard</v-list-item-title>
                   <v-list-item-subtitle>Best dude in the world!</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
-            </v-list>
-
-            <v-divider></v-divider>
-
-            <v-list>
-              <v-btn text class="ma-3"><v-icon left>mdi-tooltip-outline</v-icon>Show Profil</v-btn>
-
               <v-divider></v-divider>
-              <v-btn text class="ma-3"><v-icon left>mdi-tooltip-outline</v-icon>Create Profil</v-btn>
+                  <v-list-item link :to="{name:'Profil'}">
+                    <v-list-item-action>
+                      <v-icon>mdi-tooltip-outline</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                      <v-list-item-title>My Profil</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
 
-              <v-divider></v-divider>
-              <v-btn text class="ma-3" ><v-icon left>mdi-tooltip-outline</v-icon>My Articles</v-btn>
+                  <v-list-item link>
+                    <v-list-item-action>
+                      <v-icon>mdi-keyboard</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                      <v-list-item-title>My Articles</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+
+              <v-list-item link>
+                <v-list-item-action>
+                  <v-icon>mdi-email</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Messages</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
 
             </v-list>
-
           </v-card>
         </v-menu>
 
@@ -177,6 +218,7 @@
 
     <v-footer
             dark
+            app
             padless
     >
       <v-card
