@@ -1,8 +1,9 @@
 
 <template>
- <v-app id="inspire">
-        <v-spacer></v-spacer>
-        Profil
+ <v-app id="Profil">
+     <header>
+         <v-spacer></v-spacer>
+         Profil
 
 
         <v-spacer></v-spacer>
@@ -111,7 +112,7 @@
 
 
 
-                   <div>
+               <!--    <div>
                        <v-date-picker>
                      <md-datepicker v-model="selectedDate":md-open-on-focus="false" />
 
@@ -127,7 +128,7 @@
 
 
                        </v-date-picker>
-                 </div>
+                 </div>  -->
 
 
 <v-spacer></v-spacer>
@@ -186,6 +187,7 @@
              </v-container>
          </v-form>
      </main>
+    </header>
  </v-app>
 </template>
 
