@@ -13,17 +13,29 @@
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
         </v-list-item-avatar>
-
+          <v-list-item-content>
         <v-list-item-title>Marc Eberhard</v-list-item-title>
-
+        <v-list-item-subtitle>You're logged in</v-list-item-subtitle>
+          </v-list-item-content>
         </v-list-item>
 
-        <v-divider></v-divider>
+        <v-divider class="mb-5"></v-divider>
+
+
+        <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            Find Perks
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+
 
         <!-- Countries list-->
         <v-list-group
-                prepend-icon="mdi-account"
-                value="false"
+                prepend-icon="mdi-earth"
+                value="true"
         >
           <template v-slot:activator>
             <v-list-item-title>Countries</v-list-item-title>
@@ -31,7 +43,7 @@
 
           <v-list-item link>
             <v-list-item-action>
-              <v-icon>mdi-home</v-icon>
+              <v-icon></v-icon>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>Germany</v-list-item-title>
@@ -40,7 +52,7 @@
 
           <v-list-item link >
             <v-list-item-action>
-              <v-icon>mdi-home</v-icon>
+              <v-icon></v-icon>
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>Italy</v-list-item-title>
@@ -50,12 +62,24 @@
         </v-list-group>
         <!-- Countries list END -->
 
+
+        <v-divider class="my-5"></v-divider>
+
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="title">
+              Your Perks
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+
         <v-list-item link >
           <v-list-item-action>
             <v-icon>mdi-pencil</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Create new Article</v-list-item-title>
+            <v-list-item-title>Your Perk</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -64,25 +88,7 @@
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item link >
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item link >
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>Create a new Perk</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -137,11 +143,19 @@
 
       <!-- If user auth-->
       <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
-        <!--<v-text-field  class="ml-2" v-model="search" :v-if="openSearch" label="Search..." hide-details dark></v-text-field>
-        -->
+
         <v-btn icon @click.stop="openSearch = !openSearch" >
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
+
+        <v-text-field
+                solo-inverted
+                flat
+                hide-details
+                label="Search"
+                prepend-inner-icon="mdi-magnify"
+                v-show="openSearch"
+        />
 
        <v-menu
                 v-model="menu"
@@ -208,8 +222,6 @@
 
       </v-toolbar-items>
 
-
-
     </v-app-bar>
 
       <v-app>
@@ -255,21 +267,6 @@
       Home,
     },
     computed: {
-      /*menuItems() {
-        let menuItems = [
-          { icon: 'mdi-lock', title: 'Login', link: '/login'},
-          { icon: 'mdi-export-variant', title: 'Register', link: '/register' },
-        ]
-        if (this.userIsAuthenticated) {
-          menuItems = [
-            { icon: 'mdi-tooltip-outline', title: 'Show Articles', link: '/BeitraegeAnzeigen' },
-            { icon: 'mdi-pencil', title: 'New Article', link: '/BeitragErstellen' },
-            { icon:'mdi-account', link:'/Profil'}
-          ]
-        }
-        return menuItems
-      },*/
-
       userIsAuthenticated () {
        return !!this.$store.getters.user;
       }
