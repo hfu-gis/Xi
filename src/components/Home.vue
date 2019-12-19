@@ -1,15 +1,20 @@
 <template>
     <v-app id="login">
-    <v-container class="fill-height">
-        <v-row
-        >
-            <v-col
-                    cols="12"
-                    sm="8"
-                    md="4"
+        <v-container
+                fluid>
+            <v-row
+                    align="center"
+                    justify="center"
             >
+                <v-col
+                        cols="12"
+                        xs="10"
+                        sm="10"
+                        md="10"
+                        lg="10"
+                        xl="8"
+                >
                 Test
-                <svg-map :map="Taiwan" />
             </v-col></v-row>
     </v-container>
     </v-app>

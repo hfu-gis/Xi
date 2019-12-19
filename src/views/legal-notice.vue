@@ -2,16 +2,20 @@
     <v-app id="login">
 
     <!-- HTML-Code aus dem Body-Tag hier einfügen -->
-            <v-container
-                    fluid>
-                <v-row
-
+        <v-container
+                fluid>
+            <v-row
+                    align="center"
+                    justify="center"
+            >
+                <v-col
+                        cols="12"
+                        xs="10"
+                        sm="10"
+                        md="10"
+                        lg="10"
+                        xl="8"
                 >
-                    <v-col
-                            cols="12"
-                            sm="8"
-                            md="6"
-                    >
         <h1>Legal Notice</h1>
         <p>Its legal to be here!</p>
                 </v-col></v-row></v-container>
