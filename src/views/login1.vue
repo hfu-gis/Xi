@@ -10,7 +10,7 @@
                     <v-col
                             cols="12"
                             sm="8"
-                            md="4"
+                            md="6"
                     >
 
         <v-card class="card-log"
@@ -22,10 +22,17 @@
                  <v-toolbar-title>Login</v-toolbar-title>
             </v-toolbar>
 
+            <v-layout class="mx-9 mt-5" v-if="error">
+                <v-flex>
+                    <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
+                </v-flex>
+            </v-layout>
+
             <v-card-text ma="4" class="py-8">
-            <v-form>
+            <v-form @submit.prevent="onSignin">
                     <v-text-field
-                        name="name"
+                        name="email"
+                        v-model="email"
                         :rules="[rules.required]"
                         label="eMail"
                         value="info@mail.com"
@@ -40,6 +47,7 @@
                             :type="show ? 'text' : 'password'"
                             name="passowrd"
                             label="Password"
+                            v-model="password"
                             value="xxx"
                             class="input-group--focused px-5"
                             prepend-inner-icon="mdi-lock"
@@ -52,9 +60,15 @@
                 </v-row>
 
                 <v-row class="justify-end mx-5" >
-                     <v-btn to="/register" large color="warning" dark class="mx-5">Create new Acc!<v-icon right>mdi-arrow-right</v-icon> </v-btn>
-                     <v-btn type="submit" color="primary" dark large class="ml-5">Login <v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                     <v-btn to="/register" large color="warning" class="mx-5">Create new Acc!<v-icon right>mdi-arrow-right</v-icon> </v-btn>
+                     <v-btn type="submit" :disabled="loading" :loading="loading" color="primary"  large class="ml-5">
+                        Login <v-icon right>mdi-arrow-right</v-icon>
+                             <span slot="loader" class="custom-loader">
+                                 <v-icon>mdi-cached</v-icon>
+                             </span>
+                     </v-btn>
                 </v-row>
+
             </v-form>
             </v-card-text>
         </v-card>
@@ -66,7 +80,7 @@
 <script>
     export default {
         // gebt jeder Page einen eigenen Namen
-        name: 'login',
+        name: 'Login',
 
         // benötigte Komponenten
         components: {},
@@ -78,18 +92,44 @@
         data () {
             return {
                 show: false,
-                password: 'Password',
+                policy: '',
+                email: '',
+                password: '',
                 rules: {
                     required: value => !!value || 'Required.',
                 },
             }
         },
 
+        computed: {
+            user() {
+                return this.$store.getters.user
+            },
+            error () {
+                return this.$store.getters.error
+            },
+            loading () {
+                return this.$store.getters.loading
+            }
+        },
         // reagieren auf prop-Veränderung
-        watch: {},
+        watch: {
+            user(value) {
+                if (value !== null && value !== undefined) {
+                    this.$router.push('/')
+                }
+            }
+        },
 
         // interne Methoden
-        methods: [],
+        methods: {
+            onSignin () {
+                this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
+            },
+            onDismissed () {
+                this.$store.dispatch('clearError')
+            }
+        },
 
         // Initialisierung
         created() {}
