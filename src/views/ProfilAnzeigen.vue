@@ -29,7 +29,7 @@
 <br>
         <h3>work as Journalist</h3>
         <h4> I'm John and i work as Journlist for the New York Times</h4>
-    </v-card-text>
+    </v-card-text>n
 
 
 
@@ -79,3 +79,12 @@
     body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 </style>
+
+<!--  <v-hover>
+            <template v-slot="{ hover }">
+                <v-card
+                        :elevation="hover ? 24 : 6"
+                        class="mx-auto pa-md-12"
+                >
+                </v-card>
+            </template>-->
