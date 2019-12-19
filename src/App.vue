@@ -1,11 +1,13 @@
 <template>
   <v-app>
+    <!-- SIDEBAR -->
     <v-navigation-drawer
             src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
             v-model="drawer"
             app
             dark>
 
+      <!--Shown, if user loged in! -->
       <v-list dense v-if="!this.userIsAuthenticated">
         <v-list-item>
         <v-list-item-avatar>
@@ -18,6 +20,7 @@
 
         <v-divider></v-divider>
 
+        <!-- Countries list-->
         <v-list-group
                 prepend-icon="mdi-account"
                 value="false"
@@ -45,7 +48,7 @@
           </v-list-item>
 
         </v-list-group>
-
+        <!-- Countries list END -->
 
         <v-list-item link >
           <v-list-item-action>
@@ -85,14 +88,14 @@
 
       </v-list>
 
+      <!-- Bottom of Sidebar -->
       <template v-slot:append>
-
         <div class="pa-2">
           <v-btn block>Help</v-btn>
         </div>
       </template>
     </v-navigation-drawer>
-
+<!-- END of sidebar -->
 
 
     <v-app-bar app
@@ -202,9 +205,6 @@
             </v-list>
           </v-card>
         </v-menu>
-
-
-
 
       </v-toolbar-items>
 
