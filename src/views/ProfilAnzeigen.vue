@@ -1,9 +1,47 @@
 <template>
 <v-app>
+    <br><br>
+    <body>
+    <header>
+    <v-toolbar
+            flat
+            color="blue-grey"
+            dark
+    >
+        <v-toolbar-title>
+            Show Profil
+        </v-toolbar-title>
+    </v-toolbar>
+    </header>
     <br>
     <br>
-    <br>
-    Hallo ich bin ein Profil.
+<v-card class="mx-auto"
+        max-width="400">
+
+ <v-img :aspect-ratio="16/9" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+</v-img>
+    <v-card-text>
+    <h2 class="title primary--text">John Smith</h2>
+        <br>
+        <h3>from United States of America</h3>
+        <br>
+        <h3>john@smith.com</h3>
+<br>
+        <h3>work as Journalist</h3>
+        <h4> I'm John and i work as Journlist for the New York Times</h4>
+    </v-card-text>
+
+
+
+
+
+
+
+
+
+
+</v-card>
+    </body>
     </v-app>
 
 </template>
