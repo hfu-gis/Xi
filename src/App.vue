@@ -6,7 +6,7 @@
             app
             dark>
 
-      <v-list dense v-if="!this.userIsAuthenticated">
+      <v-list dense v-if="this.userIsAuthenticated">
         <v-list-item>
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
@@ -128,7 +128,7 @@
     -->
 
       <!-- If user not auth -->
-      <v-toolbar-items class="hidden-sm-and-down" v-if="this.userIsAuthenticated">
+      <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
         <v-btn text :to="{name:'Login'}">
           <v-icon left>mdi-lock</v-icon> Login
         </v-btn>
@@ -139,7 +139,7 @@
       </v-toolbar-items>
 
       <!-- If user auth-->
-      <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
+      <v-toolbar-items class="hidden-sm-and-down" v-if="this.userIsAuthenticated">
 
         <v-btn icon @click.stop="openSearch = !openSearch" >
           <v-icon>mdi-magnify</v-icon>
