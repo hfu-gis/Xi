@@ -112,23 +112,7 @@
 
 
 
-               <!--    <div>
-                       <v-date-picker>
-                     <md-datepicker v-model="selectedDate":md-open-on-focus="false" />
 
-                           <template scope="{ save, cancel }">
-                               <v-card-actions>
-                                   <v-spacer></v-spacer>
-                                   <v-btn flat color="primary" @click="cancel">Cancel</v-btn>
-                                   <v-btn flat color="primary" @click="save">OK</v-btn>
-                               </v-card-actions>
-                           </template>
-                           <v-btn flat color="primary" @click="cancel">Cancel</v-btn>
-                           <v-btn flat color="primary" @click="save">OK</v-btn>
-
-
-                       </v-date-picker>
-                 </div>  -->
 
 
 <v-spacer></v-spacer>

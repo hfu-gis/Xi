@@ -29,14 +29,10 @@
 <br>
         <h3>work as Journalist</h3>
         <h4> I'm John and i work as Journlist for the New York Times</h4>
-    </v-card-text>n
+    </v-card-text>
 
 
-
-
-
-
-
+    <!-- row- spalten col- zeilen -->
 
 
 
