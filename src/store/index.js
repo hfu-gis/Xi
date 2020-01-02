@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as firebase from 'firebase'
+const fb = require('../db.js')
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+export const store = new Vuex.Store({
     state: {
         user: null,
         loading: false,
@@ -25,17 +25,31 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        signUserUp ( {commit}, payload) {
+
+        signUserUp({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
-            firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
+            fb.auth.createUserWithEmailAndPassword(payload.email, payload.password)
                 .then(
                     user => {
                         commit('setLoading', false)
                         const newUser = {
                             id: user.user.uid
                         }
+
+                        fb.db.collection('user').doc(user.user.uid).set({
+                            email: payload.email,
+                            firstname: '',
+                            lastname: '',
+                        }).then(() => {
+                            console.log('DONE')
+                        }).catch(error => {
+                            console.log('NOT DONE')
+                            console.log(error)
+                        })
+
                         commit('setUser', newUser)
+                        console.log(this.user)
                     }
                 )
                 .catch(
@@ -45,11 +59,33 @@ export default new Vuex.Store({
                         console.log(error)
                     }
                 )
+
+
         },
+
+        fetchUserData ({commit, getters}) {
+            commit('setLoading', true)
+            console.log(getters.user.id)
+
+            let docRef = fb.db.collection('user').doc(getters.user.id)
+
+                docRef.get().then(doc => {
+                    const UserData = doc.data()
+                    const updatedUser = UserData
+
+                    commit('setLoading', false)
+                    commit('setUser', updatedUser)
+                })
+                .catch(error => {
+                    console.log(error)
+                    commit('setLoading', false)
+                })
+        },
+
         signUserIn ( {commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
-            firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+            fb.auth.signInWithEmailAndPassword(payload.email, payload.password)
                 .then(
                     user => {
                         commit('setLoading', false)
@@ -71,7 +107,7 @@ export default new Vuex.Store({
             commit('setLoading', true)
             commit('clearError')
 
-            firebase.auth().sendPasswordResetEmail(payload.email)
+            fb.auth.sendPasswordResetEmail(payload.email)
                 .then(
                     commit('setLoading', false)
             )
@@ -83,9 +119,31 @@ export default new Vuex.Store({
                     }
                 )
         },
+        autoSignIn ({commit}, payload) {
+            commit('setUser', {id: payload.uid})
+        },
+        logout ({commit}) {
+            fb.auth.signOut()
+            commit('setUser', null)
+        },
         clearError ({commit}) {
             commit('clearError')
+        },
+
+
+        editUser({commit}, payload) {
+            fb.db.collection('user').doc(fb.auth.currentUser.uid).set({
+                firstname: payload.user.firstname,
+                lastname: payload.user.lastname,
+                country: payload.user.country,
+            }).then(() => {
+                console.log('DONE')
+            }).catch(error => {
+                console.log('NOT DONE')
+                console.log(error)
+            })
         }
+
     },
     getters: {
         user (state) {

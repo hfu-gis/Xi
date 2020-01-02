@@ -4,35 +4,77 @@
     <br>
     <br>
     Hallo ich bin ein Profil.
+    <br>Name: {{UserData.firstname}}
+    <br>Nachname: {{UserData.lastname}}
+    <br>email: {{UserData.email}}
+    <br>country: {{UserData.country}}
     </v-app>
 
 </template>
 
 
 <script>
+    const fb = require('../db.js')
+
     export default {
+        props: ['id'],
         // gebt jeder Page einen eigenen Namen
         name: 'profilanzeigen',
 
-        // benötigte Komponenten
-        components: {},
-
-        // entspricht den HTML-Attributen
-        props: {},
-
         // Variablen-Speicher
-        data() {
-            return {}
+        data () {
+            return {
+                UserData: {
+                    userid: "",
+                    firstname: "",
+                    lastname: "",
+                    email: "",
+                }
+            }
         },
 
+
+        computed: {
+            user() {
+                return this.$store.getters.user
+            }
+        },
         // reagieren auf prop-Veränderung
-        watch: {},
+        watch: {
+            id: function(newVal, oldVal) {
+                console.log('Prop id changed: ', newVal, ' | was: ', oldVal)
+                this.getUserData()
+            }
+        },
 
         // interne Methoden
-        methods: [],
+        methods: {
+            getUserData() {
+                    let docRef = "";
+                if(this.id == null) {
+                    docRef = fb.db.collection('user').doc(fb.auth.currentUser.uid)
+                }
+                else {
+                    docRef = fb.db.collection('user').doc(this.id)
+                }
+
+                    docRef.get()
+                        .then(doc => {
+                            this.UserData = doc.data()
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+
+            }
+
+        },
 
         // Initialisierung
-        created() {}
+        created() {
+           this.getUserData()
+
+        }
     }
 </script>
 

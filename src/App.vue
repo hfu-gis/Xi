@@ -1,13 +1,15 @@
 <template>
-  <v-app>
+  <v-app style="background-image: url(https://www.mural-wallpaper.com/wp-content/uploads/2019/03/M11-World-map-on-grunge-background.jpg)">
+    <!-- ****************** SIDEBAR ********************* -->
     <v-navigation-drawer
-            src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
             v-model="drawer"
             app
-            dark>
+            dark
+            color="primary"
+    >
 
-      <v-list dense v-if="!this.userIsAuthenticated">
-        <v-list-item>
+      <v-list dense >
+        <v-list-item v-if="this.userIsAuthenticated">
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
         </v-list-item-avatar>
@@ -32,13 +34,13 @@
 
         <v-list-group
                 prepend-icon="mdi-earth"
-                value="true"
+                value="false"
         >
           <template v-slot:activator>
-            <v-list-item-title>Countries</v-list-item-title>
+            <v-list-item-title>Europe</v-list-item-title>
           </template>
 
-          <v-list-item link>
+          <v-list-item link >
             <v-list-item-action>
               <v-icon></v-icon>
             </v-list-item-action>
@@ -61,8 +63,7 @@
 
 
         <v-divider class="my-5"></v-divider>
-
-        <v-list-item>
+        <v-list-item >
           <v-list-item-content>
             <v-list-item-title class="title">
               Your Perks
@@ -71,16 +72,16 @@
         </v-list-item>
 
 
-        <v-list-item link >
+        <v-list-item link>
           <v-list-item-action>
             <v-icon>mdi-pencil</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Your Perk</v-list-item-title>
+            <v-list-item-title>Show your Perks</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link >
+        <v-list-item link :to="{name: 'BeitragErstellen'}">
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
@@ -88,19 +89,38 @@
             <v-list-item-title>Create a new Perk</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-
       </v-list>
 
       <template v-slot:append>
+        <v-divider></v-divider>
+        <v-list >
 
-        <div class="pa-2">
-          <v-btn block>Help</v-btn>
-        </div>
+        <v-list-item link @click="onLogout">
+          <v-list-item-action >
+            <v-icon>mdi-logout</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+          <v-list-item link :to="{name: 'Help'}">
+            <v-list-item-action>
+              <v-icon>mdi-help</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Help</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+        </v-list>
+
       </template>
+
     </v-navigation-drawer>
 
 
-
+    <!-- ****************** TOP NAVIGATION ********************* -->
     <v-app-bar app
                color="primary"
                dark
@@ -109,26 +129,18 @@
 
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-      <v-toolbar-side-icon left>
+      <v-app-bar-nav-icon left>
         <v-img contain width="40px" src="./assets/images/logo.png" />
-      </v-toolbar-side-icon>
+      </v-app-bar-nav-icon>
 
       <v-toolbar-title left>
-        <router-link to="/" tag="span" style="cursor: pointer">PERKS</router-link>
+        <router-link to="/Newsfeed" tag="span" style="cursor: pointer">PERKS - Find the News you'r looking for</router-link>
       </v-toolbar-title>
-      <v-spacer/>
 
-   <!--
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn class="px-6" v-for="item in menuItems" :key="item.title" text router :to="item.link">
-          <v-icon left>{{item.icon}}</v-icon>
-          {{item.title}}
-        </v-btn>
-      </v-toolbar-items>
-    -->
+      <v-spacer></v-spacer>
 
       <!-- If user not auth -->
-      <v-toolbar-items class="hidden-sm-and-down" v-if="this.userIsAuthenticated">
+      <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
         <v-btn text :to="{name:'Login'}">
           <v-icon left>mdi-lock</v-icon> Login
         </v-btn>
@@ -139,12 +151,13 @@
       </v-toolbar-items>
 
       <!-- If user auth-->
-      <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
+      <v-toolbar-items class="hidden-sm-and-down" v-if="this.userIsAuthenticated">
 
-        <v-btn icon @click.stop="openSearch = !openSearch" >
-          <v-icon>mdi-magnify</v-icon>
+        <v-btn icon @click.stop="openSearch = !openSearch">
+          <v-icon >mdi-magnify</v-icon>
         </v-btn>
 
+        <v-container>
         <v-text-field
                 solo-inverted
                 flat
@@ -153,6 +166,7 @@
                 prepend-inner-icon="mdi-magnify"
                 v-show="openSearch"
         />
+      </v-container>
 
        <v-menu
                 v-model="menu"
@@ -170,7 +184,6 @@
                 >
               </v-avatar>
             </v-btn>
-
           </template>
 
           <v-card>
@@ -182,11 +195,16 @@
 
                 <v-list-item-content link>
                   <v-list-item-title>Marc Eberhard</v-list-item-title>
-                  <v-list-item-subtitle>Best dude in the world!</v-list-item-subtitle>
+                  <v-list-item-subtitle>You're logged in!</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
-                  <v-list-item link :to="{name:'Profil'}">
+
+              <v-subheader>
+                What are you up to?
+              </v-subheader>
+
+                  <v-list-item link to='/profilanzeigen'>
                     <v-list-item-action>
                       <v-icon>mdi-tooltip-outline</v-icon>
                     </v-list-item-action>
@@ -195,12 +213,21 @@
                     </v-list-item-content>
                   </v-list-item>
 
+              <v-list-item link :to="{name:'EditProfil'}">
+                <v-list-item-action>
+                  <v-icon>mdi-pencil</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Edit your Profil</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
                   <v-list-item link>
                     <v-list-item-action>
                       <v-icon>mdi-keyboard</v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
-                      <v-list-item-title>My Articles</v-list-item-title>
+                      <v-list-item-title>My Perks</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
 
@@ -213,6 +240,18 @@
                 </v-list-item-content>
               </v-list-item>
 
+              <v-subheader>
+                See you later!
+              </v-subheader>
+              <v-list-item  @click="onLogout">
+                <v-list-item-action>
+                  <v-icon>mdi-logout</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Logout</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
             </v-list>
           </v-card>
         </v-menu>
@@ -221,9 +260,10 @@
 
     </v-app-bar>
 
-      <v-app>
+    <v-content>
         <router-view />
-      </v-app>
+    </v-content>
+
 
     <v-footer
             dark
@@ -244,11 +284,14 @@
       </v-card>
     </v-footer>
 
+
+
   </v-app>
 </template>
 
 <script>
-  import Home from './components/Home';
+  import Home from './components/Home'
+
 
   export default {
     name: 'App',
@@ -257,7 +300,12 @@
       drawer: false,
       menu: false,
       openSearch: false,
-      search: ''
+      search: '',
+      countries: [
+      ],
+      user: {
+
+      }
       //
     }),
     components: {
@@ -265,12 +313,18 @@
     },
     computed: {
       userIsAuthenticated () {
-       return !!this.$store.getters.user;
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       }
 
     },
+    methods: {
+      onLogout() {
+        console.log("Hello")
+        this.$store.dispatch('logout')
+      }
+    },
   created() {
-    this.$router.push({path: '/home'})
+
   }
 }
 </script>

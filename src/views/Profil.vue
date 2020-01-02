@@ -3,8 +3,7 @@
  <v-app id="inspire">
         <v-spacer></v-spacer>
         Profil
-
-
+     
         <v-spacer></v-spacer>
 
         Profil erstellen
@@ -58,7 +57,7 @@
                                  label="Country"
                                  required
                          ></v-text-field>
-                         <!-- :rules="countryRules" -->
+
                      </v-col>
                      <v-col
                              cols="12"

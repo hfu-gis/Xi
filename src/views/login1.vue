@@ -125,6 +125,7 @@
         methods: {
             onSignin () {
                 this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
+                this.$store.dispatch('fetchUserData')
             },
             onDismissed () {
                 this.$store.dispatch('clearError')
