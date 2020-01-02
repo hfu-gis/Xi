@@ -38,87 +38,94 @@
           <v-list-item-title>Continents</v-list-item-title>
         </template>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Africa</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <v-list-group
+                  value="true"
+          >
+            <template v-slot:activator>
+              <v-list-item link>
+                <v-list-item-action>
+                  <v-icon></v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Africa</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+          </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Asia</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+            <v-list-group
+                    value="true"
+            >
+              <template v-slot:activator>
+                <v-list-item link>
+                  <v-list-item-action>
+                    <v-icon></v-icon>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>Asia</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </template>
+            </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Australia</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+              <v-list-group
+                      value="true"
+              >
+                <template v-slot:activator>
+                  <v-list-item link>
+                    <v-list-item-action>
+                      <v-icon></v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                      <v-list-item-title>Australia</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </template>
+              </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Europe</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+                <v-list-group
+                >
+                  <template v-slot:activator>
+                    <v-list-item link>
+                      <v-list-item-action>
+                        <v-icon></v-icon>
+                      </v-list-item-action>
+                      <v-list-item-content>
+                        <v-list-item-title>Europe</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </template>
+                </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>North America</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+                  <v-list-group
+                        value="true"
+                >
+                  <template v-slot:activator>
+                    <v-list-item link>
+                      <v-list-item-action>
+                        <v-icon></v-icon>
+                      </v-list-item-action>
+                      <v-list-item-content>
+                        <v-list-item-title>North America</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </template>
+                  </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>South America</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-
-        </v-list-group>
-        <v-list-group
-                prepend-icon="mdi-earth"
-                value="false"
-        >
-          <template v-slot:activator>
-            <v-list-item-title>Europe</v-list-item-title>
-          </template>
-
-          <v-list-item link >
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Germany</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-list-item link >
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Italy</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-
+                    <v-list-group
+                            value="true"
+                    >
+                      <template v-slot:activator>
+                        <v-list-item link>
+                          <v-list-item-action>
+                            <v-icon></v-icon>
+                          </v-list-item-action>
+                          <v-list-item-content>
+                            <v-list-item-title>South America</v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </template>
+                    </v-list-group>
         </v-list-group>
 
 
@@ -150,6 +157,7 @@
             <v-list-item-title>Create a new Perk</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
       </v-list>
 
       <template v-slot:append>
@@ -195,10 +203,18 @@
       </v-app-bar-nav-icon>
 
       <v-toolbar-title left>
-        <router-link to="/Newsfeed" tag="span" style="cursor: pointer">PERKS - Find the News you'r looking for</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">PERKS - Find the News you'r looking for</router-link>
       </v-toolbar-title>
+      <v-spacer/>
 
-      <v-spacer></v-spacer>
+   <!--
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn class="px-6" v-for="item in menuItems" :key="item.title" text router :to="item.link">
+          <v-icon left>{{item.icon}}</v-icon>
+          {{item.title}}
+        </v-btn>
+      </v-toolbar-items>
+    -->
 
       <!-- If user not auth -->
       <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
@@ -245,6 +261,7 @@
                 >
               </v-avatar>
             </v-btn>
+
           </template>
 
           <v-card>

@@ -15,11 +15,16 @@ import Profil from "../views/Profil";
 import Help from "../views/help";
 import AuthGuard from './auth-guard'
 import EditProfil from "../views/EditProfil";
+import Worldmap from "../views/Worldmap";
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
     routes: [
+        {
+            path: '/home',
+            component: Home
+        },
         {
             name: 'Login',
             path: '/login',
@@ -70,8 +75,6 @@ export default new VueRouter({
             name: 'Newsfeed',
             component: Newsfeed
         },
-
-
         {
             path: '/Profil',
             name: 'Profil',
@@ -88,7 +91,12 @@ export default new VueRouter({
             name: 'EditProfil',
             component: EditProfil,
             beforeEnter: AuthGuard
-        }
+        },
+        {
+            path: '/Worldmap',
+            name: 'Wordmap',
+            component: Worldmap
+        },
 
 
 
