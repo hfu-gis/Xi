@@ -1,78 +1,231 @@
 <template>
-
     <v-app>
 
-        <br>
-        <br>
-        <br>
-        <br>
-
-
-
         <div id="app">
+
+        <br>
+        <br>
+        <br>
+
             <v-app id="inspire">
+
+                <p align="left">
+
+
                 <v-card
                         max-width="344"
-
+                        align="left"
                 >
+
                     <v-row
-                        allign="center"
-                        justify="center"
-                        >
-                 <v-col
-                    cols="12"
-                    xs="50"
-                    sm="10"
-                    md="10"
-                    lg="10"
-                    xl="8"
+                            justify="center"
+                            align="left"
                     >
 
-
-                    <v-list-item>
-                        <v-list-item-avatar color="red"></v-list-item-avatar>
-                        <v-list-item-content>
-                            <v-list-item-title class="headline">Amazonas burning down</v-list-item-title>
-                            <v-list-item-subtitle>by Phil Taylor</v-list-item-subtitle>
-                        </v-list-item-content>
-                    </v-list-item>
-
-                    <v-img
-                            src="../../img/Amazonas.jpg" height="194" width="400"
-                    >
-
-                    </v-img>
-
-                    <v-card-text>
-                        The Amazonas is dying. What can we do to protect it?
-                    </v-card-text>
-
-                    <v-card-actions>
-                        <v-btn
-                                text
-                                color="deep-purple accent-4"
+                        <v-col
+                                cols="12"
+                                xs="50"
+                                sm="10"
+                                md="10"
+                                lg="10"
+                                xl="8"
                         >
-                            Read
-                        </v-btn>
-                        <v-btn
-                                text
-                                color="deep-purple accent-4"
-                        >
-                            Bookmark
-                        </v-btn>
-                        <v-spacer></v-spacer>
-                        <v-btn icon>
-                            <v-icon>mdi-heart</v-icon>
-                        </v-btn>
-                        <v-btn icon>
-                            <v-icon>mdi-share-variant</v-icon>
-                        </v-btn>
-                    </v-card-actions>
-                 </v-col>
+
+
+                            <v-list-item>
+                                <v-list-item-avatar color="red"></v-list-item-avatar>
+                                <v-list-item-content>
+                                    <v-list-item-title class="headlinesmall">Amazonas burning down</v-list-item-title>
+                                    <v-list-item-subtitle>by Phil Taylor</v-list-item-subtitle>
+                                </v-list-item-content>
+                            </v-list-item>
+
+                            <v-img
+                                    src="../../img/Amazonas.jpg" height="194" width="400"
+                            >
+
+                            </v-img>
+
+                            <v-card-text>
+                                The Amazonas is dying. What can we do to protect it?
+                            </v-card-text>
+
+                            <v-card-actions>
+                                <v-btn
+                                        text
+                                        color="deep-purple accent-4"
+                                >
+                                    Read
+                                </v-btn>
+                                <v-btn
+                                        text
+                                        color="deep-purple accent-4"
+                                >
+                                    Bookmark
+                                </v-btn>
+                                <v-spacer></v-spacer>
+                                <v-btn icon>
+                                    <v-icon>mdi-heart</v-icon>
+                                </v-btn>
+                                <v-btn icon>
+                                    <v-icon>mdi-share-variant</v-icon>
+                                </v-btn>
+                            </v-card-actions>
+                        </v-col>
                     </v-row>
 
                 </v-card>
+                </p>
+            </v-app>
+        </div>
 
+        <div id="app">
+
+            <v-app id="inspire">
+
+                <p align="center">
+
+
+                    <v-card
+                            max-width="344"
+                            align="left"
+                    >
+
+                        <v-row
+                                justify="center"
+                                align="left"
+                        >
+
+                            <v-col
+                                    cols="12"
+                                    xs="50"
+                                    sm="10"
+                                    md="10"
+                                    lg="10"
+                                    xl="8"
+                            >
+
+
+                                <v-list-item>
+                                    <v-list-item-avatar color="red"></v-list-item-avatar>
+                                    <v-list-item-content>
+                                        <v-list-item-title class="headlinesmall">Amazonas burning down</v-list-item-title>
+                                        <v-list-item-subtitle>by Phil Taylor</v-list-item-subtitle>
+                                    </v-list-item-content>
+                                </v-list-item>
+
+                                <v-img
+                                        src="../../img/Amazonas.jpg" height="194" width="400"
+                                >
+
+                                </v-img>
+
+                                <v-card-text>
+                                    The Amazonas is dying. What can we do to protect it?
+                                </v-card-text>
+
+                                <v-card-actions>
+                                    <v-btn
+                                            text
+                                            color="deep-purple accent-4"
+                                    >
+                                        Read
+                                    </v-btn>
+                                    <v-btn
+                                            text
+                                            color="deep-purple accent-4"
+                                    >
+                                        Bookmark
+                                    </v-btn>
+                                    <v-spacer></v-spacer>
+                                    <v-btn icon>
+                                        <v-icon>mdi-heart</v-icon>
+                                    </v-btn>
+                                    <v-btn icon>
+                                        <v-icon>mdi-share-variant</v-icon>
+                                    </v-btn>
+                                </v-card-actions>
+                            </v-col>
+                        </v-row>
+
+                    </v-card>
+                </p>
+            </v-app>
+        </div>
+
+        <div id="app">
+
+
+            <v-app id="inspire">
+
+                <p align="right">
+
+
+                    <v-card
+                            max-width="344"
+                            align="left"
+
+                        >
+
+                        <v-row
+                                justify="center"
+                                align="right"
+                        >
+
+                            <v-col
+                                    cols="12"
+                                    xs="50"
+                                    sm="10"
+                                    md="10"
+                                    lg="10"
+                                    xl="8"
+                            >
+
+
+                                <v-list-item>
+                                    <v-list-item-avatar color="red"></v-list-item-avatar>
+                                    <v-list-item-content>
+                                        <v-list-item-title class="headlinesmall">Amazonas burning down</v-list-item-title>
+                                        <v-list-item-subtitle>by Phil Taylor</v-list-item-subtitle>
+                                    </v-list-item-content>
+                                </v-list-item>
+
+                                <v-img
+                                        src="../../img/Amazonas.jpg" height="194" width="400"
+                                >
+
+                                </v-img>
+
+                                <v-card-text>
+                                    The Amazonas is dying. What can we do to protect it?
+                                </v-card-text>
+
+                                <v-card-actions>
+                                    <v-btn
+                                            text
+                                            color="deep-purple accent-4"
+                                    >
+                                        Read
+                                    </v-btn>
+                                    <v-btn
+                                            text
+                                            color="deep-purple accent-4"
+                                    >
+                                        Bookmark
+                                    </v-btn>
+                                    <v-spacer></v-spacer>
+                                    <v-btn icon>
+                                        <v-icon>mdi-heart</v-icon>
+                                    </v-btn>
+                                    <v-btn icon>
+                                        <v-icon>mdi-share-variant</v-icon>
+                                    </v-btn>
+                                </v-card-actions>
+                            </v-col>
+                        </v-row>
+
+                    </v-card>
+                </p>
             </v-app>
         </div>
 
@@ -89,9 +242,12 @@
 <style scoped>
     body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
+
+
+
     .vcard {
         opacity: 0.9;
-        border: 0 !important;
+        border: 0;
         margin: 10px;
     }
 

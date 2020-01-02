@@ -36,87 +36,94 @@
           <v-list-item-title>Continents</v-list-item-title>
         </template>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Africa</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <v-list-group
+                  value="true"
+          >
+            <template v-slot:activator>
+              <v-list-item link>
+                <v-list-item-action>
+                  <v-icon></v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Africa</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+          </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Asia</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+            <v-list-group
+                    value="true"
+            >
+              <template v-slot:activator>
+                <v-list-item link>
+                  <v-list-item-action>
+                    <v-icon></v-icon>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>Asia</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </template>
+            </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Australia</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+              <v-list-group
+                      value="true"
+              >
+                <template v-slot:activator>
+                  <v-list-item link>
+                    <v-list-item-action>
+                      <v-icon></v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                      <v-list-item-title>Australia</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </template>
+              </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Europe</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+                <v-list-group
+                >
+                  <template v-slot:activator>
+                    <v-list-item link>
+                      <v-list-item-action>
+                        <v-icon></v-icon>
+                      </v-list-item-action>
+                      <v-list-item-content>
+                        <v-list-item-title>Europe</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </template>
+                </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>North America</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+                  <v-list-group
+                        value="true"
+                >
+                  <template v-slot:activator>
+                    <v-list-item link>
+                      <v-list-item-action>
+                        <v-icon></v-icon>
+                      </v-list-item-action>
+                      <v-list-item-content>
+                        <v-list-item-title>North America</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </template>
+                  </v-list-group>
 
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>South America</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-
-        </v-list-group>
-        <v-list-group
-                prepend-icon="mdi-earth"
-                value="true"
-        >
-          <template v-slot:activator>
-            <v-list-item-title>Countries</v-list-item-title>
-          </template>
-
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Germany</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-list-item link >
-            <v-list-item-action>
-              <v-icon></v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Italy</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-
+                    <v-list-group
+                            value="true"
+                    >
+                      <template v-slot:activator>
+                        <v-list-item link>
+                          <v-list-item-action>
+                            <v-icon></v-icon>
+                          </v-list-item-action>
+                          <v-list-item-content>
+                            <v-list-item-title>South America</v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </template>
+                    </v-list-group>
         </v-list-group>
 
 

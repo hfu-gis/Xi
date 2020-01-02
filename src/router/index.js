@@ -12,6 +12,7 @@ import Suchfunktion from "../views/Suchfunktion"
 import profilanzeigen from "../views/ProfilAnzeigen";
 import Newsfeed from "../views/Newsfeed";
 import Profil from "../views/Profil";
+import Worldmap from "../views/Worldmap";
 
 
 Vue.use(VueRouter);
@@ -67,6 +68,10 @@ export default new VueRouter({
             name: 'Profil',
             component: Profil
         },
-
+        {
+            path: '/Worldmap',
+            name: 'Wordmap',
+            component: Worldmap
+        },
     ]
 })
