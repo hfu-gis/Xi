@@ -6,7 +6,7 @@
             app
             dark>
 
-      <v-list dense v-if="this.userIsAuthenticated">
+      <v-list dense v-if="!this.userIsAuthenticated">
         <v-list-item>
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
@@ -28,8 +28,69 @@
         </v-list-item-content>
       </v-list-item>
 
+        <v-list-group
+                prepend-icon="mdi-earth"
+                value="true"
+        >
+        <template v-slot:activator>
+          <v-list-item-title>Continents</v-list-item-title>
+        </template>
 
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon></v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Africa</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
 
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon></v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Asia</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon></v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Australia</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon></v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Europe</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon></v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>North America</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon></v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>South America</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+        </v-list-group>
         <v-list-group
                 prepend-icon="mdi-earth"
                 value="true"
@@ -128,7 +189,7 @@
     -->
 
       <!-- If user not auth -->
-      <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
+      <v-toolbar-items class="hidden-sm-and-down" v-if="this.userIsAuthenticated">
         <v-btn text :to="{name:'Login'}">
           <v-icon left>mdi-lock</v-icon> Login
         </v-btn>
@@ -139,7 +200,7 @@
       </v-toolbar-items>
 
       <!-- If user auth-->
-      <v-toolbar-items class="hidden-sm-and-down" v-if="this.userIsAuthenticated">
+      <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
 
         <v-btn icon @click.stop="openSearch = !openSearch" >
           <v-icon>mdi-magnify</v-icon>
