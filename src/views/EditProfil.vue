@@ -3,6 +3,18 @@
         <div id="app">
 
             <v-app id="inspire">
+                <v-row
+                        justify="center"
+                >
+                    <v-col
+                            cols="12"
+                            xs="10"
+                            sm="10"
+                            md="10"
+                            lg="10"
+                            xl="8"
+                    >
+
                 <v-card>
                     <v-toolbar
                             flat
@@ -41,19 +53,50 @@
                                     prepend-inner-icon="mdi-account"
                                     outlined
                             ></v-text-field>
+
+                            </v-row>
+                            <v-row class="px-8">
+                                <v-file-input label="Profil Picture" outlined ></v-file-input>
                             </v-row>
 
-                            <v-select class="px-5"
+                            <v-text-field
+                                    class="px-5"
+                                    v-model="Job"
+                                    label="job"
+                                    prepend-inner-icon="mdi-shape-plus"
+                                    outlined
+                            ></v-text-field>
+
+                            <v-row class="px-3">
+                                <v-select
                                     v-model="user.country"
                                     :items="countries"
                                     prepend-inner-icon="mdi-map"
                                     menu-props="auto"
-                                    label="Where you are from?"
+                                    class="input-group--focused px-5"
+                                    label="Where you are from? - Continent"
                                     outlined
-                            ></v-select>
+                                ></v-select>
+                                <v-select
+                                          v-model="user.country"
+                                          :items="countries"
+                                          prepend-inner-icon="mdi-map"
+                                          menu-props="auto"
+                                          class="input-group--focused px-5"
+                                          label="Where you are from? - Country"
+                                          outlined
+                                ></v-select>
+                            </v-row>
 
-                            <v-row class="px-8">
-                            <v-file-input label="Profil Picture" outlined ></v-file-input>
+
+
+                            <v-row class="px-8">       <!--Textfeld-->
+                                <v-textarea
+                                        outlined
+                                        prepend-inner-icon="mdi-pencil"
+                                        name="input-7-4"
+                                        label="Write something about you!"
+                                ></v-textarea>
                             </v-row>
 
                             <v-row class="justify-end mx-5" >
@@ -72,6 +115,8 @@
 
                 </v-card>
 
+                    </v-col>
+                </v-row>
 
             </v-app>
 
@@ -93,22 +138,7 @@
         // Variablen-Speicher
         data () {
             return {
-                countries: [
-                    'Alabama', 'Alaska', 'American Samoa', 'Arizona',
-                    'Arkansas', 'California', 'Colorado', 'Connecticut',
-                    'Delaware', 'District of Columbia', 'Federated States of Micronesia',
-                    'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho',
-                    'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-                    'Louisiana', 'Maine', 'Marshall Islands', 'Maryland',
-                    'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-                    'Missouri', 'Montana', 'Nebraska', 'Nevada',
-                    'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
-                    'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio',
-                    'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
-                    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
-                    'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
-                    'Washington', 'West Virginia', 'Wisconsin', 'Wyoming',
-                ],
+                countries: {},
 
                 rules: {
                     required: value => !!value || 'Required.',

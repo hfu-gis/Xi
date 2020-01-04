@@ -14,12 +14,47 @@
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
         </v-list-item-avatar>
           <v-list-item-content>
-        <v-list-item-title>Marc Eberhard</v-list-item-title>
+        <v-list-item-title>{{user.firstname}} {{user.lastname}}</v-list-item-title>
         <v-list-item-subtitle>You're logged in</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
-        <v-divider class="mb-5"></v-divider>
+        <template v-if="!this.userIsAuthenticated">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="title">
+                PERKS
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                Please sign in!
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+
+
+          <v-list-item link :to="{name: 'Login'}">
+            <v-list-item-action >
+              <v-icon>mdi-lock</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Login</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+
+          <v-list-item link :to="{name: 'Register'}">
+            <v-list-item-action>
+              <v-icon>mdi-export-variant</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Register</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+
+        </template>
+
+        <v-divider class="ma-5"></v-divider>
 
 
         <v-list-item>
@@ -31,15 +66,19 @@
       </v-list-item>
 
         <v-list-group
-                prepend-icon="mdi-earth"
-                value="true"
+                prepend-icon="mdi-map-marker"
+                :value="false"
         >
         <template v-slot:activator>
           <v-list-item-title>Continents</v-list-item-title>
         </template>
 
           <v-list-group
-                  value="true"
+                  no-action
+                  sub-group
+                  :value="false"
+                  v-for="(continent, i) in countries.Continents"
+                  :key="i"
           >
             <template v-slot:activator>
               <v-list-item link>
@@ -47,91 +86,60 @@
                   <v-icon></v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Africa</v-list-item-title>
+                  <v-list-item-title>{{continent.name}}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </template>
-          </v-list-group>
 
-            <v-list-group
-                    value="true"
+            <v-list-item link
+                         v-for="(continent1, x) in countries.Continents[i].country"
             >
-              <template v-slot:activator>
-                <v-list-item link>
-                  <v-list-item-action>
-                    <v-icon></v-icon>
-                  </v-list-item-action>
-                  <v-list-item-content>
-                    <v-list-item-title>Asia</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </template>
-            </v-list-group>
+              <v-list-item-action>
+                <v-icon></v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{continent1.name}}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
 
-              <v-list-group
-                      value="true"
-              >
-                <template v-slot:activator>
-                  <v-list-item link>
-                    <v-list-item-action>
-                      <v-icon></v-icon>
-                    </v-list-item-action>
-                    <v-list-item-content>
-                      <v-list-item-title>Australia</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </template>
-              </v-list-group>
 
-                <v-list-group
-                >
-                  <template v-slot:activator>
-                    <v-list-item link>
-                      <v-list-item-action>
-                        <v-icon></v-icon>
-                      </v-list-item-action>
-                      <v-list-item-content>
-                        <v-list-item-title>Europe</v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </template>
-                </v-list-group>
-
-                  <v-list-group
-                        value="true"
-                >
-                  <template v-slot:activator>
-                    <v-list-item link>
-                      <v-list-item-action>
-                        <v-icon></v-icon>
-                      </v-list-item-action>
-                      <v-list-item-content>
-                        <v-list-item-title>North America</v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </template>
-                  </v-list-group>
-
-                    <v-list-group
-                            value="true"
-                    >
-                      <template v-slot:activator>
-                        <v-list-item link>
-                          <v-list-item-action>
-                            <v-icon></v-icon>
-                          </v-list-item-action>
-                          <v-list-item-content>
-                            <v-list-item-title>South America</v-list-item-title>
-                          </v-list-item-content>
-                        </v-list-item>
-                      </template>
-                    </v-list-group>
+        </v-list-group>
         </v-list-group>
 
+        <v-list-group
+                prepend-icon="mdi-dns"
+                :value="false"
+        >
+          <template v-slot:activator>
+            <v-list-item-title>Categories</v-list-item-title>
+          </template>
+
+              <v-list-item link>
+                <v-list-item-action>
+                  <v-icon></v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Politics</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
+            <v-list-item link>
+              <v-list-item-action>
+                <v-icon></v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>Nature</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+
+          </v-list-group>
 
 
-        <v-divider class="my-5"></v-divider>
-        <v-list-item >
+
+
+<template  v-if="this.userIsAuthenticated">
+  <v-divider class="ma-5"></v-divider>
+        <v-list-item>
           <v-list-item-content>
             <v-list-item-title class="title">
               Your Perks
@@ -140,9 +148,9 @@
         </v-list-item>
 
 
-        <v-list-item link>
+        <v-list-item link >
           <v-list-item-action>
-            <v-icon>mdi-pencil</v-icon>
+            <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Show your Perks</v-list-item-title>
@@ -151,20 +159,22 @@
 
         <v-list-item link :to="{name: 'BeitragErstellen'}">
           <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
+            <v-icon>mdi-pencil</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Create a new Perk</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+</template>
 
       </v-list>
 
-      <template v-slot:append>
-        <v-divider></v-divider>
+
+      <template v-slot:append v-if="this.userIsAuthenticated" >
+        <v-divider class="ma-5"></v-divider>
         <v-list >
 
-        <v-list-item link @click="onLogout">
+        <v-list-item @click="onLogout">
           <v-list-item-action >
             <v-icon>mdi-logout</v-icon>
           </v-list-item-action>
@@ -272,7 +282,7 @@
                 </v-list-item-avatar>
 
                 <v-list-item-content link>
-                  <v-list-item-title>Marc Eberhard</v-list-item-title>
+                  <v-list-item-title>{{user.firstname}} {{user.lastname}}</v-list-item-title>
                   <v-list-item-subtitle>You're logged in!</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
@@ -369,27 +379,29 @@
 
 <script>
   import Home from './components/Home'
+  import Template from "./views/Template";
+
 
 
   export default {
     name: 'App',
-
     data: () => ({
+      countries: {},
       drawer: false,
       menu: false,
       openSearch: false,
       search: '',
-      countries: [
-      ],
-      user: {
-
-      }
+      userData: {}
       //
     }),
     components: {
+      Template,
       Home,
     },
     computed: {
+      user() {
+        return this.$store.getters.user
+      },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       }
@@ -402,7 +414,7 @@
       }
     },
   created() {
-
+  this.countries = require('./assets/country.json');
   }
 }
 </script>

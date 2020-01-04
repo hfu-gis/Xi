@@ -1,9 +1,22 @@
 <template>
     <div class="BeitragErstellen">
-        <h1>"Create an article"</h1>
+
         <div id="app">
 
             <v-app id="inspire">
+
+                <v-row
+                        justify="center"
+                >
+                    <v-col
+                            cols="12"
+                            xs="10"
+                            sm="10"
+                            md="10"
+                            lg="10"
+                            xl="8"
+                    >
+
                     <v-card>
                         <v-toolbar
                                 flat
@@ -89,7 +102,8 @@
                         </v-card-actions>
                     </v-card>
 
-
+                    </v-col>
+                </v-row>
             </v-app>
 
         </div>

@@ -22,8 +22,8 @@ Vue.use(VueRouter);
 export default new VueRouter({
     routes: [
         {
-            path: '/home',
-            component: Home
+            path: '/',
+            component: Newsfeed
         },
         {
             name: 'Login',
@@ -65,7 +65,7 @@ export default new VueRouter({
             beforeEnter: AuthGuard
         },
         {
-            path: '/profilanzeigen/',
+            path: '/profilanzeigen',
             name: 'profilanzeigen',
             component: profilanzeigen,
             beforeEnter: AuthGuard

@@ -1,11 +1,6 @@
 <template>
     <v-app id="login">
-            <v-container
-                    class="fill-height"
-                    fluid
-            >
                 <v-row
-                        align="center"
                         justify="center"
                 >
                     <v-col
@@ -93,7 +88,6 @@
                         </v-card>
                     </v-col>
                 </v-row>
-            </v-container>
     </v-app>
 </template>
 

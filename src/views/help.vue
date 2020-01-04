@@ -1,11 +1,7 @@
 <template>
     <v-app id="login">
 
-        <!-- HTML-Code aus dem Body-Tag hier einfügen -->
-        <v-container
-                fluid>
             <v-row
-                    align="center"
                     justify="center"
             >
                 <v-col
@@ -16,12 +12,24 @@
                         lg="10"
                         xl="8"
                 >
-                    <h1>Help</h1>
-                    <p>How can I help you?</p>
 
+                    <v-card>
+                        <v-toolbar
+                                flat
+                                color="blue-grey"
+                                dark
+                        >
+                            <v-toolbar-title>Help</v-toolbar-title>
+                        </v-toolbar>
+
+                        <v-card-text>
+                    How can I help you?
+
+                        </v-card-text>
+                    </v-card>
                 </v-col>
             </v-row>
-        </v-container>
+
     </v-app>
 </template>
 

@@ -1,60 +1,41 @@
 <template>
 <v-app>
-    <br>
-    <br>
-    <br>
-    Hallo ich bin ein Profil.
-    <br>Name: {{UserData.firstname}}
-    <br>Nachname: {{UserData.lastname}}
-    <br>email: {{UserData.email}}
-    <br>country: {{UserData.country}}
 
-
-
-
-    <header>
-        <v-toolbar
-                flat
-                color="blue-grey"
-                dark
+    <v-row
+            justify="center"
+    >
+        <v-col
+                cols="12"
+                xs="10"
+                sm="10"
+                md="10"
+                lg="10"
+                xl="8"
         >
-            <v-toolbar-title>
-                Show Profil
-            </v-toolbar-title>
-        </v-toolbar>
-    </header>
-    <br>
-    <br>
+
     <v-card class="mx-auto"
             max-width="400">
 
         <v-img :aspect-ratio="16/9" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
         </v-img>
         <v-card-text>
-            <h2 class="title primary--text">John Smith</h2>
+            <h2 class="title primary--text">{{UserData.firstname}} {{UserData.lastname}}</h2>
             <br>
-            <h3>from United States of America</h3>
+            <h3>from {{UserData.country}}</h3>
             <br>
-            <h3>john@smith.com</h3>
+            <h3>{{UserData.email}}</h3>
             <br>
             <h3>work as Journalist</h3>
-            <h4> I'm John and i work as Journlist for the New York Times</h4>
-        </v-card-text>n
-
-
-
-
-
-
-
-
+            <br>
+            <h4>I'm John and i work as Journalist for the New York Times</h4>
+        </v-card-text>
 
 
     </v-card>
 
-
-
-    </v-app>
+        </v-col>
+    </v-row>
+</v-app>
 
 </template>
 
