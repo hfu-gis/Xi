@@ -9,6 +9,7 @@
     >
 
       <v-list dense >
+
         <v-list-item v-if="this.userIsAuthenticated">
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
@@ -31,7 +32,6 @@
             </v-list-item-content>
           </v-list-item>
 
-
           <v-list-item link :to="{name: 'Login'}">
             <v-list-item-action >
               <v-icon>mdi-lock</v-icon>
@@ -40,7 +40,6 @@
               <v-list-item-title>Login</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-
 
           <v-list-item link :to="{name: 'Register'}">
             <v-list-item-action>
@@ -51,8 +50,8 @@
             </v-list-item-content>
           </v-list-item>
 
-
         </template>
+
 
         <v-divider class="ma-5"></v-divider>
 
@@ -93,6 +92,7 @@
 
             <v-list-item link
                          v-for="(continent1, x) in countries.Continents[i].country"
+                         :key="x"
             >
               <v-list-item-action>
                 <v-icon></v-icon>
@@ -102,8 +102,7 @@
               </v-list-item-content>
             </v-list-item>
 
-
-        </v-list-group>
+          </v-list-group>
         </v-list-group>
 
         <v-list-group
@@ -167,14 +166,11 @@
         </v-list-item>
 </template>
 
-      </v-list>
 
-
-      <template v-slot:append v-if="this.userIsAuthenticated" >
+      <template v-slot:append>
         <v-divider class="ma-5"></v-divider>
-        <v-list >
 
-        <v-list-item @click="onLogout">
+          <v-list-item v-if="this.userIsAuthenticated" @click="onLogout">
           <v-list-item-action >
             <v-icon>mdi-logout</v-icon>
           </v-list-item-action>
@@ -192,9 +188,9 @@
             </v-list-item-content>
           </v-list-item>
 
-        </v-list>
-
       </template>
+
+</v-list>
 
     </v-navigation-drawer>
 

@@ -28,6 +28,8 @@
             <h3>work as Journalist</h3>
             <br>
             <h4>I'm John and i work as Journalist for the New York Times</h4>
+            <br>
+            <br>{{UserData.text}}
         </v-card-text>
 
 
@@ -56,6 +58,7 @@
                     firstname: "",
                     lastname: "",
                     email: "",
+                    text: "",
                 }
             }
         },

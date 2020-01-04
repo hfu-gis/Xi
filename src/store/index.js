@@ -39,6 +39,7 @@ export const store = new Vuex.Store({
 
                         fb.db.collection('user').doc(user.user.uid).set({
                             email: payload.email,
+                            username: payload.username,
                             firstname: '',
                             lastname: '',
                         }).then(() => {
@@ -70,8 +71,7 @@ export const store = new Vuex.Store({
             let docRef = fb.db.collection('user').doc(getters.user.id)
 
                 docRef.get().then(doc => {
-                    const UserData = doc.data()
-                    const updatedUser = UserData
+                    const updatedUser = doc.data()
 
                     commit('setLoading', false)
                     commit('setUser', updatedUser)
@@ -132,14 +132,20 @@ export const store = new Vuex.Store({
 
 
         editUser({commit}, payload) {
+            commit('setLoading', true)
+            commit('clearError')
+
             fb.db.collection('user').doc(fb.auth.currentUser.uid).set({
                 firstname: payload.user.firstname,
                 lastname: payload.user.lastname,
-                country: payload.user.country,
+                job: payload.user.job,
+                text: payload.user.text
             }).then(() => {
+                commit('setLoading', false)
                 console.log('DONE')
             }).catch(error => {
-                console.log('NOT DONE')
+                commit('setLoading', false)
+                commit('setError', error)
                 console.log(error)
             })
         }

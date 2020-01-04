@@ -30,11 +30,32 @@
                             <v-text-field
                                     filled
                                     label="Title"
+                                    outlined
                                     value="">
                             </v-text-field>
 
+                            <v-row class="px-3">
+                                <v-select
+                                        :items="countries"
+                                        prepend-inner-icon="mdi-map"
+                                        menu-props="auto"
+                                        class="input-group--focused px-5"
+                                        label="Where did it happen? - Continent"
+                                        outlined
+                                ></v-select>
+                                <v-select
+                                        :items="countries"
+                                        prepend-inner-icon="mdi-map"
+                                        menu-props="auto"
+                                        class="input-group--focused px-5"
+                                        label="Where did it happen? - Country"
+                                        outlined
+                                ></v-select>
+                            </v-row>
+
                             <v-textarea
                                     filled
+                                    outlined
                                     label="Create an Article"
                                     value=""
                             ></v-textarea>
@@ -94,11 +115,14 @@
 
                         <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn
-                                    color="blue"
-                                    depressed
-                            >Post
-                            </v-btn>
+                            <v-row class="justify-end mx-5" >
+                                <v-btn type="submit" :disabled="loading" :loading="loading" color="primary"  large class="ml-5">
+                                    Post <v-icon right>mdi-arrow-right</v-icon>
+                                    <span slot="loader" class="custom-loader">
+                                 <v-icon>mdi-cached</v-icon>
+                             </span>
+                                </v-btn>
+                            </v-row>
                         </v-card-actions>
                     </v-card>
 

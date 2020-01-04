@@ -56,20 +56,21 @@
 
                             </v-row>
                             <v-row class="px-8">
-                                <v-file-input label="Profil Picture" outlined ></v-file-input>
+                                <v-file-input v-model="this.UserData.image" label="Profil Picture" outlined @change="onFilePicked"></v-file-input>
                             </v-row>
-
+                            <img :src="this.UserData.imageUrl" height="150">
                             <v-text-field
                                     class="px-5"
-                                    v-model="Job"
+                                    :rules="[rules.required]"
+                                    v-model="user.job"
                                     label="job"
                                     prepend-inner-icon="mdi-shape-plus"
                                     outlined
                             ></v-text-field>
 
-                            <v-row class="px-3">
+                           <!-- <v-row class="px-3">
                                 <v-select
-                                    v-model="user.country"
+                                    :rules="[rules.required]"
                                     :items="countries"
                                     prepend-inner-icon="mdi-map"
                                     menu-props="auto"
@@ -78,7 +79,7 @@
                                     outlined
                                 ></v-select>
                                 <v-select
-                                          v-model="user.country"
+                                          :rules="[rules.required]"
                                           :items="countries"
                                           prepend-inner-icon="mdi-map"
                                           menu-props="auto"
@@ -86,13 +87,12 @@
                                           label="Where you are from? - Country"
                                           outlined
                                 ></v-select>
-                            </v-row>
-
-
+                            </v-row>-->
 
                             <v-row class="px-8">       <!--Textfeld-->
                                 <v-textarea
                                         outlined
+                                        v-model="user.text"
                                         prepend-inner-icon="mdi-pencil"
                                         name="input-7-4"
                                         label="Write something about you!"
@@ -138,7 +138,12 @@
         // Variablen-Speicher
         data () {
             return {
-                countries: {},
+                UserData: {
+                    image : null,
+                },
+
+                countries: {
+                },
 
                 rules: {
                     required: value => !!value || 'Required.',
@@ -163,13 +168,39 @@
         // interne Methoden
         methods: {
             onEditProfil () {
+                if(this.UserData.image) {
+                    this.user.image = this.UserData.image
+                }
+                const UserData = {
+                    firstname: this.user.firstname,
+                    lastname: this.user.lastname,
+                    job: this.user.job,
+                    text: this.user.text,
+                    image: this.user.image
+                }
+
                 console.log(this.user.lastname)
-                this.$store.dispatch('editUser', {user: this.user})
+                this.$store.dispatch('editUser', {UserData})
                 this.$router.push("/profilanzeigen")
             },
             onDismissed () {
                 this.$store.dispatch('clearError')
+            },
+
+            onFilePicked (event) {
+                const files = event
+                let filename = files.name
+                if (filename.lastIndexOf('.') <= 0) {
+                    return alert('Please add a valid file!')
+                }
+                const fileReader = new FileReader()
+                fileReader.addEventListener('load', () => {
+                    this.UserData.imageUrl = fileReader.result
+                })
+                fileReader.readAsDataURL(files)
+                this.UserData.image = files
             }
+
         },
 
         // Initialisierung
