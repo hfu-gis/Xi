@@ -16,7 +16,20 @@
     <v-card class="mx-auto"
             max-width="400">
 
-        <v-img :aspect-ratio="16/9" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+        <v-img
+                :aspect-ratio="16/9"
+                :src="UserData.imageUrl"
+                lazy-src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+        >
+            <template v-slot:placeholder>
+                <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
+                >
+                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                </v-row>
+            </template>
         </v-img>
         <v-card-text>
             <h2 class="title primary--text">{{UserData.firstname}} {{UserData.lastname}}</h2>
@@ -25,9 +38,7 @@
             <br>
             <h3>{{UserData.email}}</h3>
             <br>
-            <h3>work as Journalist</h3>
-            <br>
-            <h4>I'm John and i work as Journalist for the New York Times</h4>
+            <h3>work as {{UserData.job}}</h3>
             <br>
             <br>{{UserData.text}}
         </v-card-text>
@@ -59,6 +70,7 @@
                     lastname: "",
                     email: "",
                     text: "",
+                    imageUrl: ""
                 }
             }
         },

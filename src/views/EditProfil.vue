@@ -56,9 +56,9 @@
 
                             </v-row>
                             <v-row class="px-8">
-                                <v-file-input v-model="this.UserData.image" label="Profil Picture" outlined @change="onFilePicked"></v-file-input>
+                                <v-file-input v-model="user.image" label="Profil Picture" outlined @change="onFilePicked"></v-file-input>
                             </v-row>
-                            <img :src="this.UserData.imageUrl" height="150">
+                            <img :src="user.imageUrl" height="150">
                             <v-text-field
                                     class="px-5"
                                     :rules="[rules.required]"
@@ -181,7 +181,6 @@
 
                 console.log(this.user.lastname)
                 this.$store.dispatch('editUser', {UserData})
-                this.$router.push("/profilanzeigen")
             },
             onDismissed () {
                 this.$store.dispatch('clearError')
@@ -195,7 +194,7 @@
                 }
                 const fileReader = new FileReader()
                 fileReader.addEventListener('load', () => {
-                    this.UserData.imageUrl = fileReader.result
+                    this.user.imageUrl = fileReader.result
                 })
                 fileReader.readAsDataURL(files)
                 this.UserData.image = files
@@ -204,7 +203,9 @@
         },
 
         // Initialisierung
-        created() {}
+        created() {
+
+        }
     }
 </script>
 

@@ -135,12 +135,36 @@ export const store = new Vuex.Store({
             commit('setLoading', true)
             commit('clearError')
 
-            fb.db.collection('user').doc(fb.auth.currentUser.uid).set({
-                firstname: payload.user.firstname,
-                lastname: payload.user.lastname,
-                job: payload.user.job,
-                text: payload.user.text
-            }).then(() => {
+            const user = {
+                firstname: payload.UserData.firstname,
+                lastname: payload.UserData.lastname,
+                job: payload.UserData.job,
+                text: payload.UserData.text,
+            }
+
+            let imageUrl
+            let key
+            let userdb
+
+            const ref = fb.db.collection('user').doc(fb.auth.currentUser.uid)
+            console.log("key: "+ref.id)
+            ref.set(user)
+                .then(() => {
+                    key = ref.id
+                    return key
+                })
+                .then(key => {
+                    const filename = payload.UserData.image.name
+                    const ext = filename.slice(filename.lastIndexOf('.'))
+                    return fb.storage.ref('user/' + key + '.' + ext).put(payload.UserData.image)
+                })
+                .then(fileData => {
+                        fileData.ref.getDownloadURL().then((downloadURL) => {
+                            fb.db.collection('user').doc(key).update({imageUrl: downloadURL})
+                        })
+                })
+                .then((data) => {
+                    console.log("DATA "+data)
                 commit('setLoading', false)
                 console.log('DONE')
             }).catch(error => {
@@ -148,7 +172,8 @@ export const store = new Vuex.Store({
                 commit('setError', error)
                 console.log(error)
             })
-        }
+        },
+
 
     },
     getters: {
