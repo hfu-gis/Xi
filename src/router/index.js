@@ -12,15 +12,18 @@ import Suchfunktion from "../views/Suchfunktion"
 import profilanzeigen from "../views/ProfilAnzeigen";
 import Newsfeed from "../views/Newsfeed";
 import Profil from "../views/Profil";
-
+import Help from "../views/help";
+import AuthGuard from './auth-guard'
+import EditProfil from "../views/EditProfil";
+import Worldmap from "../views/Worldmap";
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
     routes: [
         {
-            path: '/home',
-            component: Home
+            path: '/',
+            component: Newsfeed
         },
         {
             name: 'Login',
@@ -47,26 +50,55 @@ export default new VueRouter({
         {
             path: '/BeitragErstellen',
             name: 'BeitragErstellen',
-            component: BeitragErstellen
+            component: BeitragErstellen,
+            beforeEnter: AuthGuard
         },
         {
             path: '/Suchfunktion',
             component: Suchfunktion
         },
         {
+            path: '/profilanzeigen/:id',
+            name: 'profilanzeigen1',
+            component: profilanzeigen,
+            props: true,
+            beforeEnter: AuthGuard
+        },
+        {
             path: '/profilanzeigen',
             name: 'profilanzeigen',
-            component: profilanzeigen
+            component: profilanzeigen,
+            beforeEnter: AuthGuard
         },
         {
             path: '/Newsfeed',
+            name: 'Newsfeed',
             component: Newsfeed
         },
         {
             path: '/Profil',
             name: 'Profil',
-            component: Profil
+            component: Profil,
+            beforeEnter: AuthGuard
         },
+        {
+            path: '/help',
+            name: 'Help',
+            component: Help
+        },
+        {
+            path: '/EditProfil',
+            name: 'EditProfil',
+            component: EditProfil,
+            beforeEnter: AuthGuard
+        },
+        {
+            path: '/Worldmap',
+            name: 'Wordmap',
+            component: Worldmap
+        },
+
+
 
     ]
 })
