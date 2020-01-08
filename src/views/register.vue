@@ -170,6 +170,9 @@
                 //TODO: Check if username already taken
 
                 this.$store.dispatch('signUserUp', {email: this.userData.email, password: this.userData.password})
+
+
+
             },
             onDismissed () {
                 this.$store.dispatch('clearError')

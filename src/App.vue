@@ -170,7 +170,7 @@
       <template v-slot:append>
         <v-divider class="ma-5"></v-divider>
 
-          <v-list-item v-if="this.userIsAuthenticated" @click="onLogout">
+          <v-list-item  @click="onLogout">
           <v-list-item-action >
             <v-icon>mdi-logout</v-icon>
           </v-list-item-action>
@@ -376,8 +376,6 @@
 <script>
   import Home from './components/Home'
   import Template from "./views/Template";
-
-
 
   export default {
     name: 'App',
