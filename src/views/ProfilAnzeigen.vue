@@ -20,21 +20,32 @@
 
  <v-img :aspect-ratio="16/9" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
 </v-img>
-    <v-card-text>
-    <h2 class="title primary--text">John Smith</h2>
+    <v-card-text  >
+        <v-text-field>
+            <input value="user">
+        </v-text-field>
+
+        <v-text-field>
+
+        </v-text-field>
+
+        <h2 class="title primary--text"> </h2>
+
         <br>
-        <h3>from United States of America</h3>
+
         <br>
-        <h3>john@smith.com</h3>
+
 <br>
-        <h3>work as Journalist</h3>
-        <h4> I'm John and i work as Journlist for the New York Times</h4>
+
     </v-card-text>
 
 
     <!-- row- spalten col- zeilen -->
+    <v-btn link to="/Profil" >
 
 
+        <v-icon >mdi-pencil</v-icon>
+    </v-btn>
 
 </v-card>
     </body>
@@ -44,26 +55,31 @@
 
 
 <script>
+
+
     export default {
         // gebt jeder Page einen eigenen Namen
         name: 'profilanzeigen',
 
         // benötigte Komponenten
-        components: {},
+        components: {  },
 
         // entspricht den HTML-Attributen
         props: {},
 
         // Variablen-Speicher
         data() {
-            return {}
+
+            return {
+
+                }
         },
 
         // reagieren auf prop-Veränderung
         watch: {},
 
         // interne Methoden
-        methods: [],
+        methods: {},
 
         // Initialisierung
         created() {}

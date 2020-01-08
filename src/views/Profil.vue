@@ -2,174 +2,170 @@
 <template>
  <v-app id="Profil">
      <header>
-         <v-spacer></v-spacer>
-         Profil
+        <br><br><br><br>
 
-
-        <v-spacer></v-spacer>
-
-        Profil erstellen
-     <main>
-
+      <main>
+         <v-card class="ma-auto"
+                 max-width="500">
+         <v-card-text align="center">
+             <h3 class="title primary--text">Account Settings</h3>
          <v-form v-model="valid">
              <v-container>      <!--persönliche daten-->
-                 <v-row>
-                     <v-col
-                             cols="12"
-                             md="4"
-                     >
+                 <v-row align="center" justify="center">
+
+                     <v-col align-self="125" cols="10">
+
                         <v-text-field
-                                 v-model="firstname"
+
+                                 v-model="form.firstname"
                                  label="First name"
+
                                  required
+
                          ></v-text-field>
                          <!--     :rules="nameRules"     -->
-                     </v-col>
 
-                     <v-col
-                             cols="12"
-                             md="4"
-                     >
+
+
                          <v-text-field
-                                 v-model="lastname"
+
+                                 v-model="form.lastname"
                                  label="Last name"
+
+
                                  required
                          ></v-text-field>
                         <!-- :rules="nameRules"-->
-                     </v-col>
 
-                     <v-col
-                             cols="12"
-                             md="4"
-                     >
+
+
                          <v-text-field
-                                 v-model="email"
 
+                                 v-model="form.email"
                                  label="E-mail"
+
                                  required
                          ></v-text-field>
                          <!--:rules="emailRules"-->
-                     </v-col>
-                     <v-col
-                             cols="12"
-                             md="4"
-                     >
+
+                         <v-menu
+                                 ref="menu"
+                                 v-model="menu"
+                                 :close-on-content-click="false"
+                                 transition="scale-transition"
+                                 offset-y
+                                 full-width
+                                 min-width="290px"
+                         >
+                             <template v-slot:activator="{ on }">
+                                 <v-text-field
+                                         v-model="date"
+                                         label="Birthday date"
+                                         prepend-icon="mdi-calendar"
+                                         readonly
+                                         v-on="on"
+                                 ></v-text-field>
+                             </template>
+                             <v-date-picker
+                                     ref="picker"
+                                     v-model="date"
+                                     :max="new Date().toISOString().substr(0, 10)"
+                                     min="1950-01-01"
+                                     @change="save"
+                             ></v-date-picker>
+                         </v-menu>
+
                          <v-text-field
-                                 v-model="Country"
+                                 v-model="form.city"
                                  label="Country"
+
+
                                  required
                          ></v-text-field>
                          <!-- :rules="countryRules" -->
-                     </v-col>
-                     <v-col
-                             cols="12"
-                             md="4"
-                     >
+
+
                          <v-text-field
-                                 v-model="Job"
+
+                                 v-model="form.job"
                                  label="Job"
+
                                  required
+
                          ></v-text-field>
-                         <v-spacer></v-spacer>
-                     </v-col>
 
-                     <v-spacer></v-spacer>
 
-                     <v-spacer></v-spacer>                  <!--bild hochladen-->
 
-                     <v-file-input
-                             v-model="files"
-                             color="deep-purple accent-4"
-                             counter
-                             label="File input"
-                             multiple
-                             placeholder="Upload Image"
-                             prepend-icon="mdi-paperclip"
-                             outlined
-                             :show-size="1000"
-                     >
-                         <template v-slot:selection="{ index, text }">
-                             <v-chip
-                                     v-if="index < 2"
-                                     color="deep-purple accent-4"
-                                     dark
-                                     label
-                                     small
-                             >
-                                 {{ text }}
-                             </v-chip>
 
-                             <span
-                                     v-else-if="index === 2"
-                                     class="overline grey--text text--darken-3 mx-2"
-                             >
+
+<br><br>
+
+                         <!--bild hochladen-->
+
+                         <v-file-input
+                                 v-model="files"
+                                 color="deep-purple accent-4"
+                                 counter
+                                 label="File input"
+                                 multiple
+                                 placeholder="Upload Image"
+                                 prepend-icon="mdi-paperclip"
+                                 outlined
+                                 :show-size="1000"
+                         >
+                             <template v-slot:selection="{ index, text }">
+                                 <v-chip
+                                         v-if="index < 2"
+                                         color="deep-purple accent-4"
+                                         dark
+                                         label
+                                         small
+                                 >
+                                     {{ text }}
+                                 </v-chip>
+
+                                 <span
+                                         v-else-if="index === 2"
+                                         class="overline grey--text text--darken-3 mx-2"
+                                 >
                                         +{{ files.length - 2 }} File(s)
                                  </span>
-                         </template>
-                     </v-file-input>
+                             </template>
+                         </v-file-input>
+                     </v-col>
 
 
 
 
-
-
-
-
-<v-spacer></v-spacer>
-
-
-
-
-
-                     <v-menu
-                             ref="menu"
-                             v-model="menu"
-                             :close-on-content-click="false"
-                             transition="scale-transition"
-                             offset-y
-                             full-width
-                             min-width="290px"
-                     >
-                         <template v-slot:activator="{ on }">
-                             <v-text-field
-                                     v-model="date"
-                                     label="Birthday date"
-                                     prepend-icon="mdi-calendar"
-                                     readonly
-                                     v-on="on"
-                             ></v-text-field>
-                         </template>
-                         <v-date-picker
-                                 ref="picker"
-                                 v-model="date"
-                                 :max="new Date().toISOString().substr(0, 10)"
-                                 min="1950-01-01"
-                                 @change="save"
-                         ></v-date-picker>
-                     </v-menu>
-
-
-
-
-         <v-col cols="12" md="6">       <!--Textfeld-->
+           <!--Textfeld-->
+                     <v-col align-self="125" cols="10">
              <v-textarea
                      solo
                      name="input-7-4"
                      label="Profil"
+
              ></v-textarea>
-         </v-col>
+                     </v-col>
+
 
 
 
                      <v-col align-self="125" cols="10">     <!-- Edit-Button-->
-         <v-btn class="ma-2" tile outlined color="success">
+         <v-btn class="ma-2" tile outlined color="success" link to="profilanzeigen" @click="save">
 
-             <v-icon>Edit</v-icon>
+             <v-icon >Edit</v-icon>
          </v-btn>
-         </v-col>
+                     </v-col>
                  </v-row>
              </v-container>
          </v-form>
+         </v-card-text>
+         </v-card>
+<footer>
+    <br><br><br><br>
+</footer>
+
+
      </main>
     </header>
  </v-app>
@@ -183,6 +179,7 @@
     export default {
         // gebt jeder Page einen eigenen Namen
         name: 'Profil',
+
 
         data: () => ({
             date: null,
@@ -207,16 +204,23 @@
 
         // Variablen-Speicher
         data() {
-            return {}
+            return {
+                form: {
+                    firstname: '',
+                    lastname: '',
+                    email: '',
+                    city: ''
+                }
+            }
         },
 
         // reagieren auf prop-Veränderung
         watch: {},
 
         // interne Methoden
-        methods: {
+        methods: [],
 
-        },
+
 
     }
 </script>
@@ -224,19 +228,3 @@
 <style scoped>
     /* CSS für diese Seite hier einfügen */
 </style>
-
-<!--
-<v-date-picker
-
-        v-model="picker"
-        type="month"
-        year-icon="mdi-calendar-blank"
-        prev-icon="mdi-skip-previous"
-        next-icon="mdi-skip-next"
-
-
-        data: () => ({
-    date: null,
-    menu: false,
-    modal: false
-></v-date-picker>-->

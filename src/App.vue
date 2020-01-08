@@ -186,7 +186,7 @@
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
-                  <v-list-item link :to="{name:'Profil'}">
+                  <v-list-item link :to="{name:'profilanzeigen'}">
                     <v-list-item-action>
                       <v-icon>mdi-tooltip-outline</v-icon>
                     </v-list-item-action>
