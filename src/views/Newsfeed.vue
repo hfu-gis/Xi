@@ -1,10 +1,5 @@
 <template>
     <v-app>
-
-        <div id="app">
-
-            <v-app id="inspire">
-
                 <v-row
 
                         justify="space-around"
@@ -36,7 +31,7 @@
                             </v-list-item>
 
                             <v-img
-                                    src="../../img/Amazonas.jpg" height="194" width="400"
+                                    :src="article.imageUrl" height="194" width="400"
                             >
 
                             </v-img>
@@ -71,6 +66,8 @@
         </v-row>
     </v-app>
 </template>
+
+
 
 <script>
     export default {

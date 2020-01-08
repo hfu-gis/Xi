@@ -1,27 +1,23 @@
 <template>
-<v-app>
-    <br><br>
-    <body>
-    <header>
-    <v-toolbar
-            flat
-            color="blue-grey"
-            dark
-    >
-        <v-toolbar-title>
-            Show Profil
-        </v-toolbar-title>
-    </v-toolbar>
-    </header>
-    <br>
-    <br>
+    <v-app id="inspire">
+        <v-row
+                justify="center"
+        >
+            <v-col
+                    cols="12"
+                    xs="10"
+                    sm="10"
+                    md="10"
+                    lg="10"
+                    xl="8"
+            >
 <v-card class="mx-auto"
         max-width="400">
 
         <v-img
                 :aspect-ratio="16/9"
                 :src="UserData.imageUrl"
-                lazy-src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+                lazy-src="https://cdn.pixabay.com/photo/2017/02/23/13/05/profile-2092113_960_720.png"
         >
             <template v-slot:placeholder>
                 <v-row
@@ -47,7 +43,7 @@
 
 
 </v-card>
-    </body>
+            </v-col></v-row>
     </v-app>
 
 </template>

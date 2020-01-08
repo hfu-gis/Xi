@@ -75,7 +75,7 @@
                             <v-divider class="my-2"></v-divider>
 
                             <v-row class="px-8">
-                                <v-file-input v-model="article.image" label="Profil Picture" outlined @change=""></v-file-input>
+                                <v-file-input v-model="article.image" label="Profil Picture" outlined @change="onFilePicked"></v-file-input>
                             </v-row>
 
 
@@ -149,7 +149,9 @@
         data() {
             return {
                 countries: {},
-                article: {},
+                article: {
+                    image: null,
+                },
                 selected: null,
                 rules: {
                     required: value => !!value || 'Required.',
@@ -163,15 +165,38 @@
         // interne Methoden
         methods: {
             onCreateArticle() {
+                if(this.image) {
+                    this.article.image = this.image
+                }
                 const articleData = {
                     title: this.article.title,
                     country: this.article.country,
-                    text: this.article.text
+                    text: this.article.text,
+                    image: this.article.image
                 }
 
                 this.$store.dispatch('createArticle', articleData)
 
+            },
+
+            onDismissed () {
+                this.$store.dispatch('clearError')
+            },
+
+            onFilePicked (event) {
+                const files = event
+                let filename = files.name
+                if (filename.lastIndexOf('.') <= 0) {
+                    return alert('Please add a valid file!')
+                }
+                const fileReader = new FileReader()
+                fileReader.addEventListener('load', () => {
+                    this.article.imageUrl = fileReader.result
+                })
+                fileReader.readAsDataURL(files)
+                this.article.image = files
             }
+
         },
 
         // Initialisierung

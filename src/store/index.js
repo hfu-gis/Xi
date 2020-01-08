@@ -6,23 +6,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        loadedArticles: [
-            {
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg',
-                id: 'afajfjadfaadfa323',
-                title: 'Meetup in New York',
-                location: 'New York',
-                description: 'New York, New York!'
-            },
-            {
-                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Paris_-_Blick_vom_gro%C3%9Fen_Triumphbogen.jpg',
-                id: 'aadsfhbkhlk1241',
-                title: 'Meetup in Paris',
-                location: 'Paris',
-                description: 'It\'s Paris!'
-            }
-
-        ],
+        loadedArticles: [],
         user: null,
         loading: false,
         error: null
@@ -60,17 +44,36 @@ export const store = new Vuex.Store({
                 creatorid: getters.user.id,
             }
 
-            var docRef = fb.db.collection('articles').doc()
-                docRef.set(article)
+
+            let imageUrl
+            let key
+            let userdb
+
+            const ref = fb.db.collection('articles').doc()
+            ref.set(article)
                 .then(() => {
+                    key = ref.id
+                    return key
+                })
+                .then(key => {
+                    const filename = payload.image.name
+                    const ext = filename.slice(filename.lastIndexOf('.'))
+                    return fb.storage.ref('article/' + key + '.' + ext).put(payload.image)
+                })
+                .then(fileData => {
+                    fileData.ref.getDownloadURL().then((downloadURL) => {
+                        fb.db.collection('articles').doc(key).update({imageUrl: downloadURL})
+                    })
+                })
+                .then((data) => {
+                    console.log("DATA "+data)
                     commit('setLoading', false)
-                console.log('DONE')
-            }).catch(error => {
-                console.log('NOT DONE')
+                    console.log('DONE')
+                }).catch(error => {
                 commit('setLoading', false)
+                commit('setError', error)
                 console.log(error)
             })
-
         },
 
         loadArticles({commit}) {
@@ -82,7 +85,8 @@ export const store = new Vuex.Store({
                         articles.push({
                             title: doc.data().title,
                             text: doc.data().text,
-                            creatorid: doc.data().creatorid
+                            creatorid: doc.data().creatorid,
+                            imageUrl: doc.data().imageUrl
                         })
                     })
 
@@ -114,7 +118,6 @@ export const store = new Vuex.Store({
                         fb.db.collection('user').doc(user.user.uid).set({
                             id: user.user.uid,
                             email: payload.email,
-                            //username: payload.username,
                             firstname: '',
                             lastname: '',
                         }).then(() => {
@@ -142,9 +145,7 @@ export const store = new Vuex.Store({
         fetchUserData ({commit, getters}) {
             commit('setLoading', true)
             console.log(getters.user.id)
-
             let docRef = fb.db.collection('user').doc(getters.user.id)
-
                 docRef.get().then(doc => {
                     console.log(doc.data())
                     const updatedUser = doc.data()
@@ -169,6 +170,7 @@ export const store = new Vuex.Store({
                             id: user.user.uid
                         }
                         commit('setUser', newUser)
+
                     }
                 )
                 .catch(
@@ -206,12 +208,12 @@ export const store = new Vuex.Store({
             commit('clearError')
         },
 
-
         editUser({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
 
             const user = {
+                id: payload.UserData.id,
                 firstname: payload.UserData.firstname,
                 lastname: payload.UserData.lastname,
                 job: payload.UserData.job,
@@ -255,9 +257,7 @@ export const store = new Vuex.Store({
     getters: {
 
         loadedArticles (state) {
-            return state.loadedArticles.sort((articleA, articleB) => {
-                return articleA.date > articleB.date
-            })
+            return state.loadedArticles
         },
         featuredArticles (state, getters) {
             return getters.loadedArticles.slice(0, 5)

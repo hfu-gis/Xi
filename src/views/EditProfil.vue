@@ -172,6 +172,7 @@
                     this.user.image = this.UserData.image
                 }
                 const UserData = {
+                    id: this.$store.getters.user.id,
                     firstname: this.user.firstname,
                     lastname: this.user.lastname,
                     job: this.user.job,
