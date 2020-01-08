@@ -1,12 +1,15 @@
 <template>
     <v-app>
 
+
+
         <div id="app">
 
             <v-app id="inspire">
 
                 <v-row
                         justify="center"
+
                 >
                     <v-col
                             cols="12"
