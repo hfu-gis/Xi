@@ -186,7 +186,12 @@
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
-                  <v-list-item link :to="{name:'profilanzeigen'}">
+
+              <v-subheader>
+                What are you up to?
+              </v-subheader>
+
+                  <v-list-item link to='/profilanzeigen'>
                     <v-list-item-action>
                       <v-icon>mdi-tooltip-outline</v-icon>
                     </v-list-item-action>
@@ -195,12 +200,21 @@
                     </v-list-item-content>
                   </v-list-item>
 
+              <v-list-item link :to="{name:'EditProfil'}">
+                <v-list-item-action>
+                  <v-icon>mdi-pencil</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Edit your Profil</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
                   <v-list-item link>
                     <v-list-item-action>
                       <v-icon>mdi-keyboard</v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
-                      <v-list-item-title>My Articles</v-list-item-title>
+                      <v-list-item-title>My Perks</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
 
@@ -213,6 +227,18 @@
                 </v-list-item-content>
               </v-list-item>
 
+              <v-subheader>
+                See you later!
+              </v-subheader>
+              <v-list-item  @click="onLogout">
+                <v-list-item-action>
+                  <v-icon>mdi-logout</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Logout</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
             </v-list>
           </v-card>
         </v-menu>
@@ -221,9 +247,10 @@
 
     </v-app-bar>
 
-      <v-app>
+    <v-content>
         <router-view />
-      </v-app>
+    </v-content>
+
 
     <v-footer
             dark
@@ -244,33 +271,50 @@
       </v-card>
     </v-footer>
 
+
+
   </v-app>
 </template>
 
 <script>
-  import Home from './components/Home';
+  import Home from './components/Home'
+  import Template from "./views/Template";
+
+
 
   export default {
     name: 'App',
 
     data: () => ({
+      countries: {},
       drawer: false,
       menu: false,
       openSearch: false,
-      search: ''
+      search: '',
+      userData: {}
       //
     }),
     components: {
+      Template,
       Home,
     },
     computed: {
+      user() {
+        return this.$store.getters.user
+      },
       userIsAuthenticated () {
-       return !!this.$store.getters.user;
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       }
 
     },
+    methods: {
+      onLogout() {
+        console.log("Hello")
+        this.$store.dispatch('logout')
+      }
+    },
   created() {
-    this.$router.push({path: '/home'})
+  this.countries = require('./assets/country.json');
   }
 }
 </script>

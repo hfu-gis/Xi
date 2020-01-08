@@ -1,11 +1,6 @@
 <template>
     <v-app id="login">
-            <v-container
-                    class="fill-height"
-                    fluid
-            >
                 <v-row
-                        align="center"
                         justify="center"
                 >
                     <v-col
@@ -30,33 +25,23 @@
 
                             <v-card-text>
                                 <form @submit.prevent="onSignup">
-                                    <!-- <v-row class="px-3">
-                                   <v-text-field
-                                            name="firstname"
-                                            :rules="[rules.required]"
-                                            label="First name"
-                                            class="input-group--focused px-5"
-                                            v-model="firstname"
-                                            prepend-inner-icon="mdi-account"
-                                            outlined
-                                    ></v-text-field>
 
                                     <v-text-field
-                                            name="lastname"
+                                            name="username"
+                                            v-model="userData.username"
                                             :rules="[rules.required]"
-                                            label="Last name"
-                                            v-model="lastname"
+                                            label="username"
+                                            value="username"
                                             class="input-group--focused px-5"
                                             prepend-inner-icon="mdi-account"
                                             outlined
                                     ></v-text-field>
-                                    </v-row>-->
 
                                     <v-text-field
                                             name="email"
                                             :rules="[rules.required]"
                                             label="eMail"
-                                            v-model="email"
+                                            v-model="userData.email"
                                             class="input-group--focused px-5"
                                             prepend-inner-icon="mdi-mail"
                                             outlined
@@ -68,7 +53,7 @@
                                             :type="show ? 'text' : 'password'"
                                             name="password"
                                             label="Password"
-                                            v-model="password"
+                                            v-model="userData.password"
                                             hint="make it strong!"
                                             value="xxx"
                                             class="input-group--focused px-5"
@@ -99,6 +84,7 @@
                                                 required
                                         ></v-checkbox>
 
+
                                     <v-row class="justify-end mx-5" >
                                         <v-btn type="submit" :disabled="loading" :loading="loading" color="primary" large class="ml-5 mb-5">
                                             Register<v-icon right>mdi-arrow-right</v-icon>
@@ -108,17 +94,21 @@
                                         </v-btn>
                                     </v-row>
 
+
                                 </form>
                             </v-card-text>
                         </v-card>
                     </v-col>
                 </v-row>
-            </v-container>
     </v-app>
 </template>
 
 <script>
+    const fb = require('../db.js')
+
     export default {
+
+
         // gebt jeder Page einen eigenen Namen
         name: 'register',
 
@@ -133,11 +123,17 @@
             return {
                 show: false,
                 policy: '',
-                firstname: '',
-                lastname: '',
-                email: '',
-                password: '',
+                userData: {
+                    email: '',
+                    password: '',
+                    username:'',
+                    lastName: '',
+                    firstName: '',
+                    country: '',
+                },
+
                 password1: '',
+
                 rules: {
                     required: value => !!value || 'Required.',
                     min: v => v.length >= 8 || 'Min. 8 characters',
@@ -147,7 +143,7 @@
 
         computed: {
             comparePasswords () {
-                return this.password !== this.password1 ? 'Passwords do not match!' : null
+                return this.userData.password !== this.password1 ? 'Passwords do not match!' : null
             },
             user() {
                 return this.$store.getters.user
@@ -171,7 +167,9 @@
         // interne Methoden
         methods: {
             onSignup () {
-                this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
+                //TODO: Check if username already taken
+
+                this.$store.dispatch('signUserUp', {email: this.userData.email, password: this.userData.password})
             },
             onDismissed () {
                 this.$store.dispatch('clearError')

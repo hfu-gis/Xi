@@ -18,34 +18,33 @@
 <v-card class="mx-auto"
         max-width="400">
 
- <v-img :aspect-ratio="16/9" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
-</v-img>
-    <v-card-text  >
-        <v-text-field>
-            <input value="user">
-        </v-text-field>
+        <v-img
+                :aspect-ratio="16/9"
+                :src="UserData.imageUrl"
+                lazy-src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+        >
+            <template v-slot:placeholder>
+                <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
+                >
+                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                </v-row>
+            </template>
+        </v-img>
+        <v-card-text>
+            <h2 class="title primary--text">{{UserData.firstname}} {{UserData.lastname}}</h2>
+            <br>
+            <h3>from {{UserData.country}}</h3>
+            <br>
+            <h3>{{UserData.email}}</h3>
+            <br>
+            <h3>work as {{UserData.job}}</h3>
+            <br>
+            <br>{{UserData.text}}
+        </v-card-text>
 
-        <v-text-field>
-
-        </v-text-field>
-
-        <h2 class="title primary--text"> </h2>
-
-        <br>
-
-        <br>
-
-<br>
-
-    </v-card-text>
-
-
-    <!-- row- spalten col- zeilen -->
-    <v-btn link to="/Profil" >
-
-
-        <v-icon >mdi-pencil</v-icon>
-    </v-btn>
 
 </v-card>
     </body>
@@ -55,34 +54,75 @@
 
 
 <script>
-
+    const fb = require('../db.js')
 
     export default {
+        props: ['id'],
         // gebt jeder Page einen eigenen Namen
         name: 'profilanzeigen',
 
         // benötigte Komponenten
-        components: {  },
+        components: {},
 
         // entspricht den HTML-Attributen
         props: {},
 
         // Variablen-Speicher
-        data() {
-
+        data () {
             return {
-
+                UserData: {
+                    userid: "",
+                    firstname: "",
+                    lastname: "",
+                    email: "",
+                    text: "",
+                    imageUrl: ""
                 }
+            }
         },
 
+
+        computed: {
+            user() {
+                return this.$store.getters.user
+            }
+        },
         // reagieren auf prop-Veränderung
-        watch: {},
+        watch: {
+            id: function(newVal, oldVal) {
+                console.log('Prop id changed: ', newVal, ' | was: ', oldVal)
+                this.getUserData()
+            }
+        },
 
         // interne Methoden
-        methods: {},
+        methods: {
+            getUserData() {
+                    let docRef = "";
+                if(this.id == null) {
+                    docRef = fb.db.collection('user').doc(fb.auth.currentUser.uid)
+                }
+                else {
+                    docRef = fb.db.collection('user').doc(this.id)
+                }
+
+                    docRef.get()
+                        .then(doc => {
+                            this.UserData = doc.data()
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+
+            }
+
+        },
 
         // Initialisierung
-        created() {}
+        created() {
+           this.getUserData()
+
+        }
     }
 </script>
 

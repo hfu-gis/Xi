@@ -19,19 +19,24 @@
                                 color="blue-grey"
                                 dark
                         >
-                            <v-toolbar-title>Legal Notice</v-toolbar-title>
+                            <v-toolbar-title>Help</v-toolbar-title>
                         </v-toolbar>
 
                         <v-card-text>
-        Its legal to be here!
-                        </v-card-text></v-card></v-col></v-row>
+                    How can I help you?
+
+                        </v-card-text>
+                    </v-card>
+                </v-col>
+            </v-row>
+
     </v-app>
 </template>
 
 <script>
     export default {
         // gebt jeder Page einen eigenen Namen
-        name: 'legalnotice',
+        name: 'help',
 
         // benötigte Komponenten
         components: {},

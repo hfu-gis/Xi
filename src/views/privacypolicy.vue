@@ -1,24 +1,30 @@
 <template>
     <v-app id="login">
 
-        <!-- HTML-Code aus dem Body-Tag hier einfügen -->
-        <v-container
-                fluid>
-            <v-row
-                    align="center"
-                    justify="center"
+        <v-row
+                justify="center"
+        >
+            <v-col
+                    cols="12"
+                    xs="10"
+                    sm="10"
+                    md="10"
+                    lg="10"
+                    xl="8"
             >
-                <v-col
-                        cols="12"
-                        xs="10"
-                        sm="10"
-                        md="10"
-                        lg="10"
-                        xl="8"
-                >
-                    <h1>Privacy Policy</h1>
-                    <p>Your data is safe. Maybe ;)</p>
-                </v-col></v-row></v-container>
+
+                <v-card>
+                    <v-toolbar
+                            flat
+                            color="blue-grey"
+                            dark
+                    >
+                        <v-toolbar-title>Privacy Policy</v-toolbar-title>
+                    </v-toolbar>
+
+                    <v-card-text>
+                        Your data ist safe, maybe :)
+                    </v-card-text></v-card></v-col></v-row>
     </v-app>
 </template>
 
