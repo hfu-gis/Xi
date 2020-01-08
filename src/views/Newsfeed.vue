@@ -1,16 +1,24 @@
 <template>
-    <v-app id="inspire">
+    <v-app>
 
-        <v-row
-                justify="center"
-        >
-            <v-col
-                    cols="12"
-                    lg="10"
-                    xl="8"
-                    style="display: block"
-                    class="d-flex align-content-start justify-start justify-center justify-end justify-space-around justify-space-between flex-wrap "
-            >
+        <div id="app">
+
+            <v-app id="inspire">
+
+                <v-row
+
+                        justify="space-around"
+                >
+                    <v-col
+                            cols="12"
+                            xs="10"
+                            sm="10"
+                            md="10"
+                            lg="10"
+                            xl="8"
+                            style="display: block"
+                            class="d-flex align-content-start justify-start justify-center justify-end justify-space-around justify-space-between flex-wrap "
+                    >
 
 
                 <v-card
@@ -74,6 +82,7 @@
             }
         }
     }
+
 </script>
 
 <style scoped>

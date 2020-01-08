@@ -1,20 +1,22 @@
 <template>
 <v-app>
-
-    <v-row
-            justify="center"
+    <br><br>
+    <body>
+    <header>
+    <v-toolbar
+            flat
+            color="blue-grey"
+            dark
     >
-        <v-col
-                cols="12"
-                xs="10"
-                sm="10"
-                md="10"
-                lg="10"
-                xl="8"
-        >
-
-    <v-card class="mx-auto"
-            max-width="400">
+        <v-toolbar-title>
+            Show Profil
+        </v-toolbar-title>
+    </v-toolbar>
+    </header>
+    <br>
+    <br>
+<v-card class="mx-auto"
+        max-width="400">
 
         <v-img
                 :aspect-ratio="16/9"
@@ -44,11 +46,9 @@
         </v-card-text>
 
 
-    </v-card>
-
-        </v-col>
-    </v-row>
-</v-app>
+</v-card>
+    </body>
+    </v-app>
 
 </template>
 
@@ -60,6 +60,12 @@
         props: ['id'],
         // gebt jeder Page einen eigenen Namen
         name: 'profilanzeigen',
+
+        // benötigte Komponenten
+        components: {},
+
+        // entspricht den HTML-Attributen
+        props: {},
 
         // Variablen-Speicher
         data () {
@@ -125,3 +131,12 @@
     body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 </style>
+
+<!--  <v-hover>
+            <template v-slot="{ hover }">
+                <v-card
+                        :elevation="hover ? 24 : 6"
+                        class="mx-auto pa-md-12"
+                >
+                </v-card>
+            </template>-->
