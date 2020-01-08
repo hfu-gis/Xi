@@ -1,35 +1,29 @@
 <template>
-    <v-app>
+    <v-app id="inspire">
 
-        <div id="app">
-
-            <v-app id="inspire">
-
-                <v-row
-                        justify="center"
-                >
-                    <v-col
-                            cols="12"
-                            xs="10"
-                            sm="10"
-                            md="10"
-                            lg="10"
-                            xl="8"
-                            style="display: block"
-                    >
+        <v-row
+                justify="center"
+        >
+            <v-col
+                    cols="12"
+                    lg="10"
+                    xl="8"
+                    style="display: block"
+                    class="d-flex align-content-start justify-start justify-center justify-end justify-space-around justify-space-between flex-wrap "
+            >
 
 
                 <v-card
-
                         max-width="344"
                         align="left"
+                        v-for="article in articles" :key="article.id"
                 >
 
                             <v-list-item>
                                 <v-list-item-avatar color="red"></v-list-item-avatar>
                                 <v-list-item-content>
-                                    <v-list-item-title class="headlinesmall">Amazonas burning down</v-list-item-title>
-                                    <v-list-item-subtitle>by Phil Taylor</v-list-item-subtitle>
+                                    <v-list-item-title class="headlinesmall">{{ article.title }}</v-list-item-title>
+                                    <v-list-item-subtitle>by dein mutter</v-list-item-subtitle>
                                 </v-list-item-content>
                             </v-list-item>
 
@@ -39,9 +33,6 @@
 
                             </v-img>
 
-                            <v-card-text>
-                                The Amazonas is dying. What can we do to protect it?
-                            </v-card-text>
 
                             <v-card-actions>
                                 <v-btn
@@ -68,23 +59,20 @@
 
                 </v-card>
 
-
-
-
-                    </v-col>
-                </v-row>
-
-            </v-app>
-        </div>
-
-
+            </v-col>
+        </v-row>
     </v-app>
 </template>
 
-
 <script>
     export default {
-        name: "Newsfeed"
+        name: "Newsfeed",
+        computed: {
+            articles () {
+                console.log(this.$store.getters.loadedArticles)
+                return this.$store.getters.loadedArticles
+            }
+        }
     }
 </script>
 

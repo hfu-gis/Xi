@@ -26,74 +26,60 @@
                             <v-toolbar-title>Create an article</v-toolbar-title>
                         </v-toolbar>
 
+                        <form @submit.prevent="onCreateArticle">
+
                         <v-card-text>
                             <v-text-field
-                                    filled
-                                    label="Title"
+                                    name="title"
+                                    :rules="[rules.required]"
+                                    label="Your title!"
+                                    class="input-group--focused px-5"
+                                    v-model="article.title"
+                                    prepend-inner-icon="mdi-account"
                                     outlined
-                                    value="">
-                            </v-text-field>
+                            ></v-text-field>
 
                             <v-row class="px-3">
+
                                 <v-select
-                                        :items="countries"
+                                        :items="countries.Continents"
+                                        item-text='name'
+                                        v-model="article.country"
                                         prepend-inner-icon="mdi-map"
                                         menu-props="auto"
                                         class="input-group--focused px-5"
                                         label="Where did it happen? - Continent"
                                         outlined
                                 ></v-select>
-                                <v-select
-                                        :items="countries"
+                                <!--<v-select
+                                        :items="countries.Continents"
+                                        item-text='name'
                                         prepend-inner-icon="mdi-map"
                                         menu-props="auto"
                                         class="input-group--focused px-5"
                                         label="Where did it happen? - Country"
                                         outlined
-                                ></v-select>
+                                ></v-select>-->
                             </v-row>
 
                             <v-textarea
-                                    filled
+                                    name="text"
+                                    :rules="[rules.required]"
+                                    label="Your article!"
+                                    class="input-group--focused px-5"
+                                    v-model="article.text"
+                                    prepend-inner-icon="mdi-account"
                                     outlined
-                                    label="Create an Article"
-                                    value=""
                             ></v-textarea>
 
                             <v-divider class="my-2"></v-divider>
 
-                            <v-file-input
-                                    v-model="files"
-                                    color="deep-purple accent-4"
-                                    counter
-                                    label="File input"
-                                    multiple
-                                    placeholder="Select your files"
-                                    prepend-icon="mdi-paperclip"
-                                    outlined
-                                    :show-size="1000"
-                            >
-                                <template v-slot:selection="{ index, text }">
-                                    <v-chip
-                                            v-if="index < 2"
-                                            color="deep-purple accent-4"
-                                            dark
-                                            label
-                                            small
-                                    >
-                                        {{ text }}
-                                    </v-chip>
+                            <v-row class="px-8">
+                                <v-file-input v-model="article.image" label="Profil Picture" outlined @change=""></v-file-input>
+                            </v-row>
 
-                                    <span
-                                            v-else-if="index === 2"
-                                            class="overline grey--text text--darken-3 mx-2"
-                                    >
-                                        +{{ files.length - 2 }} File(s)
-                                 </span>
-                                </template>
-                            </v-file-input>
 
-                            <v-item-group multiple>
+                          <!--  <v-item-group multiple>
                                 <v-subheader>Hashtags</v-subheader>
                                 <v-item
                                         v-for="n in 8"
@@ -108,7 +94,8 @@
                                             Tag {{ n }}
                                     </v-chip>
                                 </v-item>
-                            </v-item-group>
+                            </v-item-group> -->
+
                         </v-card-text>
 
                         <v-divider></v-divider>
@@ -124,6 +111,7 @@
                                 </v-btn>
                             </v-row>
                         </v-card-actions>
+                        </form>
                     </v-card>
 
                     </v-col>
@@ -142,22 +130,54 @@
         // benötigte Komponenten
         components: {},
 
+        computed: {
+            user() {
+                return this.$store.getters.user
+            },
+            error () {
+                return this.$store.getters.error
+            },
+            loading () {
+                return this.$store.getters.loading
+            }
+        },
+
         // entspricht den HTML-Attributen
         props: {},
 
         // Variablen-Speicher
         data() {
-            return {}
+            return {
+                countries: {},
+                article: {},
+                selected: null,
+                rules: {
+                    required: value => !!value || 'Required.',
+                },
+            }
         },
 
         // reagieren auf prop-Veränderung
         watch: {},
 
         // interne Methoden
-        methods: [],
+        methods: {
+            onCreateArticle() {
+                const articleData = {
+                    title: this.article.title,
+                    country: this.article.country,
+                    text: this.article.text
+                }
+
+                this.$store.dispatch('createArticle', articleData)
+
+            }
+        },
 
         // Initialisierung
-        created() {}
+        created() {
+            this.countries = require('../assets/country.json');
+        }
     }
 </script>
 

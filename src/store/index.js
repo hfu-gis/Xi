@@ -6,11 +6,34 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
+        loadedArticles: [
+            {
+                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg',
+                id: 'afajfjadfaadfa323',
+                title: 'Meetup in New York',
+                location: 'New York',
+                description: 'New York, New York!'
+            },
+            {
+                imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Paris_-_Blick_vom_gro%C3%9Fen_Triumphbogen.jpg',
+                id: 'aadsfhbkhlk1241',
+                title: 'Meetup in Paris',
+                location: 'Paris',
+                description: 'It\'s Paris!'
+            }
+
+        ],
         user: null,
         loading: false,
         error: null
     },
     mutations: {
+        setLoadedArticles (state, payload) {
+            state.loadedArticles = payload
+        },
+        createArticle (state, payload) {
+            state.loadedArticles.push(payload)
+        },
         setUser (state, payload) {
             state.user = payload
         },
@@ -26,6 +49,57 @@ export const store = new Vuex.Store({
     },
     actions: {
 
+        createArticle( {commit, getters}, payload) {
+            console.log('I am here!')
+            console.log(getters.user.id)
+            commit('setLoading', true)
+            const article = {
+                title: payload.title,
+                country: payload.country,
+                text: payload.text,
+                creatorid: getters.user.id,
+            }
+
+            var docRef = fb.db.collection('articles').doc()
+                docRef.set(article)
+                .then(() => {
+                    commit('setLoading', false)
+                console.log('DONE')
+            }).catch(error => {
+                console.log('NOT DONE')
+                commit('setLoading', false)
+                console.log(error)
+            })
+
+        },
+
+        loadArticles({commit}) {
+            commit('setLoading', true)
+            fb.db.collection("articles").get()
+                .then((data) => {
+                    const articles = []
+                    data.forEach(function (doc) {
+                        articles.push({
+                            title: doc.data().title,
+                            text: doc.data().text,
+                            creatorid: doc.data().creatorid
+                        })
+                    })
+
+
+
+                    commit('setLoadedArticles', articles)
+                    commit('setLoading', false)
+                })
+                .catch(
+                    (error) => {
+                        console.log(error)
+                        commit('setLoading', false)
+                    }
+                )
+        },
+
+
         signUserUp({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
@@ -38,8 +112,9 @@ export const store = new Vuex.Store({
                         }
 
                         fb.db.collection('user').doc(user.user.uid).set({
+                            id: user.user.uid,
                             email: payload.email,
-                            username: payload.username,
+                            //username: payload.username,
                             firstname: '',
                             lastname: '',
                         }).then(() => {
@@ -71,6 +146,7 @@ export const store = new Vuex.Store({
             let docRef = fb.db.collection('user').doc(getters.user.id)
 
                 docRef.get().then(doc => {
+                    console.log(doc.data())
                     const updatedUser = doc.data()
 
                     commit('setLoading', false)
@@ -177,6 +253,23 @@ export const store = new Vuex.Store({
 
     },
     getters: {
+
+        loadedArticles (state) {
+            return state.loadedArticles.sort((articleA, articleB) => {
+                return articleA.date > articleB.date
+            })
+        },
+        featuredArticles (state, getters) {
+            return getters.loadedArticles.slice(0, 5)
+        },
+        loadedArticle (state) {
+            return (articleId) => {
+                return state.loadedArticles.find((article) => {
+                    return article.id === articleId
+                })
+            }
+        },
+
         user (state) {
             return state.user
         },

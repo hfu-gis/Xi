@@ -27,17 +27,6 @@
                                 <form @submit.prevent="onSignup">
 
                                     <v-text-field
-                                            name="username"
-                                            v-model="userData.username"
-                                            :rules="[rules.required]"
-                                            label="username"
-                                            value="username"
-                                            class="input-group--focused px-5"
-                                            prepend-inner-icon="mdi-account"
-                                            outlined
-                                    ></v-text-field>
-
-                                    <v-text-field
                                             name="email"
                                             :rules="[rules.required]"
                                             label="eMail"
@@ -126,7 +115,6 @@
                 userData: {
                     email: '',
                     password: '',
-                    username:'',
                     lastName: '',
                     firstName: '',
                     country: '',
@@ -167,11 +155,7 @@
         // interne Methoden
         methods: {
             onSignup () {
-                //TODO: Check if username already taken
-
                 this.$store.dispatch('signUserUp', {email: this.userData.email, password: this.userData.password})
-
-
 
             },
             onDismissed () {

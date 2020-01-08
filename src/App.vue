@@ -12,7 +12,7 @@
 
         <v-list-item v-if="this.userIsAuthenticated">
         <v-list-item-avatar>
-          <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+          <v-img :src="user.imageUrl" lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"></v-img>
         </v-list-item-avatar>
           <v-list-item-content>
         <v-list-item-title>{{user.firstname}} {{user.lastname}}</v-list-item-title>
@@ -261,7 +261,7 @@
             <v-btn icon >
               <v-avatar>
                 <img
-                        src="https://cdn.vuetifyjs.com/images/john.jpg"
+                        :src="user.imageUrl"
                         alt="John"
                         v-on="on"
                 >

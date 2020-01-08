@@ -29,7 +29,7 @@ new Vue({
             this.$store.dispatch('fetchUserData')
           }
         })
-    //this.$store.dispatch('newsfeed')
+      this.$store.dispatch('loadArticles')
 
   }
 })
