@@ -209,7 +209,7 @@
       </v-app-bar-nav-icon>
 
       <v-toolbar-title left>
-        <router-link to="/" tag="span" style="cursor: pointer">PERKS - Find the News you'r looking for</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">PERKS - Find the News you're looking for</router-link>
       </v-toolbar-title>
       <v-spacer/>
 

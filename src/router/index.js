@@ -77,8 +77,9 @@ export default new VueRouter({
             component: Newsfeed
         },
         {
-            path: '/perk',
+            path: '/perk/:id',
             name: 'article',
+            props: true,
             component: article
         },
         {

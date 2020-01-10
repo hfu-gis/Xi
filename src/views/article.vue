@@ -3,17 +3,36 @@
         <v-layout row wrap>
             <v-flex xs12>
                 <v-card>
-                    <v-card-title>
-                        <h6 class="primary--text">{{ article.title }}</h6>
-                    </v-card-title>
-                    <v-card-media
+
+
+                    <v-img
+                            class="white--text align-end"
                             :src="article.imageUrl"
-                            height="400px"
-                    ></v-card-media>
-                    <v-card-text>
-                        <div class="info--text">{{ article.country }}</div>
-                        <div>{{ article.text }}</div>
+                    >
+                        <v-card-title>{{ article.title }}</v-card-title>
+                    </v-img>
+
+                    <v-card-subtitle class="pb-0">{{ article.country }}</v-card-subtitle>
+
+                    <v-card-text class="text--primary">
+                        {{ article.text }}
                     </v-card-text>
+
+                    <v-card-actions>
+                        <v-btn
+                                color="orange"
+                                text
+                        >
+                            Share
+                        </v-btn>
+
+                        <v-btn
+                                color="orange"
+                                text
+                        >
+                            Explore
+                        </v-btn>
+                    </v-card-actions>
                 </v-card>
             </v-flex>
         </v-layout>
@@ -26,6 +45,7 @@
         props: ['id'],
         computed: {
             article () {
+                console.log(this.id)
                 return this.$store.getters.loadedArticle(this.id)
             }
         }
