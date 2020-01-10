@@ -56,6 +56,7 @@ export const store = new Vuex.Store({
                     return key
                 })
                 .then(key => {
+                    fb.db.collection('articles').doc(key).update({id:key})
                     const filename = payload.image.name
                     const ext = filename.slice(filename.lastIndexOf('.'))
                     return fb.storage.ref('article/' + key + '.' + ext).put(payload.image)
@@ -86,7 +87,8 @@ export const store = new Vuex.Store({
                             title: doc.data().title,
                             text: doc.data().text,
                             creatorid: doc.data().creatorid,
-                            imageUrl: doc.data().imageUrl
+                            imageUrl: doc.data().imageUrl,
+                            id: doc.data().id
                         })
                     })
 
@@ -155,8 +157,8 @@ export const store = new Vuex.Store({
                 })
                 .catch(error => {
                     console.log(error)
-                    commit('setLoading', false)
-                })
+                            commit('setLoading', false)
+                    })
         },
 
         signUserIn ( {commit}, payload) {
@@ -263,6 +265,8 @@ export const store = new Vuex.Store({
             return getters.loadedArticles.slice(0, 5)
         },
         loadedArticle (state) {
+            console.log("loaded artikle")
+            console.log(state)
             return (articleId) => {
                 return state.loadedArticles.find((article) => {
                     return article.id === articleId

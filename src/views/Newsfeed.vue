@@ -15,7 +15,6 @@
                             class="d-flex align-content-start justify-start justify-center justify-end justify-space-around justify-space-between flex-wrap "
                     >
 
-
                 <v-card
                         max-width="344"
                         align="left"
@@ -41,6 +40,7 @@
                                 <v-btn
                                         text
                                         color="deep-purple accent-4"
+                                        :to="'perk/' + article.id"
                                 >
                                     Read
                                 </v-btn>

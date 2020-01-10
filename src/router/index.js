@@ -16,6 +16,7 @@ import Help from "../views/help";
 import AuthGuard from './auth-guard'
 import EditProfil from "../views/EditProfil";
 import Worldmap from "../views/Worldmap";
+import article from "../views/article";
 
 Vue.use(VueRouter);
 
@@ -74,6 +75,11 @@ export default new VueRouter({
             path: '/Newsfeed',
             name: 'Newsfeed',
             component: Newsfeed
+        },
+        {
+            path: '/perk',
+            name: 'article',
+            component: article
         },
         {
             path: '/Profil',
