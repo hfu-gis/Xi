@@ -87,12 +87,11 @@ export const store = new Vuex.Store({
                             title: doc.data().title,
                             text: doc.data().text,
                             creatorid: doc.data().creatorid,
+                            country: doc.data().country,
                             imageUrl: doc.data().imageUrl,
                             id: doc.data().id
                         })
                     })
-
-
 
                     commit('setLoadedArticles', articles)
                     commit('setLoading', false)
@@ -104,7 +103,6 @@ export const store = new Vuex.Store({
                     }
                 )
         },
-
 
         signUserUp({commit}, payload) {
             commit('setLoading', true)
@@ -277,6 +275,7 @@ export const store = new Vuex.Store({
         user (state) {
             return state.user
         },
+
         loading (state) {
             return state.loading
         },

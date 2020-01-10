@@ -16,7 +16,7 @@ import Help from "../views/help";
 import AuthGuard from './auth-guard'
 import EditProfil from "../views/EditProfil";
 import Worldmap from "../views/Worldmap";
-import article from "../views/article";
+import perk from "../views/article";
 
 Vue.use(VueRouter);
 
@@ -80,7 +80,7 @@ export default new VueRouter({
             path: '/perk/:id',
             name: 'article',
             props: true,
-            component: article
+            component: perk
         },
         {
             path: '/Profil',

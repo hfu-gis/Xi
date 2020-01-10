@@ -60,9 +60,6 @@
         // benötigte Komponenten
         components: {},
 
-        // entspricht den HTML-Attributen
-        props: {},
-
         // Variablen-Speicher
         data () {
             return {
@@ -96,9 +93,11 @@
             getUserData() {
                     let docRef = "";
                 if(this.id == null) {
+                    console.log("User is YOU")
                     docRef = fb.db.collection('user').doc(fb.auth.currentUser.uid)
                 }
                 else {
+                    console.log("User is somerwhere elso")
                     docRef = fb.db.collection('user').doc(this.id)
                 }
 
@@ -127,12 +126,3 @@
     body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 </style>
-
-<!--  <v-hover>
-            <template v-slot="{ hover }">
-                <v-card
-                        :elevation="hover ? 24 : 6"
-                        class="mx-auto pa-md-12"
-                >
-                </v-card>
-            </template>-->

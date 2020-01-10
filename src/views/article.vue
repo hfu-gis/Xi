@@ -12,7 +12,7 @@
                         <v-card-title>{{ article.title }}</v-card-title>
                     </v-img>
 
-                    <v-card-subtitle class="pb-0">{{ article.country }}</v-card-subtitle>
+                    <v-card-subtitle class="pb-0">Writen by<b> {{ article.firstname }} </b> from <b>{{ article.country }}</b> </v-card-subtitle>
 
                     <v-card-text class="text--primary">
                         {{ article.text }}
@@ -20,14 +20,14 @@
 
                     <v-card-actions>
                         <v-btn
-                                color="orange"
+                                color="blue"
                                 text
                         >
                             Share
                         </v-btn>
 
                         <v-btn
-                                color="orange"
+                                color="blue"
                                 text
                         >
                             Explore
@@ -40,15 +40,28 @@
 </template>
 
 <script>
+    const fb = require('../db.js')
+
     export default {
-        name: "article",
+        name: "perk",
         props: ['id'],
+
+        data () {
+            return {
+
+            }
+        },
+
         computed: {
             article () {
-                console.log(this.id)
+                console.log("ID", this.id)
                 return this.$store.getters.loadedArticle(this.id)
             }
-        }
+
+        },
+        methods: {
+
+        },
     }
 </script>
 
