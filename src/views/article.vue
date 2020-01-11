@@ -1,7 +1,12 @@
 <template>
     <v-container>
-        <v-layout row wrap>
-            <v-flex xs12>
+        <v-layout  wrap>
+            <v-flex   cols="12"
+                      xs="10"
+                      sm="10"
+                      md="10"
+                      lg="10"
+                      xl="8">
                 <v-card>
 
 

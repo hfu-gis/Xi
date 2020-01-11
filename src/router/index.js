@@ -17,6 +17,7 @@ import AuthGuard from './auth-guard'
 import EditProfil from "../views/EditProfil";
 import Worldmap from "../views/Worldmap";
 import perk from "../views/article";
+import sortedArticles from "../views/sortedArticles";
 
 Vue.use(VueRouter);
 
@@ -81,6 +82,12 @@ export default new VueRouter({
             name: 'article',
             props: true,
             component: perk
+        },
+        {
+            path: '/perks/:descr/:id',
+            name: 'sortedArticles',
+            props: true,
+            component: sortedArticles
         },
         {
             path: '/Profil',

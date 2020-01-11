@@ -75,7 +75,7 @@
                             <v-divider class="my-2"></v-divider>
 
                             <v-row class="px-8">
-                                <v-file-input v-model="article.image" label="Profil Picture" outlined @change="onFilePicked"></v-file-input>
+                                <v-file-input v-model="article.image" label="Upload an Image" outlined @change="onFilePicked"></v-file-input>
                             </v-row>
 
 

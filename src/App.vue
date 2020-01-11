@@ -147,7 +147,7 @@
         </v-list-item>
 
 
-        <v-list-item link >
+        <v-list-item link :to='"/perks/user/"+ this.user.id' >
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>

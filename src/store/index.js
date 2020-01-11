@@ -271,6 +271,20 @@ export const store = new Vuex.Store({
                 })
             }
         },
+        ArticlebyCategory (state) {
+            console.log("State", state)
+            return(category) => {
+                console.log("Category",category)
+                return state.loadedArticles.filter(article => article.country === category)
+            }
+        },
+        ArticlesbyUser (state) {
+            console.log("State", state)
+            return(id) => {
+                console.log("User",id)
+                return state.loadedArticles.filter(article => article.creatorid === id)
+            }
+        },
 
         user (state) {
             return state.user
