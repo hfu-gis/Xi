@@ -1,10 +1,5 @@
 <template>
     <v-app>
-        <v-row
-                justify="center"
-        >
-            <h1>HEADLINE:</h1>
-        </v-row>
         <v-row justify="space-around">
 
             <v-col
