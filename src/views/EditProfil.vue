@@ -182,6 +182,7 @@
 
                 console.log(this.user.lastname)
                 this.$store.dispatch('editUser', {UserData})
+                this.$router.push({ name: 'profilanzeigen' })
             },
             onDismissed () {
                 this.$store.dispatch('clearError')

@@ -22,10 +22,12 @@
                 >
 
                             <v-list-item>
-                                <v-list-item-avatar color="red"></v-list-item-avatar>
+                                <v-list-item-avatar color="red">
+                                    <v-img :src="article.user.imageUrl" lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"></v-img>
+                                </v-list-item-avatar>
                                 <v-list-item-content>
-                                    <v-list-item-title class="headlinesmall">{{ article.title }}</v-list-item-title>
-                                    <v-list-item-subtitle>by dein mutter</v-list-item-subtitle>
+                                    <v-list-item-title class="headlinesmall">{{ article.title }} </v-list-item-title>
+                                    <v-list-item-subtitle>Author: {{article.user.firstname}} {{article.user.lastname}}</v-list-item-subtitle>
                                 </v-list-item-content>
                             </v-list-item>
 
@@ -74,7 +76,7 @@
         name: "Newsfeed",
         computed: {
             articles () {
-                console.log(this.$store.getters.loadedArticles)
+                console.log("NEWSFEED: ", this.$store.getters.loadedArticles)
                 return this.$store.getters.loadedArticles
             }
         }

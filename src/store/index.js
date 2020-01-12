@@ -41,6 +41,7 @@ export const store = new Vuex.Store({
                 title: payload.title,
                 country: payload.country,
                 text: payload.text,
+                categories: payload.categories,
                 creatorid: getters.user.id,
             }
 
@@ -79,19 +80,29 @@ export const store = new Vuex.Store({
 
         loadArticles({commit}) {
             commit('setLoading', true)
+            const articles = []
+            var userName = {}
             fb.db.collection("articles").get()
                 .then((data) => {
-                    const articles = []
                     data.forEach(function (doc) {
-                        articles.push({
-                            title: doc.data().title,
-                            text: doc.data().text,
-                            creatorid: doc.data().creatorid,
-                            country: doc.data().country,
-                            imageUrl: doc.data().imageUrl,
-                            id: doc.data().id
-                        })
-                    })
+
+                        fb.db.collection("user").doc(doc.data().creatorid).get()
+                            .then((user) => {
+                                console.log("AUTHOR", user.data())
+                                userName = user.data()
+                                    console.log("USER IS ADDED")
+
+                                articles.push({
+                                    title: doc.data().title,
+                                    text: doc.data().text,
+                                    user: userName,
+                                    country: doc.data().country,
+                                    category: doc.data().categories,
+                                    imageUrl: doc.data().imageUrl,
+                                    id: doc.data().id
+                                })
+                            })
+                                })
 
                     commit('setLoadedArticles', articles)
                     commit('setLoading', false)
@@ -269,6 +280,27 @@ export const store = new Vuex.Store({
                 return state.loadedArticles.find((article) => {
                     return article.id === articleId
                 })
+            }
+        },
+        ArticlesbyCategory (state) {
+            console.log("State category", state)
+            return(category) => {
+                console.log("Category",category)
+                return state.loadedArticles.filter(article => article.category === category)
+            }
+        },
+        ArticlesbyCountry (state) {
+            console.log("State country", state)
+            return(country) => {
+                console.log("country",country)
+                return state.loadedArticles.filter(article => article.country === country)
+            }
+        },
+        ArticlesbyUser (state) {
+            console.log("State user", state)
+            return(id) => {
+                console.log("User",id)
+                return state.loadedArticles.filter(article => article.user.id === id)
             }
         },
 

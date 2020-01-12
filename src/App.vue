@@ -78,6 +78,7 @@
                   :value="false"
                   v-for="(continent, i) in countries.Continents"
                   :key="i"
+
           >
             <template v-slot:activator>
               <v-list-item link>
@@ -93,6 +94,7 @@
             <v-list-item link
                          v-for="(continent1, x) in countries.Continents[i].country"
                          :key="x"
+                         :to="'/perks/country/'+ continent.name"
             >
               <v-list-item-action>
                 <v-icon></v-icon>
@@ -113,27 +115,19 @@
             <v-list-item-title>Categories</v-list-item-title>
           </template>
 
-              <v-list-item link>
+              <v-list-item link
+                           v-for="(categorie, x) in categories.Categories"
+                           :key="x"
+                            :to="'/perks/category/'+ categorie">
                 <v-list-item-action>
                   <v-icon></v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Politics</v-list-item-title>
+                  <v-list-item-title>{{categorie}}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
 
-            <v-list-item link>
-              <v-list-item-action>
-                <v-icon></v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Nature</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-
           </v-list-group>
-
-
 
 
 <template  v-if="this.userIsAuthenticated">
@@ -147,7 +141,7 @@
         </v-list-item>
 
 
-        <v-list-item link >
+        <v-list-item link :to='"/perks/user/"+ this.user.id'>
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
@@ -199,8 +193,7 @@
     <v-app-bar app
                color="primary"
                dark
-               src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-    >
+               src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
 
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
@@ -274,7 +267,7 @@
             <v-list>
               <v-list-item>
                 <v-list-item-avatar>
-                  <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                  <img :src="user.imageUrl" lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460">
                 </v-list-item-avatar>
 
                 <v-list-item-content link>
@@ -297,30 +290,21 @@
                     </v-list-item-content>
                   </v-list-item>
 
+              <v-list-item link link :to='"/perks/user/"+ this.user.id'>
+                <v-list-item-action>
+                  <v-icon>mdi-keyboard</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>My Perks</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
               <v-list-item link :to="{name:'EditProfil'}">
                 <v-list-item-action>
                   <v-icon>mdi-pencil</v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
                   <v-list-item-title>Edit your Profil</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-action>
-                      <v-icon>mdi-keyboard</v-icon>
-                    </v-list-item-action>
-                    <v-list-item-content>
-                      <v-list-item-title>My Perks</v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-
-              <v-list-item link>
-                <v-list-item-action>
-                  <v-icon>mdi-email</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Messages</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
 
@@ -381,6 +365,7 @@
     name: 'App',
     data: () => ({
       countries: {},
+      categories: {},
       drawer: false,
       menu: false,
       openSearch: false,
@@ -408,7 +393,8 @@
       }
     },
   created() {
-  this.countries = require('./assets/country.json');
+    this.countries = require('./assets/country.json');
+    this.categories = require('./assets/categories.json');
   }
 }
 </script>

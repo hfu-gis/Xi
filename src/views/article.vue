@@ -1,7 +1,12 @@
 <template>
     <v-container>
-        <v-layout row wrap>
-            <v-flex xs12>
+        <v-layout  wrap>
+            <v-flex   cols="12"
+                      xs="10"
+                      sm="10"
+                      md="10"
+                      lg="10"
+                      xl="8">
                 <v-card>
 
 
@@ -12,7 +17,7 @@
                         <v-card-title>{{ article.title }}</v-card-title>
                     </v-img>
 
-                    <v-card-subtitle class="pb-0">Writen by<b> {{ article.firstname }} </b> from <b>{{ article.country }}</b> </v-card-subtitle>
+                    <v-card-subtitle class="pb-0">Writen by<b> {{ article.user.firstname }} </b> from <b>{{ article.user.country }}</b> </v-card-subtitle>
 
                     <v-card-text class="text--primary">
                         {{ article.text }}
