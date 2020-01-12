@@ -30,6 +30,7 @@
             </template>
         </v-img>
         <v-card-text>
+
             <h2 class="title primary--text">{{UserData.firstname}} {{UserData.lastname}}</h2>
             <br>
             <h3>from {{UserData.country}}</h3>
