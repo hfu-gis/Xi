@@ -1,9 +1,12 @@
 <template>
     <v-app>
         <v-row
-
-                justify="space-around"
+                justify="center"
         >
+            <h1>HEADLINE:</h1>
+        </v-row>
+        <v-row justify="space-around">
+
             <v-col
                     cols="12"
                     xs="10"
@@ -15,6 +18,8 @@
                     class="d-flex align-content-start justify-start justify-center justify-end justify-space-around justify-space-between flex-wrap "
             >
 
+
+
                 <v-card
                         max-width="344"
                         align="left"
@@ -22,10 +27,12 @@
                 >
 
                     <v-list-item>
-                        <v-list-item-avatar color="red"></v-list-item-avatar>
+                        <v-list-item-avatar color="red">
+                            <v-img :src="article.user.imageUrl" lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"></v-img>
+                        </v-list-item-avatar>
                         <v-list-item-content>
                             <v-list-item-title class="headlinesmall">{{ article.title }}</v-list-item-title>
-                            <v-list-item-subtitle>by dein mutter</v-list-item-subtitle>
+                            <v-list-item-subtitle>Author: {{article.user.firstname}} {{article.user.lastname}}</v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
 
@@ -83,10 +90,11 @@
         computed: {
             articles () {
                 if(this.descr == "country") {
-                    console.log("ID", this.id)
+                    console.log("ID COUNTRY", this.id)
                     return this.$store.getters.ArticlebyCategory(this.id)
                 }
                 else if(this.descr == "user") {
+                    console.log("ID USER", this.id)
                     return this.$store.getters.ArticlesbyUser(this.id)
                 }
             }

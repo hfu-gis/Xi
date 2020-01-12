@@ -38,6 +38,7 @@
                                     prepend-inner-icon="mdi-account"
                                     outlined
                             ></v-text-field>
+                            <v-divider class="pa-5"></v-divider>
 
                             <v-row class="px-3">
 
@@ -45,12 +46,14 @@
                                         :items="countries.Continents"
                                         item-text='name'
                                         v-model="article.country"
-                                        prepend-inner-icon="mdi-map"
+                                        prepend-inner-icon="mdi-map-marker"
                                         menu-props="auto"
                                         class="input-group--focused px-5"
                                         label="Where did it happen? - Continent"
                                         outlined
                                 ></v-select>
+
+
                                 <!--<v-select
                                         :items="countries.Continents"
                                         item-text='name'
@@ -62,6 +65,19 @@
                                 ></v-select>-->
                             </v-row>
 
+                            <v-divider class="pa-5"></v-divider>
+
+                            <v-combobox
+                                    v-model="select"
+                                    :items="categories.Categories"
+                                    label="Categories"
+                                    prepend-inner-icon="mdi-dns"
+                                    multiple
+                                    class="input-group--focused px-5"
+                                    chips
+                                    outlined
+                            ></v-combobox>
+
                             <v-textarea
                                     name="text"
                                     :rules="[rules.required]"
@@ -72,11 +88,14 @@
                                     outlined
                             ></v-textarea>
 
-                            <v-divider class="my-2"></v-divider>
+
+                            <v-divider class="pa-5"></v-divider>
 
                             <v-row class="px-8">
-                                <v-file-input v-model="article.image" label="Upload an Image" outlined @change="onFilePicked"></v-file-input>
+                                <v-file-input prepend-icon=""
+                                        prepend-inner-icon="mdi-attachment" v-model="article.image" label="Upload an Image" outlined @change="onFilePicked"></v-file-input>
                             </v-row>
+                            <v-divider class="pa-5"></v-divider>
 
 
                           <!--  <v-item-group multiple>
@@ -98,11 +117,8 @@
 
                         </v-card-text>
 
-                        <v-divider></v-divider>
-
                         <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-row class="justify-end mx-5" >
+                            <v-row class="justify-end ma-5" >
                                 <v-btn type="submit" :disabled="loading" :loading="loading" color="primary"  large class="ml-5">
                                     Post <v-icon right>mdi-arrow-right</v-icon>
                                     <span slot="loader" class="custom-loader">
@@ -156,6 +172,8 @@
                 rules: {
                     required: value => !!value || 'Required.',
                 },
+                select: [],
+                categories: []
             }
         },
 
@@ -172,10 +190,12 @@
                     title: this.article.title,
                     country: this.article.country,
                     text: this.article.text,
-                    image: this.article.image
+                    image: this.article.image,
+                    categories: this.select
                 }
 
                 this.$store.dispatch('createArticle', articleData)
+                this.$router.push({ name: 'Newsfeed' })
 
             },
 
@@ -202,6 +222,7 @@
         // Initialisierung
         created() {
             this.countries = require('../assets/country.json');
+            this.categories = require('../assets/categories.json');
         }
     }
 </script>
