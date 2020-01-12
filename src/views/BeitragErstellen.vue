@@ -67,16 +67,15 @@
 
                             <v-divider class="pa-5"></v-divider>
 
-                            <v-combobox
+                            <v-select
                                     v-model="select"
                                     :items="categories.Categories"
-                                    label="Categories"
+                                    label="Category"
                                     prepend-inner-icon="mdi-dns"
-                                    multiple
+                                    menu-props="auto"
                                     class="input-group--focused px-5"
-                                    chips
                                     outlined
-                            ></v-combobox>
+                            ></v-select>
 
                             <v-textarea
                                     name="text"
@@ -172,7 +171,7 @@
                 rules: {
                     required: value => !!value || 'Required.',
                 },
-                select: [],
+                select: "",
                 categories: []
             }
         },

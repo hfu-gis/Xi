@@ -118,7 +118,7 @@
               <v-list-item link
                            v-for="(categorie, x) in categories.Categories"
                            :key="x"
-                            :to="'/perks/categories/'+ categorie">
+                            :to="'/perks/category/'+ categorie">
                 <v-list-item-action>
                   <v-icon></v-icon>
                 </v-list-item-action>
@@ -193,8 +193,7 @@
     <v-app-bar app
                color="primary"
                dark
-               src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-    >
+               src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
 
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
@@ -268,7 +267,7 @@
             <v-list>
               <v-list-item>
                 <v-list-item-avatar>
-                  <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                  <img :src="user.imageUrl" lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460">
                 </v-list-item-avatar>
 
                 <v-list-item-content link>

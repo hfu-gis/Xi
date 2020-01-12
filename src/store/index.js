@@ -97,6 +97,7 @@ export const store = new Vuex.Store({
                                     text: doc.data().text,
                                     user: userName,
                                     country: doc.data().country,
+                                    category: doc.data().categories,
                                     imageUrl: doc.data().imageUrl,
                                     id: doc.data().id
                                 })
@@ -281,11 +282,18 @@ export const store = new Vuex.Store({
                 })
             }
         },
-        ArticlebyCategory (state) {
-            console.log("State country", state)
+        ArticlesbyCategory (state) {
+            console.log("State category", state)
             return(category) => {
                 console.log("Category",category)
-                return state.loadedArticles.filter(article => article.country === category)
+                return state.loadedArticles.filter(article => article.category === category)
+            }
+        },
+        ArticlesbyCountry (state) {
+            console.log("State country", state)
+            return(country) => {
+                console.log("country",country)
+                return state.loadedArticles.filter(article => article.country === country)
             }
         },
         ArticlesbyUser (state) {

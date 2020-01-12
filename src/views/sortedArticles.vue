@@ -18,8 +18,6 @@
                     class="d-flex align-content-start justify-start justify-center justify-end justify-space-around justify-space-between flex-wrap "
             >
 
-
-
                 <v-card
                         max-width="344"
                         align="left"
@@ -89,9 +87,13 @@
 
         computed: {
             articles () {
-                if(this.descr == "country") {
+                if(this.descr == "category") {
+                    console.log("ID category", this.id)
+                    return this.$store.getters.ArticlesbyCategory(this.id)
+                }
+                else if(this.descr == "country") {
                     console.log("ID COUNTRY", this.id)
-                    return this.$store.getters.ArticlebyCategory(this.id)
+                    return this.$store.getters.ArticlesbyCountry(this.id)
                 }
                 else if(this.descr == "user") {
                     console.log("ID USER", this.id)
