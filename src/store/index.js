@@ -233,6 +233,10 @@ export const store = new Vuex.Store({
             commit('clearError')
         },
 
+        editUserUploadImg({commit}, payload) {
+
+        },
+
         editUser({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
@@ -246,21 +250,21 @@ export const store = new Vuex.Store({
                 text: payload.UserData.text,
             }
 
-            let imageUrl
             let key
-            let userdb
 
             const ref = fb.db.collection('user').doc(fb.auth.currentUser.uid)
             console.log("key: "+ref.id)
+
             ref.set(user)
                 .then(() => {
                     key = ref.id
                     return key
                 })
                 .then(key => {
-                    const filename = payload.UserData.image.name
-                    const ext = filename.slice(filename.lastIndexOf('.'))
-                    return fb.storage.ref('user/' + key + '.' + ext).put(payload.UserData.image)
+                        console.log("image is undefined. HURAY!")
+                        const filename = payload.UserData.image.name
+                        const ext = filename.slice(filename.lastIndexOf('.'))
+                        return fb.storage.ref('user/' + key + '.' + ext).put(payload.UserData.image)
                 })
                 .then(fileData => {
                         fileData.ref.getDownloadURL().then((downloadURL) => {
@@ -276,6 +280,8 @@ export const store = new Vuex.Store({
                 commit('setError', error)
                 console.log(error)
             })
+
+
         },
 
 

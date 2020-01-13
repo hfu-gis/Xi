@@ -17,7 +17,7 @@
         <v-img
                 :aspect-ratio="16/9"
                 :src="UserData.imageUrl"
-                lazy-src="https://cdn.pixabay.com/photo/2017/02/23/13/05/profile-2092113_960_720.png"
+                lazy-src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
         >
             <template v-slot:placeholder>
                 <v-row
