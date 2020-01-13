@@ -31,13 +31,13 @@
         </v-img>
         <v-card-text>
 
-            <h2 class="title primary--text">{{UserData.firstname}} {{UserData.lastname}}</h2>
+            <h2 >{{UserData.firstname}} {{UserData.lastname}}</h2>
             <br>
-            <h3>from {{UserData.country}}</h3>
+            <h3 >from {{UserData.country}}</h3>
             <br>
-            <h3>{{UserData.email}}</h3>
+            <h3 >{{UserData.email}}</h3>
             <br>
-            <h3>work as {{UserData.job}}</h3>
+            <h3  >work as {{UserData.job}}</h3>
             <br>
             <br>{{UserData.text}}
         </v-card-text>

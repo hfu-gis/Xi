@@ -66,6 +66,7 @@
                                     label="job"
                                     prepend-inner-icon="mdi-shape-plus"
                                     outlined
+
                             ></v-text-field>
 
                            <!-- <v-row class="px-3">
