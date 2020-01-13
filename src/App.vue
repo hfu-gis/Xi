@@ -5,7 +5,7 @@
             v-model="drawer"
             app
             dark
-            color="primary"
+            color="secondary"
     >
 
       <v-list dense >
@@ -191,14 +191,14 @@
 
     <!-- ****************** TOP NAVIGATION ********************* -->
     <v-app-bar app
-               color="primary"
+               color="secondary"
                dark
                src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
 
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <v-app-bar-nav-icon left>
-        <v-img />
+        <img class="mx-2" src="./assets/images/logo.png" height="40" width="40" contain/>
       </v-app-bar-nav-icon>
 
       <v-toolbar-title left>
@@ -337,6 +337,7 @@
             dark
             app
             padless
+            color="secondary"
     >
       <v-card
               class="flex"
@@ -398,3 +399,6 @@
   }
 }
 </script>
+
+<style scoped>
+</style>
