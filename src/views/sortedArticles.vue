@@ -39,17 +39,40 @@
                     <v-card-actions>
                         <v-btn
                                 text
-                                color="deep-purple accent-4"
+                                color="blue accent-4"
                                 :to="'../../perk/' + article.id"
                         >
                             Read
                         </v-btn>
                         <v-btn
-                                text
-                                color="deep-purple accent-4"
+                                v-if="descr==='user'"
+                                dark
+                                color="red"
+                                @click="snackbar = true"
                         >
-                            Bookmark
+                            Delete
                         </v-btn>
+
+                        <v-snackbar
+                                v-model="snackbar"
+                        >
+                            Are you sure?
+                            <v-btn
+                                    color="red"
+                                    text
+                                    @click="snackbar = false"
+                            >
+                                Cancel
+                            </v-btn>
+                            <v-btn
+                                    color="green"
+                                    text
+                                    @click="onDelete(article)"
+                            >
+                                Delete
+                            </v-btn>
+                        </v-snackbar>
+
                         <v-spacer></v-spacer>
                         <v-btn icon>
                             <v-icon>mdi-heart</v-icon>
@@ -57,6 +80,7 @@
                         <v-btn icon>
                             <v-icon>mdi-share-variant</v-icon>
                         </v-btn>
+
                     </v-card-actions>
 
 
@@ -73,10 +97,11 @@
     export default {
         name: "sortedArticles",
         props: ['id','descr'],
+        deleted: "",
 
         data () {
             return {
-
+                snackbar: false
             }
         },
 
@@ -98,7 +123,9 @@
 
         },
         methods: {
-
+            onDelete(deleteId) {
+                return this.$store.dispatch('deleteArticle', deleteId)
+            }
         },
     }
 </script>

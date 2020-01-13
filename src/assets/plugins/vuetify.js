@@ -9,11 +9,11 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: colors.blueGrey.darken4,
-        secondary: colors.blue,
-        accent: '#1E88E5',
+        primary: colors.blueGrey,
+        secondary: colors.blueGrey.darken4,
+        accent: '#FF5252',
         error: '#FF5252',
-        info: '#0D47A1',
+        info: '#FF5252',
         success: '#4CAF50',
         warning: '#FFC107'
       },

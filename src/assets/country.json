@@ -4,40 +4,37 @@
     {
       "name": "Africa",
       "country": [
-        {"name": "Germany"},
-        {"name": "mama"}
+        {"name": "Africa"}
       ]
     },
     {
       "name": "Asia",
       "country": [
-        {"name": "1Germany"}
+        {"name": "Asia"}
       ]
     },
     {
       "name": "Australia",
       "country": [
-        {"name": "45Germany"}
+        {"name": "Australia"}
       ]
     },
     {
       "name": "Europe",
       "country": [
-        {"name": "1Ger543many"},
-        {"name": "1rewrGer543many"},
-        {"name": "1r345Ger543many"}
+        {"name": "Europe"}
       ]
     },
     {
       "name": "North America",
       "country": [
-        {"name": "1Germ5342any"}
+        {"name": "North America"}
       ]
     },
     {
       "name": "South America",
       "country": [
-        {"name": "1Germ78456any"}
+        {"name": "South America"}
       ]
     }
   ]

@@ -41,16 +41,10 @@
                             <v-card-actions>
                                 <v-btn
                                         text
-                                        color="deep-purple accent-4"
+                                        color="blue accent-4"
                                         :to="'perk/' + article.id"
                                 >
                                     Read
-                                </v-btn>
-                                <v-btn
-                                        text
-                                        color="deep-purple accent-4"
-                                >
-                                    Bookmark
                                 </v-btn>
                                 <v-spacer></v-spacer>
                                 <v-btn icon>

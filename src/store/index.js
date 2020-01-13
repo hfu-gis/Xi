@@ -115,6 +115,20 @@ export const store = new Vuex.Store({
                 )
         },
 
+        deleteArticle({commit}, payload) {
+            commit('setLoading', true)
+            commit('clearError')
+            console.log("DELETE ARTICLE",payload)
+            fb.db.collection("articles").doc(payload.deleteid.gbid).delete().then(function() {
+                console.log("Document successfully deleted!");
+                commit('setLoading', false)
+            }).catch(function(error) {
+                commit('setLoading', false)
+                commit('setError', error)
+            });
+
+        },
+
         signUserUp({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
