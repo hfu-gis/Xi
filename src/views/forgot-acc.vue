@@ -1,23 +1,18 @@
 <template>
     <v-app id="login">
-        <v-container
-                class="fill-height"
-                fluid>
-            <v-row
-                    align="center"
-                    justify="center"
+        <v-row
+                justify="center"
+        >
+            <v-col
+                    cols="12"
+                    sm="8"
+                    md="6"
             >
-                <v-col
-                        cols="12"
-                        sm="8"
-                        md="4"
-                >
-            <v-layout row wrap>
                 <v-card class="card-log"
                         outlined
                 >
 
-                   <v-toolbar color="info"
+                   <v-toolbar color="primary"
                               dark
                               flat>
                        <v-toolbar-title>Forgot account?</v-toolbar-title>
@@ -61,10 +56,8 @@
                     </v-card-text>
 
                 </v-card>
-            </v-layout>
                 </v-col>
             </v-row>
-        </v-container>
     </v-app>
 
 </template>
