@@ -241,6 +241,7 @@ export const store = new Vuex.Store({
                 id: payload.UserData.id,
                 firstname: payload.UserData.firstname,
                 lastname: payload.UserData.lastname,
+                country: payload.UserData.country,
                 job: payload.UserData.job,
                 text: payload.UserData.text,
             }

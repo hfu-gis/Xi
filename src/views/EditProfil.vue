@@ -68,26 +68,17 @@
                                     outlined
                             ></v-text-field>
 
-                           <!-- <v-row class="px-3">
-                                <v-select
-                                    :rules="[rules.required]"
-                                    :items="countries"
-                                    prepend-inner-icon="mdi-map"
+
+                            <v-select
+                                    :items="countries.Continents"
+                                    item-text='name'
+                                    v-model="user.country"
+                                    prepend-inner-icon="mdi-map-marker"
                                     menu-props="auto"
                                     class="input-group--focused px-5"
-                                    label="Where you are from? - Continent"
+                                    label="Where did it happen? - Continent"
                                     outlined
-                                ></v-select>
-                                <v-select
-                                          :rules="[rules.required]"
-                                          :items="countries"
-                                          prepend-inner-icon="mdi-map"
-                                          menu-props="auto"
-                                          class="input-group--focused px-5"
-                                          label="Where you are from? - Country"
-                                          outlined
-                                ></v-select>
-                            </v-row>-->
+                            ></v-select>
 
                             <v-row class="px-8">       <!--Textfeld-->
                                 <v-textarea
@@ -142,8 +133,7 @@
                     image : null,
                 },
 
-                countries: {
-                },
+                countries: {},
 
                 rules: {
                     required: value => !!value || 'Required.',
@@ -175,6 +165,7 @@
                     id: this.$store.getters.user.id,
                     firstname: this.user.firstname,
                     lastname: this.user.lastname,
+                    country: this.user.country,
                     job: this.user.job,
                     text: this.user.text,
                     image: this.user.image
@@ -206,7 +197,7 @@
 
         // Initialisierung
         created() {
-
+            this.countries = require('../assets/country.json');
         }
     }
 </script>
