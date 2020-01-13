@@ -5,12 +5,14 @@ const fb = require('../db.js')
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
+    // declare states
     state: {
         loadedArticles: [],
         user: null,
         loading: false,
         error: null
     },
+    // set state
     mutations: {
         setLoadedArticles (state, payload) {
             state.loadedArticles = payload
@@ -32,10 +34,8 @@ export const store = new Vuex.Store({
         }
     },
     actions: {
-
+        /************************ CREATE NEW ARTICLE ****************************/
         createArticle( {commit, getters}, payload) {
-            console.log('I am here!')
-            console.log(getters.user.id)
             commit('setLoading', true)
             const article = {
                 title: payload.title,
@@ -44,8 +44,6 @@ export const store = new Vuex.Store({
                 categories: payload.categories,
                 creatorid: getters.user.id,
             }
-
-
             let imageUrl
             let key
             let userdb
@@ -53,45 +51,48 @@ export const store = new Vuex.Store({
             const ref = fb.db.collection('articles').doc()
             ref.set(article)
                 .then(() => {
+                    // get key for the article
                     key = ref.id
                     return key
                 })
                 .then(key => {
+                    //update database with key
                     fb.db.collection('articles').doc(key).update({id:key})
+                    //save image
                     const filename = payload.image.name
                     const ext = filename.slice(filename.lastIndexOf('.'))
                     return fb.storage.ref('article/' + key + '.' + ext).put(payload.image)
                 })
                 .then(fileData => {
+                    // create URl from image and save it in firebase
                     fileData.ref.getDownloadURL().then((downloadURL) => {
                         fb.db.collection('articles').doc(key).update({imageUrl: downloadURL})
                     })
                 })
                 .then((data) => {
-                    console.log("DATA "+data)
                     commit('setLoading', false)
-                    console.log('DONE')
                 }).catch(error => {
-                commit('setLoading', false)
-                commit('setError', error)
-                console.log(error)
+                    commit('setLoading', false)
+                    commit('setError', error)
+                    console.log(error)
             })
         },
 
+        /************************ LOAD ALL ARTICLES ****************************/
         loadArticles({commit}) {
             commit('setLoading', true)
             const articles = []
             var userName = {}
+            //get articles from firebase
             fb.db.collection("articles").get()
                 .then((data) => {
                     data.forEach(function (doc) {
-
+                        // get user for each article
                         fb.db.collection("user").doc(doc.data().creatorid).get()
                             .then((user) => {
-                                console.log("AUTHOR", user.data())
                                 userName = user.data()
-                                    console.log("USER IS ADDED")
 
+                                //save data into articles
                                 articles.push({
                                     title: doc.data().title,
                                     text: doc.data().text,
@@ -103,7 +104,7 @@ export const store = new Vuex.Store({
                                 })
                             })
                                 })
-
+                    //commit the articles into the article state
                     commit('setLoadedArticles', articles)
                     commit('setLoading', false)
                 })
@@ -115,12 +116,14 @@ export const store = new Vuex.Store({
                 )
         },
 
+        /************************ DELETE AN ARTICLE ****************************/
         deleteArticle({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
             console.log("DELETE ARTICLE",payload)
+            // delete article from firebase
             fb.db.collection("articles").doc(payload.deleteid.gbid).delete().then(function() {
-                console.log("Document successfully deleted!");
+                console.log("successfully deleted!");
                 commit('setLoading', false)
             }).catch(function(error) {
                 commit('setLoading', false)
@@ -129,9 +132,11 @@ export const store = new Vuex.Store({
 
         },
 
+        /************************ SIGN USER UP ****************************/
         signUserUp({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
+            // use fireebase auth to register new user
             fb.auth.createUserWithEmailAndPassword(payload.email, payload.password)
                 .then(
                     user => {
@@ -140,20 +145,18 @@ export const store = new Vuex.Store({
                             id: user.user.uid
                         }
 
+                        // save the user in firestore
                         fb.db.collection('user').doc(user.user.uid).set({
                             id: user.user.uid,
                             email: payload.email,
                             firstname: '',
                             lastname: '',
-                        }).then(() => {
-                            console.log('DONE')
+                        }).then(() => { //do nothing here
                         }).catch(error => {
-                            console.log('NOT DONE')
                             console.log(error)
                         })
 
                         commit('setUser', newUser)
-                        console.log(this.user)
                     }
                 )
                 .catch(
@@ -164,29 +167,32 @@ export const store = new Vuex.Store({
                     }
                 )
 
-
         },
 
+        /************************ GET USER DATA FROM FIREBASE ****************************/
         fetchUserData ({commit, getters}) {
             commit('setLoading', true)
-            console.log(getters.user.id)
+            //get the userdata fron firebase by the user.id
             let docRef = fb.db.collection('user').doc(getters.user.id)
                 docRef.get().then(doc => {
-                    console.log(doc.data())
                     const updatedUser = doc.data()
 
                     commit('setLoading', false)
+                    //update User and set the state of the user
                     commit('setUser', updatedUser)
                 })
                 .catch(error => {
                     console.log(error)
                             commit('setLoading', false)
+                            console.log(error);
                     })
         },
 
+        /************************ SIGN USER IN (LOGIN) ****************************/
         signUserIn ( {commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
+            // use firebase auth to sign user in
             fb.auth.signInWithEmailAndPassword(payload.email, payload.password)
                 .then(
                     user => {
@@ -194,6 +200,7 @@ export const store = new Vuex.Store({
                         const newUser = {
                             id: user.user.uid
                         }
+                        // set state of user
                         commit('setUser', newUser)
 
                     }
@@ -206,10 +213,14 @@ export const store = new Vuex.Store({
                     }
                 )
         },
+
+        /************************ FORGOT PASSWORD ****************************/
         resetUser ( {commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
 
+            //reset the user with firebase auth.
+            // user will get an email to reset the acc.
             fb.auth.sendPasswordResetEmail(payload.email)
                 .then(
                     commit('setLoading', false)
@@ -222,21 +233,30 @@ export const store = new Vuex.Store({
                     }
                 )
         },
+
+        /************************ AUTO SIGN IN AFTER PAGE REFRESH ****************************/
         autoSignIn ({commit}, payload) {
+            //if user is already signed in. set state
             commit('setUser', {id: payload.uid})
         },
+
+        /************************ LOGOUT ****************************/
         logout ({commit}) {
+            //sign out with firebase auth
             fb.auth.signOut()
+            // set state to null! !important!
             commit('setUser', null)
         },
         clearError ({commit}) {
             commit('clearError')
         },
 
+        /************************ EDIT USER DATA ****************************/
         editUser({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
 
+            //get userdata from formular
             const user = {
                 id: payload.UserData.id,
                 firstname: payload.UserData.firstname,
@@ -268,57 +288,54 @@ export const store = new Vuex.Store({
                         })
                 })
                 .then((data) => {
-                    console.log("DATA "+data)
                 commit('setLoading', false)
-                console.log('DONE')
             }).catch(error => {
                 commit('setLoading', false)
                 commit('setError', error)
-                console.log(error)
+                console.log(error);
             })
         },
 
 
     },
     getters: {
-
+        // get all articles in firebase available
         loadedArticles (state) {
             return state.loadedArticles
         },
+        // get the first five articles.
+        // Not in use yet!
         featuredArticles (state, getters) {
             return getters.loadedArticles.slice(0, 5)
         },
+        // get specific article
         loadedArticle (state) {
-            console.log("loaded artikle")
-            console.log(state)
             return (articleId) => {
                 return state.loadedArticles.find((article) => {
                     return article.id === articleId
                 })
             }
         },
+        // get all articles by category
         ArticlesbyCategory (state) {
-            console.log("State category", state)
             return(category) => {
-                console.log("Category",category)
                 return state.loadedArticles.filter(article => article.category === category)
             }
         },
+        // get all articles by country
         ArticlesbyCountry (state) {
-            console.log("State country", state)
             return(country) => {
-                console.log("country",country)
                 return state.loadedArticles.filter(article => article.country === country)
             }
         },
+        // get all articles from one user
         ArticlesbyUser (state) {
-            console.log("State user", state)
             return(id) => {
-                console.log("User",id)
                 return state.loadedArticles.filter(article => article.user.id === id)
             }
         },
 
+        // return user state
         user (state) {
             return state.user
         },
@@ -332,3 +349,5 @@ export const store = new Vuex.Store({
     },
     modules: { }
 })
+
+// Hallo Markus, du hast dir den Code also tatsöchlich angeschaut. xD

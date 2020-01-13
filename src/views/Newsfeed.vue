@@ -70,7 +70,6 @@
         name: "Newsfeed",
         computed: {
             articles () {
-                console.log("NEWSFEED: ", this.$store.getters.loadedArticles)
                 return this.$store.getters.loadedArticles
             }
         }
