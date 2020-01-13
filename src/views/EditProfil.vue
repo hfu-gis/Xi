@@ -79,7 +79,7 @@
                                     prepend-inner-icon="mdi-map-marker"
                                     menu-props="auto"
                                     class="input-group--focused px-5"
-                                    label="Where did it happen? - Continent"
+                                    label="Where are you from? - Continent"
                                     outlined
                             ></v-select>
 
