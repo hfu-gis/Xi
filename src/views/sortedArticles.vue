@@ -45,7 +45,7 @@
                             Read
                         </v-btn>
                         <v-btn
-                                v-if="descr==='user'"
+                                v-if="descr==='user' && userIsAuthenticated && article.user.id === user.id"
                                 dark
                                 color="red"
                                 @click="snackbar = true"
@@ -119,7 +119,15 @@
                     console.log("ID USER", this.id)
                     return this.$store.getters.ArticlesbyUser(this.id)
                 }
-            }
+            },
+
+                user() {
+                console.log("USERRRR:",this.$store.getters.user)
+                    return this.$store.getters.user
+                },
+                userIsAuthenticated () {
+                    return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+                }
 
         },
         methods: {

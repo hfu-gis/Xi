@@ -255,7 +255,7 @@
               <v-avatar>
                 <img
                         :src="user.imageUrl"
-                        alt="John"
+                        lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
                         v-on="on"
                 >
               </v-avatar>
