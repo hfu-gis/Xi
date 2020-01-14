@@ -30,17 +30,17 @@
             </template>
         </v-img>
         <v-card-text>
-            
 
-            <h2 class="font-weight-black">{{UserData.firstname}} {{UserData.lastname}}</h2>
             <br>
-            <h3 class="font-weight-thin">from {{UserData.country}}</h3>
+            <h2 class="display-1" align="center"> <h2 class="blue-grey--text"> {{UserData.firstname}} {{UserData.lastname}}</h2></h2>
             <br>
-            <h3 class="font-weight-regular">{{UserData.email}}</h3>
+            <h3 class="headline" align="center">from {{UserData.country}}</h3>
             <br>
-            <h3 class="font-weight-light">work as {{UserData.job}}</h3>
+            <h3 class="subtitle-2" align="center">{{UserData.email}}</h3>
             <br>
-            <br> <h3 class="font-italic" >{{UserData.text}}</h3>
+            <h3 class="headline" align="center">work as {{UserData.job}}</h3>
+            <br>
+            <h3 class="overline" align="center" >{{UserData.text}}</h3>
         </v-card-text>
 
 
