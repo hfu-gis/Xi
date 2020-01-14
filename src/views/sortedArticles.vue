@@ -1,11 +1,12 @@
 <template>
     <div>
-        <v-row justify="space-around">
 
-            <article class="ueberschriften" style="margin-top: 30px;">  <!-- HTML-Code aus dem Body-Tag hier einfügen -->
-                <header><h1 class="text-center">Perks by {{descr}}: </h1></header>
-                <h3 class="text-center">{{id}}</h3>
-            </article>
+        <article class="ueberschriften" style="margin-top: 30px;">  <!-- HTML-Code aus dem Body-Tag hier einfügen -->
+            <header><h1 class="text-center">Perks by {{descr}}: </h1></header>
+            <h3 class="text-center">{{id}}</h3>
+        </article>
+
+        <v-row justify="space-around">
 
             <v-col
                     cols="12"
@@ -75,7 +76,7 @@
                             <v-btn
                                     color="green"
                                     text
-                                    @click="onDelete(article)"
+                                    @click="onDelete(article.id)"
                             >
                                 Delete
                             </v-btn>
@@ -128,7 +129,6 @@
                     return this.$store.getters.ArticlesbyUser(this.id)
                 }
             },
-
                 user() {
                 console.log("USERRRR:",this.$store.getters.user)
                     return this.$store.getters.user

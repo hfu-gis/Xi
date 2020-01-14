@@ -122,7 +122,7 @@ export const store = new Vuex.Store({
             commit('clearError')
             console.log("DELETE ARTICLE",payload)
             // delete article from firebase
-            fb.db.collection("articles").doc(payload.deleteid.gbid).delete().then(function() {
+            fb.db.collection("articles").doc(payload).delete().then(function() {
                 console.log("successfully deleted!");
                 commit('setLoading', false)
             }).catch(function(error) {

@@ -421,6 +421,8 @@
         this.$store.dispatch('logout')
         this.$router.push('login')
       }
+      
+
     },
   created() {
     this.countries = require('./assets/country.json');
