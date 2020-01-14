@@ -6,14 +6,16 @@ import router from './router'
 import { store } from  './store'
 import AlertCmp from './components/Alert'
 const fb = require('./db')
-
+import Worldmap from "./components/Worldmap";
 
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 
+
 Vue.config.productionTip = false
 
 Vue.component('app-alert', AlertCmp)
+Vue.component('worldmap', Worldmap)
 
 new Vue({
   el: '#app',

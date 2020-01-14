@@ -13,7 +13,7 @@ import Newsfeed from "../views/Newsfeed";
 import Help from "../views/help";
 import AuthGuard from './auth-guard'
 import EditProfil from "../views/EditProfil";
-import Worldmap from "../views/Worldmap";
+import Worldmap from "../components/Worldmap";
 import perk from "../views/article";
 import sortedArticles from "../views/sortedArticles";
 

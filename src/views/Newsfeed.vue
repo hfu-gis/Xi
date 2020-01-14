@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-app>
                 <v-row
 
                         justify="space-around"
@@ -14,6 +14,9 @@
                             style="display: block"
                             class="d-flex align-content-start justify-center flex-wrap "
                     >
+
+
+                        <worldmap></worldmap>
 
                 <v-card
                         max-width="344"
@@ -62,7 +65,7 @@
 
             </v-col>
         </v-row>
-    </div>
+    </v-app>
 </template>
 
 

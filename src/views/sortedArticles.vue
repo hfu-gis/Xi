@@ -2,6 +2,11 @@
     <div>
         <v-row justify="space-around">
 
+            <article class="ueberschriften" style="margin-top: 30px;">  <!-- HTML-Code aus dem Body-Tag hier einfügen -->
+                <header><h1 class="text-center">Perks by {{descr}}: </h1></header>
+                <h3 class="text-center">{{id}}</h3>
+            </article>
+
             <v-col
                     cols="12"
                     xs="10"
@@ -12,6 +17,8 @@
                     style="display: block"
                     class="d-flex align-content-start justify-center flex-wrap "
             >
+
+
 
                 <v-card
                         max-width="344"
