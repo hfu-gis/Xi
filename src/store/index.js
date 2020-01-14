@@ -264,6 +264,7 @@ export const store = new Vuex.Store({
                 country: payload.UserData.country,
                 job: payload.UserData.job,
                 text: payload.UserData.text,
+                email: payload.UserData.email
             }
 
             let imageUrl

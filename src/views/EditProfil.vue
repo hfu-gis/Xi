@@ -166,7 +166,8 @@
                     country: this.user.country,
                     job: this.user.job,
                     text: this.user.text,
-                    image: this.user.image
+                    image: this.user.image,
+                    email: this.$store.getters.user.email,
                 }
 
                 console.log(this.user.lastname)

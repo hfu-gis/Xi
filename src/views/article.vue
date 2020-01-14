@@ -1,12 +1,16 @@
 <template>
     <v-container>
-        <v-layout  wrap>
-            <v-flex   cols="12"
-                      xs="10"
-                      sm="10"
-                      md="10"
-                      lg="10"
-                      xl="8">
+        <v-row
+                justify="center"
+        >
+            <v-col
+                    cols="12"
+                    xs="10"
+                    sm="10"
+                    md="10"
+                    lg="10"
+                    xl="8"
+            >
                 <v-card>
 
 
@@ -39,9 +43,7 @@
                         </v-btn>
                     </v-card-actions>
                 </v-card>
-            </v-flex>
-        </v-layout>
-    </v-container>
+            </v-col></v-row></v-container>
 </template>
 
 <script>
