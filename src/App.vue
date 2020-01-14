@@ -418,8 +418,8 @@
     },
     methods: {
       onLogout() {
-        console.log("Hello")
         this.$store.dispatch('logout')
+        this.$router.push('login')
       }
     },
   created() {
