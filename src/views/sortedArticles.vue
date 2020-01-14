@@ -10,18 +10,19 @@
                     lg="10"
                     xl="8"
                     style="display: block"
-                    class="d-flex align-content-start justify-start justify-center justify-end justify-space-around justify-space-between flex-wrap "
+                    class="d-flex align-content-start justify-center flex-wrap "
             >
 
                 <v-card
                         max-width="344"
                         align="left"
                         v-for="article in articles" :key="article.id"
+                        class="ma-5"
                 >
 
                     <v-list-item>
                         <v-list-item-avatar color="red">
-                            <v-img :src="article.user.imageUrl" lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"></v-img>
+                            <v-img :src="article.user.imageUrl" lazy-src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"></v-img>
                         </v-list-item-avatar>
                         <v-list-item-content>
                             <v-list-item-title class="headlinesmall">{{ article.title }}</v-list-item-title>

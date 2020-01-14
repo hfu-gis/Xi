@@ -1,5 +1,7 @@
 <template>
   <v-app style="background-image: url(https://www.mural-wallpaper.com/wp-content/uploads/2019/03/M11-World-map-on-grunge-background.jpg)">
+
+
     <!-- ****************** SIDEBAR ********************* -->
     <v-navigation-drawer
             v-model="drawer"
@@ -11,20 +13,21 @@
       <v-list dense >
 
         <v-list-item v-if="this.userIsAuthenticated">
-        <v-list-item-avatar>
-          <v-img :src="user.imageUrl" lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"></v-img>
-        </v-list-item-avatar>
+          <v-list-item-avatar>
+            <v-img :src="user.imageUrl" lazy-src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"></v-img>
+          </v-list-item-avatar>
           <v-list-item-content>
-        <v-list-item-title>{{user.firstname}} {{user.lastname}}</v-list-item-title>
-        <v-list-item-subtitle>You're logged in</v-list-item-subtitle>
+            <v-list-item-title>{{user.firstname}} {{user.lastname}}</v-list-item-title>
+            <v-list-item-subtitle>You're logged in</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
         <template v-if="!this.userIsAuthenticated">
+
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="title">
-                PERKS
+                PERKS!
               </v-list-item-title>
               <v-list-item-subtitle>
                 Please sign in!
@@ -59,15 +62,25 @@
         <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">
-            Find Perks
+            Find Perks!
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
+        <v-list-item link :to="{name: 'Newsfeed'}">
+          <v-list-item-action>
+            <v-icon>mdi-home</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Show all Perks</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
         <v-list-group
-                prepend-icon="mdi-map-marker"
+                prepend-icon="mdi-map-marker-multiple"
                 :value="false"
         >
+
         <template v-slot:activator>
           <v-list-item-title>Continents</v-list-item-title>
         </template>
@@ -96,12 +109,14 @@
                          :key="x"
                          :to="'/perks/country/'+ continent.name"
             >
+
               <v-list-item-action>
                 <v-icon></v-icon>
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title>{{continent1.name}}</v-list-item-title>
               </v-list-item-content>
+
             </v-list-item>
 
           </v-list-group>
@@ -127,11 +142,11 @@
                 </v-list-item-content>
               </v-list-item>
 
-          </v-list-group>
+        </v-list-group>
 
+      <span  v-if="this.userIsAuthenticated">
+        <v-divider class="ma-5"></v-divider>
 
-<template  v-if="this.userIsAuthenticated">
-  <v-divider class="ma-5"></v-divider>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title class="title">
@@ -140,29 +155,53 @@
           </v-list-item-content>
         </v-list-item>
 
-
         <v-list-item link :to='"/perks/user/"+ this.user.id'>
           <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
+            <v-icon>mdi-loupe</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Show your Perks</v-list-item-title>
+            <v-list-item-title>Your Perks!</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
         <v-list-item link :to="{name: 'BeitragErstellen'}">
           <v-list-item-action>
-            <v-icon>mdi-pencil</v-icon>
+            <v-icon>mdi-plus</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Create a new Perk</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-</template>
 
 
-      <template v-slot:append>
-        <v-divider class="ma-5"></v-divider>
+        <span class="hidden-md-and-up">
+          <v-divider class="ma-5"></v-divider>
+
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title class="title">
+                Your Profil
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item link :to="{name: 'BeitragErstellen'}">
+            <v-list-item-action>
+              <v-icon>mdi-tooltip-outline</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Your Profile</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item link :to="{name: 'BeitragErstellen'}">
+            <v-list-item-action>
+              <v-icon>mdi-pencil</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Edit Your Profile</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
 
           <v-list-item  @click="onLogout">
           <v-list-item-action >
@@ -173,16 +212,8 @@
           </v-list-item-content>
         </v-list-item>
 
-          <v-list-item link :to="{name: 'Help'}">
-            <v-list-item-action>
-              <v-icon>mdi-help</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Help</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-
-      </template>
+        </span>
+      </span>
 
 </v-list>
 
@@ -193,27 +224,20 @@
     <v-app-bar app
                color="secondary"
                dark
-               src="https://images.pexels.com/photos/355887/pexels-photo-355887.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
+               >
 
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <v-app-bar-nav-icon left>
-        <img class="mx-2" src="./assets/images/logo.png" height="40" width="40" contain/>
+        <router-link to="/" tag="span" style="cursor: pointer">
+          <img src="./assets/images/logo.png" height="25" width="25" contain/>
+        </router-link>
       </v-app-bar-nav-icon>
 
       <v-toolbar-title left>
-        <router-link to="/" tag="span" style="cursor: pointer">PERKS - Find the News you're looking for</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">PERKS - Find the News you're looking for!</router-link>
       </v-toolbar-title>
       <v-spacer/>
-
-   <!--
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn class="px-6" v-for="item in menuItems" :key="item.title" text router :to="item.link">
-          <v-icon left>{{item.icon}}</v-icon>
-          {{item.title}}
-        </v-btn>
-      </v-toolbar-items>
-    -->
 
       <!-- If user not auth -->
       <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
@@ -253,11 +277,11 @@
           <template v-slot:activator="{ on }">
             <v-btn icon >
               <v-avatar>
-                <img
+                <v-img
                         :src="user.imageUrl"
-                        lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
+                        lazy-src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
                         v-on="on"
-                >
+                ></v-img>
               </v-avatar>
             </v-btn>
 
@@ -267,7 +291,7 @@
             <v-list>
               <v-list-item>
                 <v-list-item-avatar>
-                  <img :src="user.imageUrl" lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460">
+                  <v-img :src="user.imageUrl" lazy-src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"></v-img>
                 </v-list-item-avatar>
 
                 <v-list-item-content link>
@@ -286,18 +310,9 @@
                       <v-icon>mdi-tooltip-outline</v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
-                      <v-list-item-title>My Profil</v-list-item-title>
+                      <v-list-item-title>Your Profil</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
-
-              <v-list-item link link :to='"/perks/user/"+ this.user.id'>
-                <v-list-item-action>
-                  <v-icon>mdi-keyboard</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>My Perks</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
 
               <v-list-item link :to="{name:'EditProfil'}">
                 <v-list-item-action>
@@ -332,7 +347,7 @@
         <router-view />
     </v-content>
 
-
+    <!-- ****************** FOOTER ********************* -->
     <v-footer
             dark
             app
@@ -401,4 +416,7 @@
 </script>
 
 <style scoped>
+
 </style>
+
+<!-- THERE IS NOTHING COMING ANYMORE! -->

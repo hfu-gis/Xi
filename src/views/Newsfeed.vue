@@ -12,22 +12,24 @@
                             lg="10"
                             xl="8"
                             style="display: block"
-                            class="d-flex align-content-start justify-start justify-center justify-end justify-space-around justify-space-between flex-wrap "
+                            class="d-flex align-content-start justify-center flex-wrap "
                     >
 
                 <v-card
                         max-width="344"
                         align="left"
                         v-for="article in articles" :key="article.id"
+                        class="ma-5"
                 >
 
                             <v-list-item>
                                 <v-list-item-avatar color="red">
-                                    <v-img :src="article.user.imageUrl" lazy-src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"></v-img>
+                                    <v-img :src="article.user.imageUrl" lazy-src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"></v-img>
                                 </v-list-item-avatar>
                                 <v-list-item-content>
                                     <v-list-item-title class="headlinesmall">{{ article.title }} </v-list-item-title>
-                                    <v-list-item-subtitle>Author: {{article.user.firstname}} {{article.user.lastname}}</v-list-item-subtitle>
+                                    <v-list-item-subtitle> <v-chip small :to="'profilanzeigen/'+article.user.id">{{article.user.firstname}} {{article.user.lastname}}</v-chip> </v-list-item-subtitle>
+                                    <v-list-item-subtitle> <v-chip small :to="'perks/country/'+article.country">{{article.country}}</v-chip> / <v-chip small :to="'perks/category/'+article.category">{{article.category}}</v-chip> </v-list-item-subtitle>
                                 </v-list-item-content>
                             </v-list-item>
 
@@ -70,7 +72,6 @@
         name: "Newsfeed",
         computed: {
             articles () {
-                console.log("NEWSFEED: ", this.$store.getters.loadedArticles)
                 return this.$store.getters.loadedArticles
             }
         }

@@ -26,6 +26,8 @@
 
                     <v-card-text>
 
+                        <v-img :src="user.imageUrl" lazy-src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png" height="300px" class="ma-5"></v-img>
+
                         <v-layout class="mx-9 mt-5" v-if="error">
                             <v-flex>
                                 <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
@@ -33,7 +35,7 @@
                         </v-layout>
 
                         <form @submit.prevent="onEditProfil">
-                            <v-row class="px-3">
+                            <v-row class="px-3 pt-5">
                            <v-text-field
                                     name="firstname"
                                     :rules="[rules.required]"
@@ -58,7 +60,8 @@
                             <v-row class="px-8">
                                 <v-file-input v-model="user.image" label="Profil Picture" outlined @change="onFilePicked"></v-file-input>
                             </v-row>
-                            <img :src="user.imageUrl" height="150">
+
+
                             <v-text-field
                                     class="px-5"
                                     :rules="[rules.required]"
@@ -77,7 +80,7 @@
                                     prepend-inner-icon="mdi-map-marker"
                                     menu-props="auto"
                                     class="input-group--focused px-5"
-                                    label="Where did it happen? - Continent"
+                                    label="Where are you from? - Continent"
                                     outlined
                             ></v-select>
 
@@ -183,6 +186,7 @@
             onFilePicked (event) {
                 const files = event
                 let filename = files.name
+                console.log("FILENAME", filename)
                 if (filename.lastIndexOf('.') <= 0) {
                     return alert('Please add a valid file!')
                 }

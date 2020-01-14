@@ -12,7 +12,7 @@
         <v-card class="card-log"
                 outlined
         >
-            <v-toolbar color="info"
+            <v-toolbar color="primary"
                        dark
                        flat>
                  <v-toolbar-title>Login</v-toolbar-title>

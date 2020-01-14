@@ -11,9 +11,9 @@ export default new Vuetify({
       light: {
         primary: colors.blueGrey,
         secondary: colors.blueGrey.darken4,
-        accent: '#FF5252',
+        accent: '#2196F3',
         error: '#FF5252',
-        info: '#FF5252',
+        info: '#2196F3',
         success: '#4CAF50',
         warning: '#FFC107'
       },

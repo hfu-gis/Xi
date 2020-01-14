@@ -26,9 +26,17 @@
                             <v-toolbar-title>Create an article</v-toolbar-title>
                         </v-toolbar>
 
+                        <v-card-text>
+
+                        <v-layout class="mx-9 mt-5" v-if="error">
+                            <v-flex>
+                                <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
+                            </v-flex>
+                        </v-layout>
+
                         <form @submit.prevent="onCreateArticle">
 
-                        <v-card-text>
+
                             <v-text-field
                                     name="title"
                                     :rules="[rules.required]"
@@ -96,37 +104,22 @@
                             </v-row>
                             <v-divider class="pa-5"></v-divider>
 
-
-                          <!--  <v-item-group multiple>
-                                <v-subheader>Hashtags</v-subheader>
-                                <v-item
-                                        v-for="n in 8"
-                                        :key="n"
-                                        v-slot:default="{ active, toggle }"
-                                >
-                                    <v-chip
-                                            active-class="purple--text"
-                                            :input-value="active"
-                                            @click="toggle"
-                                    >
-                                            Tag {{ n }}
-                                    </v-chip>
-                                </v-item>
-                            </v-item-group> -->
-
-                        </v-card-text>
-
-                        <v-card-actions>
+                            <v-card-actions>
                             <v-row class="justify-end ma-5" >
                                 <v-btn type="submit" :disabled="loading" :loading="loading" color="primary"  large class="ml-5">
                                     Post <v-icon right>mdi-arrow-right</v-icon>
                                     <span slot="loader" class="custom-loader">
-                                 <v-icon>mdi-cached</v-icon>
-                             </span>
+                                        <v-icon>mdi-cached</v-icon>
+                                    </span>
                                 </v-btn>
                             </v-row>
-                        </v-card-actions>
+
+                            </v-card-actions>
+
                         </form>
+
+                        </v-card-text>
+
                     </v-card>
 
                     </v-col>

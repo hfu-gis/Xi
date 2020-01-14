@@ -11,7 +11,7 @@
                         <v-card class="card-log"
                             outlined
                         >
-                            <v-toolbar color="info"
+                            <v-toolbar color="primary"
                                        dark
                                        flat>
                                 <v-toolbar-title>Create your own Account!</v-toolbar-title>
