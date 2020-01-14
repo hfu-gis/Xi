@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <div>
                 <v-row
 
                         justify="space-around"
@@ -62,7 +62,7 @@
 
             </v-col>
         </v-row>
-    </v-app>
+    </div>
 </template>
 
 

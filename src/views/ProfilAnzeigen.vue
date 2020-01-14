@@ -1,5 +1,5 @@
 <template>
-    <v-app id="inspire">
+    <div id="inspire">
         <v-row
                 justify="center"
         >
@@ -46,7 +46,7 @@
 
 </v-card>
             </v-col></v-row>
-    </v-app>
+    </div>
 
 </template>
 

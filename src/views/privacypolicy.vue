@@ -1,5 +1,5 @@
 <template>
-    <v-app id="login">
+    <div id="login">
 
         <v-row
                 justify="center"
@@ -25,7 +25,7 @@
                     <v-card-text>
                         Your data ist safe, maybe :)
                     </v-card-text></v-card></v-col></v-row>
-    </v-app>
+    </div>
 </template>
 
 <script>

@@ -1,9 +1,6 @@
 <template>
-    <div class="EditProfil">
-        <div id="app">
-
-            <v-app id="inspire">
-                <v-row
+    <div>
+         <v-row
                         justify="center"
                 >
                     <v-col
@@ -113,10 +110,7 @@
                     </v-col>
                 </v-row>
 
-            </v-app>
-
         </div>
-    </div>
 </template>
 
 <script>

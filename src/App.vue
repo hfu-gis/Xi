@@ -1,5 +1,5 @@
 <template>
-  <v-app style="background-image: url(https://www.mural-wallpaper.com/wp-content/uploads/2019/03/M11-World-map-on-grunge-background.jpg)">
+  <v-app style="background-image: url(https://desenio.de/bilder/artiklar/zoom/8452_2.jpg); background-repeat:no-repeat; background-size: cover">
 
 
     <!-- ****************** SIDEBAR ********************* -->
@@ -242,11 +242,13 @@
       <!-- If user not auth -->
       <v-toolbar-items class="hidden-sm-and-down" v-if="!this.userIsAuthenticated">
         <v-btn text :to="{name:'Login'}">
-          <v-icon left>mdi-lock</v-icon> Login
+          <v-icon left>mdi-lock</v-icon>
+          <span class="hidden-md-and-down">Login</span>
         </v-btn>
 
         <v-btn text :to="{name:'Register'}">
-          <v-icon left>mdi-export-variant</v-icon> Register
+          <v-icon left>mdi-export-variant</v-icon>
+          <span class="hidden-md-and-down">Register</span>
         </v-btn>
       </v-toolbar-items>
 
@@ -310,7 +312,7 @@
                       <v-icon>mdi-tooltip-outline</v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
-                      <v-list-item-title>Your Profil</v-list-item-title>
+                      <v-list-item-title>Show your Profil</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
 
@@ -342,6 +344,18 @@
       </v-toolbar-items>
 
     </v-app-bar>
+
+
+    <v-btn class="hidden-sm-and-down" v-if="this.userIsAuthenticated"
+          fixed
+          dark
+          fab
+          style="bottom: 100px; right: 30px;"
+          color="secondary"
+           :to="{name: 'BeitragErstellen'}"
+  >
+    <v-icon>mdi-plus</v-icon>
+  </v-btn>
 
     <v-content>
         <router-view />

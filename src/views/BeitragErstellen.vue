@@ -1,10 +1,5 @@
 <template>
-    <div class="BeitragErstellen">
-
-        <div id="app">
-
-            <v-app id="inspire">
-
+    <div>
                 <v-row
                         justify="center"
                 >
@@ -124,9 +119,6 @@
 
                     </v-col>
                 </v-row>
-            </v-app>
-
-        </div>
     </div>
 </template>
 

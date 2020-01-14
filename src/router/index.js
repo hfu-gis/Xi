@@ -11,7 +11,6 @@ import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"
 import profilanzeigen from "../views/ProfilAnzeigen";
 import Newsfeed from "../views/Newsfeed";
-import Profil from "../views/Profil";
 import Help from "../views/help";
 import AuthGuard from './auth-guard'
 import EditProfil from "../views/EditProfil";
@@ -88,12 +87,6 @@ export default new VueRouter({
             name: 'sortedArticles',
             props: true,
             component: sortedArticles
-        },
-        {
-            path: '/Profil',
-            name: 'Profil',
-            component: Profil,
-            beforeEnter: AuthGuard
         },
         {
             path: '/help',
