@@ -5,7 +5,6 @@ import register from '../views/register'
 import forgotacc from '../views/forgot-acc'
 import legalnotice from '../views/legal-notice'
 import privacypolicy from '../views/privacypolicy'
-import Home from "../components/Home"
 import '../assets/css/app.css'
 import BeitragErstellen from '../views/BeitragErstellen'
 import Suchfunktion from "../views/Suchfunktion"

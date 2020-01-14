@@ -4,7 +4,7 @@ import * as firebase from 'firebase'
 import vuetify from './assets/plugins/vuetify'
 import router from './router'
 import { store } from  './store'
-import AlertCmp from './views/Alert'
+import AlertCmp from './components/Alert'
 const fb = require('./db')
 
 
